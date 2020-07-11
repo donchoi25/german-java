@@ -1,11 +1,12 @@
 %{
-	extern int yylex();	
+	#include "german-java.tab.h"
 %}
 	int num_lines = 0, num_chars = 0;
 %option noyywrap
 %%
-\n	   ++num_lines; ++num_chars;
-.	   ++num_chars;
+\n	   		++num_lines; ++num_chars;
+.	   		++num_chars;
+"boolean"	printf("%d\n", yylloc.first_line);
 
 %%
 int main(int argc, char **argv){
