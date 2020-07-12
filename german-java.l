@@ -1,12 +1,32 @@
 %{
 	#include "german-java.tab.h"
+
+
+	//updates position every token
+	#define YY_USER_ACTION \
+    yylloc.first_line = yylloc.last_line; \
+    yylloc.first_column = yylloc.last_column; \
+    if(yytext[0] == '\n') { \
+        yylloc.last_line++; \
+        yylloc.last_column = 1; \
+    } \
+    else { \
+        yylloc.last_column+=yyleng; \
+    } 
+
+    void reportTok(char* out);
 %}
-	int num_lines = 0, num_chars = 0;
 %option noyywrap
+%option yylineno
+
+ws	[ \t\n]
 %%
-\n	   		++num_lines; ++num_chars;
-.	   		++num_chars;
-"boolean"	printf("%d\n", yylloc.first_line);
+
+"b"				reportTok("Test");
+"boolean"{ws}*	reportTok("Boolean");
+.	{}
+\n 	{}
+
 
 %%
 int main(int argc, char **argv){
@@ -24,7 +44,8 @@ int main(int argc, char **argv){
 
 	//lex through the input
 	while(yylex());
+}
 
-	printf( "# of lines = %d, # of chars = %d\n",
-			   num_lines, num_chars );
+void reportTok(char* out){
+	printf("Line %d.%d: %s\n", yylloc.first_line,yylloc.first_column, out);
 }
