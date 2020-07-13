@@ -474,25 +474,22 @@ char *yytext;
 #line 2 "german-java.l"
 	#include "german-java.tab.h"
 
+
+	//updates position every token
 	#define YY_USER_ACTION \
-	//update current position every token
     yylloc.first_line = yylloc.last_line; \
     yylloc.first_column = yylloc.last_column; \
-
-    //increment line count and reset column if newline 
     if(yytext[0] == '\n') { \
         yylloc.last_line++; \
         yylloc.last_column = 1; \
     } \
-
-    //otherwise increment column by token length
     else { \
         yylloc.last_column+=yyleng; \
     } 
 
     void reportTok(char* out);
-#line 495 "lex.yy.c"
-#line 496 "lex.yy.c"
+#line 492 "lex.yy.c"
+#line 493 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -709,10 +706,10 @@ YY_DECL
 		}
 
 	{
-#line 26 "german-java.l"
+#line 23 "german-java.l"
 
 
-#line 716 "lex.yy.c"
+#line 713 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -781,32 +778,32 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 28 "german-java.l"
+#line 25 "german-java.l"
 reportTok("Test");
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 29 "german-java.l"
+#line 26 "german-java.l"
 reportTok("Boolean");
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 30 "german-java.l"
+#line 27 "german-java.l"
 {}
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 31 "german-java.l"
+#line 28 "german-java.l"
 {}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 34 "german-java.l"
+#line 31 "german-java.l"
 ECHO;
 	YY_BREAK
-#line 810 "lex.yy.c"
+#line 807 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1823,7 +1820,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 34 "german-java.l"
+#line 31 "german-java.l"
 
 int main(int argc, char **argv){
 	// open file
