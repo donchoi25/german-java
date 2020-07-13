@@ -104,6 +104,96 @@ void yyerror(const char* s);
 extern int yydebug;
 #endif
 
+/* Token type.  */
+#ifndef YYTOKENTYPE
+# define YYTOKENTYPE
+  enum yytokentype
+  {
+    _boolean = 258,
+    _class = 259,
+    _extends = 260,
+    _void = 261,
+    _int = 262,
+    _while = 263,
+    _if = 264,
+    _else = 265,
+    _for = 266,
+    _break = 267,
+    _this = 268,
+    _false = 269,
+    _true = 270,
+    _super = 271,
+    _null = 272,
+    _return = 273,
+    _instanceof = 274,
+    _new = 275,
+    _abstract = 276,
+    _assert = 277,
+    _byte = 278,
+    _case = 279,
+    _catch = 280,
+    _char = 281,
+    _const = 282,
+    _continue = 283,
+    _default = 284,
+    _do = 285,
+    _double = 286,
+    _enum = 287,
+    _final = 288,
+    _finally = 289,
+    _float = 290,
+    _goto = 291,
+    _implements = 292,
+    _import = 293,
+    _interface = 294,
+    _long = 295,
+    _package = 296,
+    _private = 297,
+    _protected = 298,
+    _public = 299,
+    _short = 300,
+    _static = 301,
+    _strictfp = 302,
+    _switch = 303,
+    _synchronized = 304,
+    _throw = 305,
+    _throws = 306,
+    _transient = 307,
+    _try = 308,
+    _volatile = 309,
+    NOT = 310,
+    NOT_EQUAL = 311,
+    MOD = 312,
+    AND = 313,
+    MULTIPLY = 314,
+    LEFT_PAREN = 315,
+    RIGHT_PAREN = 316,
+    LEFT_BRACE = 317,
+    RIGHT_BRACE = 318,
+    SUBTRACT = 319,
+    ADD = 320,
+    ASSIGN = 321,
+    EQUAL = 322,
+    LEFT_SQUARE = 323,
+    RIGHT_SQUARE = 324,
+    OR = 325,
+    LESS = 326,
+    LESS_EQUAL = 327,
+    COMMA = 328,
+    GREATER = 329,
+    GREATER_EQUAL = 330,
+    PERIOD = 331,
+    SEMICOLON = 332,
+    INCREMENT = 333,
+    DECREMENT = 334,
+    SLASH = 335,
+    COLON = 336,
+    ID = 337,
+    INTLIT = 338,
+    STRINGLIT = 339,
+    CHARLIT = 340
+  };
+#endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -135,7 +225,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 139 "german-java.tab.c" /* yacc.c:358  */
+#line 229 "german-java.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -382,7 +472,7 @@ union yyalloc
 #define YYLAST   0
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  3
+#define YYNTOKENS  86
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  2
 /* YYNRULES -- Number of rules.  */
@@ -393,7 +483,7 @@ union yyalloc
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   257
+#define YYMAXUTOK   340
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -427,14 +517,23 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
+      45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
+      55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
+      65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
+      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
+      85
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    18,    18
+       0,   103,   103
 };
 #endif
 
@@ -443,7 +542,20 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "$accept", "filler", YY_NULLPTR
+  "$end", "error", "$undefined", "_boolean", "_class", "_extends",
+  "_void", "_int", "_while", "_if", "_else", "_for", "_break", "_this",
+  "_false", "_true", "_super", "_null", "_return", "_instanceof", "_new",
+  "_abstract", "_assert", "_byte", "_case", "_catch", "_char", "_const",
+  "_continue", "_default", "_do", "_double", "_enum", "_final", "_finally",
+  "_float", "_goto", "_implements", "_import", "_interface", "_long",
+  "_package", "_private", "_protected", "_public", "_short", "_static",
+  "_strictfp", "_switch", "_synchronized", "_throw", "_throws",
+  "_transient", "_try", "_volatile", "NOT", "NOT_EQUAL", "MOD", "AND",
+  "MULTIPLY", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE", "RIGHT_BRACE",
+  "SUBTRACT", "ADD", "ASSIGN", "EQUAL", "LEFT_SQUARE", "RIGHT_SQUARE",
+  "OR", "LESS", "LESS_EQUAL", "COMMA", "GREATER", "GREATER_EQUAL",
+  "PERIOD", "SEMICOLON", "INCREMENT", "DECREMENT", "SLASH", "COLON", "ID",
+  "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program", YY_NULLPTR
 };
 #endif
 
@@ -452,7 +564,15 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
+     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
+     285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
+     295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
+     305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
+     315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
+     325,   326,   327,   328,   329,   330,   331,   332,   333,   334,
+     335,   336,   337,   338,   339,   340
 };
 # endif
 
@@ -510,13 +630,13 @@ static const yytype_uint8 yycheck[] =
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     4,     0
+       0,    87,     0
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     3,     4
+       0,    86,    87
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
@@ -1292,7 +1412,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1296 "german-java.tab.c" /* yacc.c:1646  */
+#line 1416 "german-java.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1527,7 +1647,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 23 "german-java.y" /* yacc.c:1906  */
+#line 108 "german-java.y" /* yacc.c:1906  */
 
 
 void yyerror(const char* s) {

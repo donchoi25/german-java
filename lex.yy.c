@@ -373,8 +373,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 5
-#define YY_END_OF_BUFFER 6
+#define YY_NUM_RULES 4
+#define YY_END_OF_BUFFER 5
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -384,8 +384,8 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[15] =
     {   0,
-        0,    0,    6,    3,    4,    1,    0,    0,    0,    0,
-        0,    2,    2,    0
+        0,    0,    5,    2,    3,    2,    0,    0,    0,    0,
+        0,    1,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -452,9 +452,9 @@ static const flex_int16_t yy_chk[28] =
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[6] =
+static const flex_int32_t yy_rule_can_match_eol[5] =
     {   0,
-0, 1, 0, 1, 0,     };
+1, 0, 1, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -777,33 +777,28 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
 #line 25 "german-java.l"
-reportTok("Test");
+reportTok("Boolean"); return _boolean;
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
 #line 26 "german-java.l"
-reportTok("Boolean");
+{}
 	YY_BREAK
 case 3:
+/* rule 3 can match eol */
 YY_RULE_SETUP
 #line 27 "german-java.l"
 {}
 	YY_BREAK
 case 4:
-/* rule 4 can match eol */
 YY_RULE_SETUP
-#line 28 "german-java.l"
-{}
-	YY_BREAK
-case 5:
-YY_RULE_SETUP
-#line 31 "german-java.l"
+#line 30 "german-java.l"
 ECHO;
 	YY_BREAK
-#line 807 "lex.yy.c"
+#line 802 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1820,7 +1815,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 31 "german-java.l"
+#line 30 "german-java.l"
 
 int main(int argc, char **argv){
 	// open file

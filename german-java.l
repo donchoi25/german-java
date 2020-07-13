@@ -22,8 +22,7 @@
 ws	[ \t\n]
 %%
 
-"b"				reportTok("Test");
-"boolean"{ws}*	reportTok("Boolean");
+"boolean"{ws}*	reportTok("Boolean"); return _boolean;
 .	{}
 \n 	{}
 
