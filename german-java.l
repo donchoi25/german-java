@@ -22,10 +22,11 @@
 ws	[ \t]
 letter [a-zA-Z]
 digit [0-9]
-intLit ^[1-9]{digit}*
-%% /* Reserved Words */
-\n 	{}
-{intLit}{ws}*		reportTok("Integer Literal"); 
+intLit [1-9]{digit}*
+idChar  ({letter}|digit|"_") 
+ID  {letter}{idChar}*
+%% 
+
 "boolean"{ws}*		reportTok("Boolean"); return _boolean;
 "class"{ws}*		reportTok("Class"); return _class;
 "extends"{ws}*		reportTok("Extends"); return _extends;
@@ -49,4 +50,8 @@ intLit ^[1-9]{digit}*
 "byte"{ws}*			reportTok("Byte"); return _byte;
 "case"{ws}*			reportTok("Case"); return _case;
 "catch"{ws}*		reportTok("Catch"); return _catch;
+
+\n 	{}
+{intLit}{ws}*		reportTok("Integer Literal"); return INTLIT;
+{ID}{ws}*           reportTok("Identifier"); return ID;
 .				yyerror();
