@@ -19,32 +19,19 @@
 %option noyywrap
 %option yylineno
 
-ws	[ \t\n]
+ws	[ \t]
+letter [a-zA-Z]
+digit [0-9]
+intLit {digit}-[0]{digit}*
 %%
 
-"boolean"{ws}*	reportTok("Boolean"); return _boolean;
-.	{}
 \n 	{}
-
-
-%%
-int main(int argc, char **argv){
-	// open file
-	FILE *myfile = fopen(argv[1], "r");
-
-	//make sure file is valid
-	if(!myfile){
-		printf("%s", "Can't open file");
-		return -1;
-	}
-
-	// set lex to read from file
-	yyin = myfile;
-
-	//lex through the input
-	while(yylex());
-}
-
-void reportTok(char* out){
-	printf("Line %d.%d: %s\n", yylloc.first_line,yylloc.first_column, out);
-}
+{digit}+{ws}*	reportTok("Integer Literal");
+"boolean"{ws}*	reportTok("Boolean"); return _boolean;
+"class"{ws}*	reportTok("Class"); return _class;
+"extends"{ws}*	reportTok("Extends"); return _extends;
+"void"{ws}*		reportTok("Void"); return _void;
+"int"{ws}*		reportTok("Integer"); return _int;
+"while"{ws}*	reportTok("While"); return _while;
+"if"{ws}*		reportTok("If"); return _if;
+.				yyerror();

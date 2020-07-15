@@ -7,7 +7,7 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-void yyerror(const char* s);
+void yyerror();
 %}
 %locations
 
@@ -106,8 +106,32 @@ program:
 
 
 %%
+int main(int argc, char **argv){
+	// open file
+	FILE *myfile = fopen(argv[1], "r");
 
-void yyerror(const char* s) {
-	fprintf(stderr, "Parse error: %s\n", s);
+	//make sure file is valid
+	if(!myfile){
+		printf("%s", "Can't open file");
+		return -1;
+	}
+
+	// set lex to read from file
+	yyin = myfile;
+
+	//lex through the input
+	while(yylex());
+
+	return 0;
+}
+
+void reportTok(char* out){
+	printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);
+}
+
+void yyerror() {
+	fprintf(stderr, "Parse error on Line %d.%d\n", 
+		yylloc.first_line,yylloc.first_column);
 	exit(1);
 }
