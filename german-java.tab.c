@@ -168,8 +168,8 @@ extern int yydebug;
     MULTIPLY = 314,
     LEFT_PAREN = 315,
     RIGHT_PAREN = 316,
-    LEFT_BRACE = 317,
-    RIGHT_BRACE = 318,
+    LEFT_CURLY = 317,
+    RIGHT_CURLY = 318,
     SUBTRACT = 319,
     ADD = 320,
     ASSIGN = 321,
@@ -186,7 +186,7 @@ extern int yydebug;
     SEMICOLON = 332,
     INCREMENT = 333,
     DECREMENT = 334,
-    SLASH = 335,
+    DIVISION = 335,
     COLON = 336,
     ID = 337,
     INTLIT = 338,
@@ -551,11 +551,11 @@ static const char *const yytname[] =
   "_package", "_private", "_protected", "_public", "_short", "_static",
   "_strictfp", "_switch", "_synchronized", "_throw", "_throws",
   "_transient", "_try", "_volatile", "NOT", "NOT_EQUAL", "MOD", "AND",
-  "MULTIPLY", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_BRACE", "RIGHT_BRACE",
+  "MULTIPLY", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_CURLY", "RIGHT_CURLY",
   "SUBTRACT", "ADD", "ASSIGN", "EQUAL", "LEFT_SQUARE", "RIGHT_SQUARE",
   "OR", "LESS", "LESS_EQUAL", "COMMA", "GREATER", "GREATER_EQUAL",
-  "PERIOD", "SEMICOLON", "INCREMENT", "DECREMENT", "SLASH", "COLON", "ID",
-  "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program", YY_NULLPTR
+  "PERIOD", "SEMICOLON", "INCREMENT", "DECREMENT", "DIVISION", "COLON",
+  "ID", "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program", YY_NULLPTR
 };
 #endif
 

@@ -31,7 +31,9 @@ ID  {letter}{idChar}*
 STRINGLIT   "\""{printable}*"\"" 
 CHARLIT "\'"{charprintable}"\'"
 %% 
-    /* Reserved Words */
+    /* 
+        Reserved Words 
+    */
 "boolean"{ws}*		reportTok("Boolean"); return _boolean;
 "class"{ws}*		reportTok("Class"); return _class;
 "extends"{ws}*		reportTok("Extends"); return _extends;
@@ -85,9 +87,46 @@ CHARLIT "\'"{charprintable}"\'"
 "try"{ws}*          reportTok("Try"); return _try;
 "volatile"{ws}*     reportTok("Volatile"); return _volatile;
 
-    /* Symbols */
+    /* 
+        All Symbols 
+    */
+
+"="{ws}*            reportTok("Assign"); return ASSIGN;
+","{ws}*            reportTok("Comma"); return COMMA;
+"."{ws}*            reportTok("Period"); return PERIOD;
+";"{ws}*            reportTok("Semicolon"); return SEMICOLON;
+":"{ws}*            reportTok("Colon"); return COLON;
+
+    /* Logical Operators */
+"=="{ws}*           reportTok("Equal"); return EQUAL;
 "!"{ws}*            reportTok("Not"); return NOT;
 "!="{ws}*           reportTok("Not Equal"); return NOT_EQUAL;
+"<"{ws}*            reportTok("Less"); return LESS;
+"<="{ws}*           reportTok("Less Equal"); return LESS_EQUAL;
+">"{ws}*            reportTok("Greater"); return GREATER;
+">="{ws}*           reportTok("Greater Equal"); return GREATER_EQUAL;
+"&&"{ws}*           reportTok("And"); return AND;
+"||"{ws}*           reportTok("Or"); return OR;
+
+    /* Groupings */
+"("{ws}*            reportTok("Left Paren"); return LEFT_PAREN;
+")"{ws}*            reportTok("Right Paren"); return RIGHT_PAREN;
+"["{ws}*            reportTok("Left Square"); return LEFT_SQUARE;
+"]"{ws}*            reportTok("Right Square"); return RIGHT_SQUARE;
+"{"{ws}*            reportTok("Left Curly"); return LEFT_CURLY;
+"}"{ws}*            reportTok("Right Curly"); return RIGHT_CURLY;
+
+    /* Math Operations */
+"+"{ws}*            reportTok("Add"); return ADD;
+"-"{ws}*            reportTok("Subtract"); return SUBTRACT;
+"*"{ws}*            reportTok("Multiply"); return MULTIPLY;
+"/"{ws}*            reportTok("Division"); return DIVISION;
+"%"{ws}*            reportTok("Mod"); return MOD;
+"++"{ws}*           reportTok("Increment"); return INCREMENT;
+"--"{ws}*           reportTok("Decrement"); return DECREMENT;
+
+
+
 
 
     /* Literals, newline, and unaccepted characters */

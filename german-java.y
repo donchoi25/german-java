@@ -70,8 +70,8 @@ void yyerror();
 %token MULTIPLY
 %token LEFT_PAREN
 %token RIGHT_PAREN					
-%token LEFT_BRACE
-%token RIGHT_BRACE
+%token LEFT_CURLY
+%token RIGHT_CURLY
 %left SUBTRACT
 %left ADD
 %token ASSIGN
@@ -88,7 +88,7 @@ void yyerror();
 %token SEMICOLON
 %token INCREMENT
 %token DECREMENT
-%token SLASH
+%token DIVISION
 %token COLON
 
 %token ID
