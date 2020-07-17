@@ -20,13 +20,18 @@
 %option yylineno
 
 ws	[ \t]
+printable [ -~]    
+charprintable   "\\\\"|"\\\""|"\\\'"|"\\n"|"\\t"|"\\f"|"\\r"|{printable}
+
 letter [a-zA-Z]
 digit [0-9]
 intLit [1-9]{digit}*
-idChar  ({letter}|digit|"_") 
+idChar  ({letter}|{digit}|"_") 
 ID  {letter}{idChar}*
+STRINGLIT   "\""{printable}*"\"" 
+CHARLIT "\'"{charprintable}"\'"
 %% 
-
+    /* Reserved Words */
 "boolean"{ws}*		reportTok("Boolean"); return _boolean;
 "class"{ws}*		reportTok("Class"); return _class;
 "extends"{ws}*		reportTok("Extends"); return _extends;
@@ -50,8 +55,45 @@ ID  {letter}{idChar}*
 "byte"{ws}*			reportTok("Byte"); return _byte;
 "case"{ws}*			reportTok("Case"); return _case;
 "catch"{ws}*		reportTok("Catch"); return _catch;
+"char"{ws}*         reportTok("Char"); return _char;
+"const"{ws}*        reportTok("Const"); return _const;
+"continue"{ws}*     reportTok("Continue"); return _continue;
+"default"{ws}*      reportTok("Default"); return _default;
+"do"{ws}*           reportTok("Do"); return _do;
+"double"{ws}*       reportTok("Double"); return _double;
+"enum"{ws}*         reportTok("Enum"); return _enum;
+"final"{ws}*        reportTok("Final"); return _final;
+"finally"{ws}*      reportTok("Finally"); return _finally;
+"float"{ws}*        reportTok("Float"); return _float;
+"goto"{ws}*         reportTok("Goto"); return _goto;
+"implements"{ws}*   reportTok("Implements"); return _implements;
+"import"{ws}*       reportTok("Import"); return _import;
+"interface"{ws}*    reportTok("Interface"); return _interface;
+"long"{ws}*         reportTok("Long"); return _long;
+"package"{ws}*      reportTok("Package"); return _package;
+"private"{ws}*      reportTok("Private"); return _private;
+"protected"{ws}*    reportTok("Protected"); return _protected;
+"public"{ws}*       reportTok("Public"); return _public;
+"short"{ws}*        reportTok("Short"); return _short;
+"static"{ws}*       reportTok("Static"); return _static;
+"strictfp"{ws}*     reportTok("Strictfp"); return _strictfp;
+"switch"{ws}*       reportTok("Switch"); return _switch;
+"synchronized"{ws}* reportTok("Synchronized"); return _synchronized;
+"throw"{ws}*        reportTok("Throw"); return _throw;
+"throws"{ws}*       reportTok("Throws"); return _throws;
+"transient"{ws}*    reportTok("Transient"); return _transient;
+"try"{ws}*          reportTok("Try"); return _try;
+"volatile"{ws}*     reportTok("Volatile"); return _volatile;
 
+    /* Symbols */
+"!"{ws}*            reportTok("Not"); return NOT;
+"!="{ws}*           reportTok("Not Equal"); return NOT_EQUAL;
+
+
+    /* Literals, newline, and unaccepted characters */
 \n 	{}
 {intLit}{ws}*		reportTok("Integer Literal"); return INTLIT;
 {ID}{ws}*           reportTok("Identifier"); return ID;
-.				yyerror();
+{STRINGLIT}{ws}*    reportTok("String Literal"); return STRINGLIT;
+{CHARLIT}{ws}*      reportTok("Char Literal"); return CHARLIT;
+.				    yyerror();
