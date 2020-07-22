@@ -7,7 +7,7 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-void yyerror();
+void yyerror(const char* s);
 %}
 %locations
 
@@ -101,7 +101,19 @@ void yyerror();
 %%
 
 program:
+	%empty
+|	program class-decl
 
+;
+
+class-decl:
+	_class ID LEFT_CURLY decl-in-class RIGHT_CURLY
+|	_class ID _extends ID LEFT_CURLY decl-in-class RIGHT_CURLY	
+
+;
+
+decl-in-class:
+	%empty
 ;
 
 
@@ -120,18 +132,21 @@ int main(int argc, char **argv){
 	yyin = myfile;
 
 	//lex through the input
-	while(yylex());
+	do	{
+		yyparse();
+	} while(!feof(yyin));
 
+	fprintf(stderr, "Compiled Successfully\n");
 	return 0;
 }
 
 void reportTok(char* out){
-	printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);
+	/*printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);*/
 }
 
-void yyerror() {
-	fprintf(stderr, "Parse error on Line %d.%d\n", 
-		yylloc.first_line,yylloc.first_column);
+void yyerror(const char* s) {
+	fprintf(stderr, "Error on Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column,s);
 	exit(1);
 }

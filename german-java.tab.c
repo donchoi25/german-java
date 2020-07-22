@@ -72,7 +72,7 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-void yyerror();
+void yyerror(const char* s);
 
 #line 78 "german-java.tab.c" /* yacc.c:339  */
 
@@ -469,16 +469,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   0
+#define YYLAST   57
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  86
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  2
+#define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  2
+#define YYNRULES  6
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  3
+#define YYNSTATES  14
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
@@ -533,7 +533,7 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   103,   103
+       0,   104,   104,   105,   110,   111,   116
 };
 #endif
 
@@ -555,7 +555,8 @@ static const char *const yytname[] =
   "SUBTRACT", "ADD", "ASSIGN", "EQUAL", "LEFT_SQUARE", "RIGHT_SQUARE",
   "OR", "LESS", "LESS_EQUAL", "COMMA", "GREATER", "GREATER_EQUAL",
   "PERIOD", "SEMICOLON", "INCREMENT", "DECREMENT", "DIVISION", "COLON",
-  "ID", "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program", YY_NULLPTR
+  "ID", "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program",
+  "class-decl", "decl-in-class", YY_NULLPTR
 };
 #endif
 
@@ -576,10 +577,10 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF -1
+#define YYPACT_NINF -81
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-1)))
+  (!!((Yystate) == (-81)))
 
 #define YYTABLE_NINF -1
 
@@ -590,7 +591,8 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -1,     0,    -1
+     -81,     1,   -81,   -80,   -81,    -5,   -79,   -81,   -58,   -57,
+     -81,   -81,   -56,   -81
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -598,19 +600,20 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,     0,     1
+       2,     0,     1,     0,     3,     0,     0,     6,     0,     0,
+       6,     4,     0,     5
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -1,    -1
+     -81,   -81,   -81,    -2
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1
+      -1,     1,     4,     9
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -618,31 +621,42 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-       2
+       6,     2,     5,     8,    10,     3,    11,    13,    12,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     7
 };
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       0
+       5,     0,    82,    82,    62,     4,    63,    63,    10,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    62
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    87,     0
+       0,    87,     0,     4,    88,    82,     5,    62,    82,    89,
+      62,    63,    89,    63
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    86,    87
+       0,    86,    87,    87,    88,    88,    89
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     0
+       0,     2,     0,     2,     5,     7,     0
 };
 
 
@@ -1412,7 +1426,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1416 "german-java.tab.c" /* yacc.c:1646  */
+#line 1430 "german-java.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1647,7 +1661,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 108 "german-java.y" /* yacc.c:1906  */
+#line 120 "german-java.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file
@@ -1663,18 +1677,21 @@ int main(int argc, char **argv){
 	yyin = myfile;
 
 	//lex through the input
-	while(yylex());
+	do	{
+		yyparse();
+	} while(!feof(yyin));
 
+	fprintf(stderr, "Compiled Successfully\n");
 	return 0;
 }
 
 void reportTok(char* out){
-	printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);
+	/*printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);*/
 }
 
-void yyerror() {
-	fprintf(stderr, "Parse error on Line %d.%d\n", 
-		yylloc.first_line,yylloc.first_column);
+void yyerror(const char* s) {
+	fprintf(stderr, "Error on Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column,s);
 	exit(1);
 }

@@ -14,7 +14,8 @@
         yylloc.last_column+=yyleng; \
     } 
 
-    void reportTok(char* out);
+    extern void reportTok(char* out);
+    extern void yyerror(const char* s);
 %}
 %option noyywrap
 %option yylineno
@@ -135,4 +136,4 @@ CHARLIT "\'"{charprintable}"\'"
 {ID}{ws}*           reportTok("Identifier"); return ID;
 {STRINGLIT}{ws}*    reportTok("String Literal"); return STRINGLIT;
 {CHARLIT}{ws}*      reportTok("Char Literal"); return CHARLIT;
-.				    yyerror();
+.				    yyerror("Token not recognized");
