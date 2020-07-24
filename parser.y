@@ -1,8 +1,8 @@
 %{
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <collectc/array.h>
+#include "include/nodes.h"
 
 extern int yylex();
 extern int yyparse();
@@ -108,7 +108,7 @@ program:
 ;
 
 class-decl:
-	_class ID LEFT_CURLY decl-in-class RIGHT_CURLY
+	_class ID LEFT_CURLY decl-in-class RIGHT_CURLY		
 |	_class ID _extends ID LEFT_CURLY decl-in-class RIGHT_CURLY	
 
 ;
@@ -142,8 +142,8 @@ int main(int argc, char **argv){
 }
 
 void reportTok(char* out){
-	printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);
+	/*printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);*/
 }
 
 void yyerror(const char* s) {

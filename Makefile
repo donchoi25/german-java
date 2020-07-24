@@ -2,19 +2,26 @@ CC=g++
 
 CFLAGS=-c -Wall
 
+DEPS=nodes.h
+
+ODIR=obj
+
 all: main
 
-main: parser.tab.o lex.yy.o
-	$(CC) parser.tab.o lex.yy.o -o german-java
+main: $(ODIR)/parser.tab.o lex.yy.o
+	$(CC) $(ODIR)/parser.tab.o lex.yy.o -o german-java
 	./german-java test.file
 
-parser.tab.o: parser.y
+$(ODIR)/parser.tab.o: parser.y 
+#generates bison parser
 	bison -d parser.y
-	$(CC) $(CFLAGS) -c parser.tab.c
+#compiles master header file
+	#./HeaderGen.sh 
+	$(CC) $(CFLAGS) parser.tab.c -o $(ODIR)/parser.tab.o
 
 lex.yy.o: lexer.l
 	flex lexer.l
-	$(CC) $(CFLAGS) -c lex.yy.c
+	$(CC) $(CFLAGS) lex.yy.c
 
 clean:
-	rm -- !("lexer.l"|"parser.y"|"Makefile"|"README.md"|"test.file")
+	rm -rf -- !("lexer.l"|"parser.y"|"Makefile"|"README.md"|"test.file")

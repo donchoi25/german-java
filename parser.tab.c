@@ -64,10 +64,10 @@
 /* Copy the first part of user declarations.  */
 #line 1 "parser.y" /* yacc.c:339  */
 
-
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <collectc/array.h>
+#include "include/nodes.h"
 
 extern int yylex();
 extern int yyparse();
@@ -1687,8 +1687,8 @@ int main(int argc, char **argv){
 }
 
 void reportTok(char* out){
-	printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);
+	/*printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);*/
 }
 
 void yyerror(const char* s) {
