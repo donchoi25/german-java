@@ -4,17 +4,17 @@ CFLAGS=-c -Wall
 
 all: main
 
-main: german-java.tab.o lex.yy.o
-	$(CC) german-java.tab.o lex.yy.o -o german-java
+main: parser.tab.o lex.yy.o
+	$(CC) parser.tab.o lex.yy.o -o german-java
 	./german-java test.file
 
-german-java.tab.o: german-java.y
-	bison -d german-java.y
-	$(CC) $(CFLAGS) -c german-java.tab.c
+parser.tab.o: parser.y
+	bison -d parser.y
+	$(CC) $(CFLAGS) -c parser.tab.c
 
-lex.yy.o: german-java.l
-	flex german-java.l
+lex.yy.o: lexer.l
+	flex lexer.l
 	$(CC) $(CFLAGS) -c lex.yy.c
 
 clean:
-	rm -rf *o main
+	rm -- !("german-java.l"|"german-java.y"|"Makefile"|"README.md"|"test.file")

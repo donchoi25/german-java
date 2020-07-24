@@ -62,12 +62,12 @@
 
 
 /* Copy the first part of user declarations.  */
-#line 1 "german-java.y" /* yacc.c:339  */
+#line 1 "parser.y" /* yacc.c:339  */
 
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "collectc/src/include/array.h"
+#include <collectc/array.h>
 
 extern int yylex();
 extern int yyparse();
@@ -75,7 +75,7 @@ extern FILE* yyin;
 
 void yyerror(const char* s);
 
-#line 79 "german-java.tab.c" /* yacc.c:339  */
+#line 79 "parser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -94,9 +94,9 @@ void yyerror(const char* s);
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "german-java.tab.h".  */
-#ifndef YY_YY_GERMAN_JAVA_TAB_H_INCLUDED
-# define YY_YY_GERMAN_JAVA_TAB_H_INCLUDED
+   by #include "parser.tab.h".  */
+#ifndef YY_YY_PARSER_TAB_H_INCLUDED
+# define YY_YY_PARSER_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -222,11 +222,11 @@ extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
 int yyparse (void);
 
-#endif /* !YY_YY_GERMAN_JAVA_TAB_H_INCLUDED  */
+#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 230 "german-java.tab.c" /* yacc.c:358  */
+#line 230 "parser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1427,7 +1427,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1431 "german-java.tab.c" /* yacc.c:1646  */
+#line 1431 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1662,7 +1662,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 121 "german-java.y" /* yacc.c:1906  */
+#line 121 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file

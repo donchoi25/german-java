@@ -1,5 +1,5 @@
 %{
-	#include "german-java.tab.h"
+	#include "parser.tab.h"
 
 
     int char_position = 0;
