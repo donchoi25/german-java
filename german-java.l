@@ -2,17 +2,20 @@
 	#include "german-java.tab.h"
 
 
+    int char_position = 0;
+    int line_start = 0;
 	//updates position every token
-	#define YY_USER_ACTION \
-    yylloc.first_line = yylloc.last_line; \
-    yylloc.first_column = yylloc.last_column; \
-    if(yytext[0] == '\n') { \
-        yylloc.last_line++; \
-        yylloc.last_column = 1; \
-    } \
-    else { \
-        yylloc.last_column+=yyleng; \
-    } 
+	#define YY_USER_ACTION                                \
+        char_position += yyleng;                          \
+        if (yylineno != yylloc.last_line) {               \
+            char* p = yytext + yyleng;                    \
+            line_start = char_position;                   \
+            while (*--p != '\n') --line_start;            \
+        }                                                 \
+        yylloc.first_line = yylloc.last_line;             \
+        yylloc.first_column = yylloc.last_column;         \
+        yylloc.last_line = yylineno;                      \
+        yylloc.last_column = char_position - line_start + 1; 
 
     extern void reportTok(char* out);
     extern void yyerror(const char* s);
@@ -20,7 +23,7 @@
 %option noyywrap
 %option yylineno
 
-ws	[ \t]
+ws	[ \t\n]
 printable [ -~]    
 charprintable   "\\\\"|"\\\""|"\\\'"|"\\n"|"\\t"|"\\f"|"\\r"|{printable}
 

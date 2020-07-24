@@ -67,6 +67,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "collectc/src/include/array.h"
 
 extern int yylex();
 extern int yyparse();
@@ -74,7 +75,7 @@ extern FILE* yyin;
 
 void yyerror(const char* s);
 
-#line 78 "german-java.tab.c" /* yacc.c:339  */
+#line 79 "german-java.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -225,7 +226,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 229 "german-java.tab.c" /* yacc.c:358  */
+#line 230 "german-java.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -533,7 +534,7 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   104,   104,   105,   110,   111,   116
+       0,   105,   105,   106,   111,   112,   117
 };
 #endif
 
@@ -1426,7 +1427,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1430 "german-java.tab.c" /* yacc.c:1646  */
+#line 1431 "german-java.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1661,7 +1662,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 120 "german-java.y" /* yacc.c:1906  */
+#line 121 "german-java.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file
@@ -1686,8 +1687,8 @@ int main(int argc, char **argv){
 }
 
 void reportTok(char* out){
-	/*printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);*/
+	printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out);
 }
 
 void yyerror(const char* s) {
