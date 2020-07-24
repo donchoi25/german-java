@@ -1,4 +1,4 @@
-CC=gcc
+CC=g++
 
 CFLAGS=-c -Wall
 
@@ -17,4 +17,4 @@ lex.yy.o: lexer.l
 	$(CC) $(CFLAGS) -c lex.yy.c
 
 clean:
-	rm -- !("german-java.l"|"german-java.y"|"Makefile"|"README.md"|"test.file")
+	rm -- !("lexer.l"|"parser.y"|"Makefile"|"README.md"|"test.file")
