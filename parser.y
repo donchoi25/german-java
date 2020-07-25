@@ -5,6 +5,7 @@
 #include "include/nodes.h"
 
 AstNode nodes;
+Exp expression;
 
 extern int yylex();
 extern int yyparse();

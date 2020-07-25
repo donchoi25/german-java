@@ -4,7 +4,7 @@ echo "#define __NODES__" >> $HEADER
 for file in include/*.h
 do
     if [ "$file" != "$HEADER" ]; then
-        echo "#include \"$file\"" >> $HEADER
+        echo "#include \"$(basename $file)\"" >> $HEADER
     fi
 done
 echo "#endif" >> $HEADER

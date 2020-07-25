@@ -1,33 +1,40 @@
+#compiled with c++ compiler
 CC=g++
 
 CFLAGS=-c -Wall
 
-DEPS=nodes.h
+#header files
+DEPS=$(wildcard $(IDIR)/*.h)
 
-_OBJ=parser.tab.o lex.yy.o AstNode.o
-OBJ= $(patsubst %,$(ODIR)/%,$(_OBJ))
+#flex bison objects
+FB_OBJ=$(ODIR)/parser.tab.o $(ODIR)/lex.yy.o
 
+#all target objects, generated from src dir
+OBJ= $(patsubst $(SDIR)/%.cpp,$(ODIR)/%.o,$(wildcard $(SDIR)/*.cpp))
+
+#directories
 ODIR=obj
 SDIR=src
+IDIR=include
 
 all: main
 
-main: $(OBJ)
+main: $(FB_OBJ) $(OBJ) $(DEPS)
 	$(CC) $^ -o german-java
 	./german-java test.file
 
-$(ODIR)/parser.tab.o: parser.tab.c parser.y
+$(ODIR)/parser.tab.o: parser.tab.c parser.y $(IDIR)/nodes.h
 #generates bison parser
 	bison -d parser.y
 #compiles master header file
-	#./HeaderGen.sh 
+	./HeaderGen.sh 
 	$(CC) $(CFLAGS) parser.tab.c -o $@
 
 $(ODIR)/lex.yy.o: lex.yy.c lexer.l
 	flex lexer.l
 	$(CC) $(CFLAGS) lex.yy.c -o $@
 
-$(ODIR)/%.o: $(SDIR)/%.cpp
+$(ODIR)/%.o: $(SDIR)/%.cpp 
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
