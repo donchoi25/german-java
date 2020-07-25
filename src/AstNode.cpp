@@ -1,2 +1,5 @@
-#include "../AstNode.h"
-gksdjflsfs
+#include "../include/AstNode.h"
+
+AstNode::AstNode(){
+    
+}

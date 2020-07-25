@@ -69,13 +69,15 @@
 #include <stdlib.h>
 #include "include/nodes.h"
 
+AstNode nodes;
+
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
 void yyerror(const char* s);
 
-#line 79 "parser.tab.c" /* yacc.c:339  */
+#line 81 "parser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -226,7 +228,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 230 "parser.tab.c" /* yacc.c:358  */
+#line 232 "parser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -534,7 +536,7 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   105,   105,   106,   111,   112,   117
+       0,   107,   107,   108,   113,   114,   119
 };
 #endif
 
@@ -1427,7 +1429,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1431 "parser.tab.c" /* yacc.c:1646  */
+#line 1433 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1662,7 +1664,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 121 "parser.y" /* yacc.c:1906  */
+#line 123 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file
