@@ -19,7 +19,7 @@ IDIR=include
 
 all: main
 
-main: $(FB_OBJ) $(OBJ) $(DEPS)
+main: $(FB_OBJ) $(OBJ) 
 	$(CC) $^ -o german-java
 	./german-java test.file
 
@@ -34,7 +34,7 @@ $(ODIR)/lex.yy.o: lex.yy.c lexer.l
 	flex lexer.l
 	$(CC) $(CFLAGS) lex.yy.c -o $@
 
-$(ODIR)/%.o: $(SDIR)/%.cpp 
+$(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
