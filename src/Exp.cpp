@@ -1,5 +1,5 @@
 #include "../include/Exp.h"
 
-Exp::Exp(){
+Exp::Exp():AstNode(){
     
 }

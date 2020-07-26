@@ -4,9 +4,6 @@
 #include <stdlib.h>
 #include "include/nodes.h"
 
-AstNode nodes;
-Exp expression;
-
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;

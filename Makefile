@@ -26,8 +26,7 @@ main: $(FB_OBJ) $(OBJ)
 $(ODIR)/parser.tab.o: parser.tab.c parser.y $(IDIR)/nodes.h
 #generates bison parser
 	bison -d parser.y
-#compiles master header file
-	./HeaderGen.sh 
+#compiles master header file 
 	$(CC) $(CFLAGS) parser.tab.c -o $@
 
 $(ODIR)/lex.yy.o: lex.yy.c lexer.l
@@ -35,6 +34,7 @@ $(ODIR)/lex.yy.o: lex.yy.c lexer.l
 	$(CC) $(CFLAGS) lex.yy.c -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
+	./HeaderGen.sh
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:
