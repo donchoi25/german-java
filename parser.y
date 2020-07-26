@@ -8,6 +8,8 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
+AstNode* root;
+
 void yyerror(const char* s);
 %}
 %locations

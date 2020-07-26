@@ -1,8 +1,7 @@
-class bob {
-
-    
-}
-class tim {
-
-
+class Def {
+    public void exec() {
+        if(b && c){
+            
+        }
+    }
 }
