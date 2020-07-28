@@ -1,7 +1,3 @@
-class Def {
-    public void exec() {
-        if(b && c){
-            
-        }
-    }
+class bob {
+
 }

@@ -7,7 +7,7 @@ class Type : AstNode{
 public:
     Type();
 
-    virtual void accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v) = 0;
 };
 
 #endif

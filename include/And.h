@@ -9,7 +9,7 @@ class And : BinExp{
 public:
     And(::Exp* ae1, ::Exp* ae2);
 
-    virtual void accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

@@ -110,8 +110,8 @@ program:
 ;
 
 class-decl:
-	_class ID LEFT_CURLY decl-in-class RIGHT_CURLY		
-|	_class ID _extends ID LEFT_CURLY decl-in-class RIGHT_CURLY	
+	_class ID '{' decl-in-class '}'	
+|	_class ID _extends ID '{' decl-in-class '}'	
 
 ;
 

@@ -6,6 +6,6 @@ ClassDecl::ClassDecl(std::string aname, std::string
                                                        superlink(nullptr)
 {}
 
-void ClassDecl::accept(Visitor* v){
-    v->visitClassDecl(this);
+Visitor* ClassDecl::accept(Visitor* v){
+    return v->visitClassDecl(this);
 }

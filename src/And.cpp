@@ -3,6 +3,6 @@
 And::And(::Exp* ae1, ::Exp* ae2): BinExp(ae1, ae2)                              
 {}
 
-void And::accept(Visitor* v){
-    v->visitAnd(this);
+Visitor* And::accept(Visitor* v){
+    return v->visitAnd(this);
 }

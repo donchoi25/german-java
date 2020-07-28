@@ -1689,13 +1689,13 @@ case 71:
 /* rule 71 can match eol */
 YY_RULE_SETUP
 #line 121 "lexer.l"
-reportTok("Left Curly"); return LEFT_CURLY;
+reportTok("Left Curly"); return *yytext;
 	YY_BREAK
 case 72:
 /* rule 72 can match eol */
 YY_RULE_SETUP
 #line 122 "lexer.l"
-reportTok("Right Curly"); return RIGHT_CURLY;
+reportTok("Right Curly"); return *yytext;
 	YY_BREAK
 /* Math Operations */
 case 73:

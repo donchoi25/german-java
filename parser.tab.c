@@ -171,30 +171,28 @@ extern int yydebug;
     MULTIPLY = 314,
     LEFT_PAREN = 315,
     RIGHT_PAREN = 316,
-    LEFT_CURLY = 317,
-    RIGHT_CURLY = 318,
-    SUBTRACT = 319,
-    ADD = 320,
-    ASSIGN = 321,
-    EQUAL = 322,
-    LEFT_SQUARE = 323,
-    RIGHT_SQUARE = 324,
-    OR = 325,
-    LESS = 326,
-    LESS_EQUAL = 327,
-    COMMA = 328,
-    GREATER = 329,
-    GREATER_EQUAL = 330,
-    PERIOD = 331,
-    SEMICOLON = 332,
-    INCREMENT = 333,
-    DECREMENT = 334,
-    DIVISION = 335,
-    COLON = 336,
-    ID = 337,
-    INTLIT = 338,
-    STRINGLIT = 339,
-    CHARLIT = 340
+    SUBTRACT = 317,
+    ADD = 318,
+    ASSIGN = 319,
+    EQUAL = 320,
+    LEFT_SQUARE = 321,
+    RIGHT_SQUARE = 322,
+    OR = 323,
+    LESS = 324,
+    LESS_EQUAL = 325,
+    COMMA = 326,
+    GREATER = 327,
+    GREATER_EQUAL = 328,
+    PERIOD = 329,
+    SEMICOLON = 330,
+    INCREMENT = 331,
+    DECREMENT = 332,
+    DIVISION = 333,
+    COLON = 334,
+    ID = 335,
+    INTLIT = 336,
+    STRINGLIT = 337,
+    CHARLIT = 338
   };
 #endif
 
@@ -228,7 +226,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 232 "parser.tab.c" /* yacc.c:358  */
+#line 230 "parser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -472,7 +470,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   57
+#define YYLAST   79
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  86
@@ -486,7 +484,7 @@ union yyalloc
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   340
+#define YYMAXUTOK   338
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -507,7 +505,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,    84,     2,    85,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -528,15 +526,14 @@ static const yytype_uint8 yytranslate[] =
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
       65,    66,    67,    68,    69,    70,    71,    72,    73,    74,
-      75,    76,    77,    78,    79,    80,    81,    82,    83,    84,
-      85
+      75,    76,    77,    78,    79,    80,    81,    82,    83
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   107,   107,   108,   113,   114,   119
+       0,   105,   105,   106,   111,   112,   117
 };
 #endif
 
@@ -554,12 +551,11 @@ static const char *const yytname[] =
   "_package", "_private", "_protected", "_public", "_short", "_static",
   "_strictfp", "_switch", "_synchronized", "_throw", "_throws",
   "_transient", "_try", "_volatile", "NOT", "NOT_EQUAL", "MOD", "AND",
-  "MULTIPLY", "LEFT_PAREN", "RIGHT_PAREN", "LEFT_CURLY", "RIGHT_CURLY",
-  "SUBTRACT", "ADD", "ASSIGN", "EQUAL", "LEFT_SQUARE", "RIGHT_SQUARE",
-  "OR", "LESS", "LESS_EQUAL", "COMMA", "GREATER", "GREATER_EQUAL",
-  "PERIOD", "SEMICOLON", "INCREMENT", "DECREMENT", "DIVISION", "COLON",
-  "ID", "INTLIT", "STRINGLIT", "CHARLIT", "$accept", "program",
-  "class-decl", "decl-in-class", YY_NULLPTR
+  "MULTIPLY", "LEFT_PAREN", "RIGHT_PAREN", "SUBTRACT", "ADD", "ASSIGN",
+  "EQUAL", "LEFT_SQUARE", "RIGHT_SQUARE", "OR", "LESS", "LESS_EQUAL",
+  "COMMA", "GREATER", "GREATER_EQUAL", "PERIOD", "SEMICOLON", "INCREMENT",
+  "DECREMENT", "DIVISION", "COLON", "ID", "INTLIT", "STRINGLIT", "CHARLIT",
+  "'{'", "'}'", "$accept", "program", "class-decl", "decl-in-class", YY_NULLPTR
 };
 #endif
 
@@ -576,7 +572,7 @@ static const yytype_uint16 yytoknum[] =
      305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
      315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
      325,   326,   327,   328,   329,   330,   331,   332,   333,   334,
-     335,   336,   337,   338,   339,   340
+     335,   336,   337,   338,   123,   125
 };
 # endif
 
@@ -594,8 +590,8 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -81,     1,   -81,   -80,   -81,    -5,   -79,   -81,   -58,   -57,
-     -81,   -81,   -56,   -81
+     -81,     1,   -81,   -78,   -81,    -5,   -77,   -81,   -80,   -79,
+     -81,   -81,   -76,   -81
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -610,7 +606,7 @@ static const yytype_uint8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -81,   -81,   -81,    -2
+     -81,   -81,   -81,    -3
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -624,30 +620,34 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-       6,     2,     5,     8,    10,     3,    11,    13,    12,     0,
+       6,     2,     5,     8,    10,     3,    11,    12,     0,    13,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     7
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     7
 };
 
 static const yytype_int8 yycheck[] =
 {
-       5,     0,    82,    82,    62,     4,    63,    63,    10,    -1,
+       5,     0,    80,    80,    84,     4,    85,    10,    -1,    85,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    -1,    62
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    84
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    87,     0,     4,    88,    82,     5,    62,    82,    89,
-      62,    63,    89,    63
+       0,    87,     0,     4,    88,    80,     5,    84,    80,    89,
+      84,    85,    89,    85
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
@@ -1664,7 +1664,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 123 "parser.y" /* yacc.c:1906  */
+#line 121 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file

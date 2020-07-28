@@ -117,8 +117,8 @@ CHARLIT "\'"{charprintable}"\'"
 ")"{ws}*            reportTok("Right Paren"); return RIGHT_PAREN;
 "["{ws}*            reportTok("Left Square"); return LEFT_SQUARE;
 "]"{ws}*            reportTok("Right Square"); return RIGHT_SQUARE;
-"{"{ws}*            reportTok("Left Curly"); return LEFT_CURLY;
-"}"{ws}*            reportTok("Right Curly"); return RIGHT_CURLY;
+"{"{ws}*            reportTok("Left Curly"); return *yytext;
+"}"{ws}*            reportTok("Right Curly"); return *yytext;
 
     /* Math Operations */
 "+"{ws}*            reportTok("Add"); return ADD;

@@ -7,7 +7,7 @@ private:
 public: 
     AstNode();
 
-    virtual void accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v) = 0;
 };
 
 #endif

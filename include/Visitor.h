@@ -4,12 +4,18 @@
 class AstNode;
 class And;
 class ClassDecl;
+class IdentifierExp;
+class Block;
 
 class Visitor{
 public:
-    virtual void visitAnd(And* node);
+    virtual Visitor* visitAnd(And* node) = 0;
 
-    virtual void visitClassDecl(ClassDecl* node);
+    virtual Visitor* visitClassDecl(ClassDecl* node) = 0;
+
+    virtual Visitor* visitIdentifierExp(IdentifierExp* node) = 0;
+
+    virtual Visitor* visitBlock(Block* node) = 0;
 };
 
 #endif

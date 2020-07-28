@@ -23,7 +23,7 @@ public:
     ClassDecl(std::string aname, std::string 
         asuperName, std::vector<ClassDecl*> aDeclList);
 
-    virtual void accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif
