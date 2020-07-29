@@ -66,33 +66,27 @@ void yyerror(const char* s);
 %token _transient
 %token _try
 %token _volatile
-%token NOT
-%token NOT_EQUAL
-%token MOD
-%token AND
-%token MULTIPLY
-%token LEFT_PAREN
-%token RIGHT_PAREN					
-%token LEFT_CURLY
-%token RIGHT_CURLY
-%left SUBTRACT
-%left ADD
-%token ASSIGN
-%token EQUAL
-%token LEFT_SQUARE
-%token RIGHT_SQUARE
-%token OR
-%token LESS
-%token LESS_EQUAL
-%token COMMA
-%token GREATER
-%token GREATER_EQUAL
-%token PERIOD
-%token SEMICOLON
-%token INCREMENT
-%token DECREMENT
-%token DIVISION
-%token COLON
+%token '!'
+%token '%'
+%token '&'
+%token '*'
+%token '('
+%token ')'				
+%token '{'
+%token '}'
+%left '-'
+%left '+'
+%token '='
+%token '['
+%token ']'
+%token '|'
+%token '<'
+%token ','
+%token '>'
+%token '.'
+%token ';'
+%token '/'
+%token ':'
 
 %token ID
 %token INTLIT
@@ -109,14 +103,140 @@ program:
 
 ;
 
-class-decl:
-	_class ID '{' decl-in-class '}'	
-|	_class ID _extends ID '{' decl-in-class '}'	
+type:
+	_int
+|	_boolean
+|	ID
+|	type '[' ']'
+;
 
+class-decl:
+	_class ID '{' decl-in-class-list '}'	
+|	_class ID _extends ID '{' decl-in-class-list '}'	
+;
+
+decl-in-class-list:
+	%empty
+|	decl-in-class decl-in-class-list
 ;
 
 decl-in-class:
+	method-decl
+;
+
+method-decl:
+	_public _void ID '(' ')' '{' stmt-decl-list '}'
+;
+
+stmt-decl-list:
 	%empty
+|	stmt-decl-list stmt-decl 
+;
+
+stmt-decl:
+	stmt
+;
+
+stmt:
+	'{' stmt-decl-list '}'
+|	_if '(' exp ')' stmt
+;
+
+exp:
+	exp8
+;
+
+exp8:
+	exp8 '|' '|' exp7
+|	exp7
+;
+
+exp7:
+	exp7 '&' '&' exp6
+|	exp6
+;
+
+exp6: 
+	exp6 '=' '=' exp5
+|	exp6 '!' '=' exp5
+|	exp5
+;
+
+exp5:
+	exp5 '<' exp4
+|	exp5 '>' exp4
+|	exp5 '<' '=' exp4
+|	exp5 '>' '=' exp4
+|	exp5 _instanceof ID
+|	exp4
+;
+
+exp4:
+	exp4 '+' exp3
+|	exp4 '-' exp3
+|	exp3
+;
+
+exp3:
+	exp3 '*' exp2
+|	exp3 '/' exp2
+|	exp3 '%' exp2
+|	exp2
+;
+
+exp2: 
+	cast-exp
+|	unary-exp
+;
+
+
+cast-exp:
+	'(' type ')' cast-exp
+|	'(' type ')' exp1
+;
+
+unary-exp:
+	'-' unary-exp
+|	'!' unary-exp
+|	'+' unary-exp
+|	exp1
+;
+
+
+exp1:
+	ID
+|	exp1 '[' exp ']'
+|	_new type '[' exp ']' empty-bracket-list
+|	_new ID '(' ')'
+|	INTLIT
+|	callExp
+|	STRINGLIT
+|	exp1 '.' ID
+|	_this
+|	_false
+|	_true
+|	_null
+|	CHARLIT
+|	'(' exp ')'
+;
+
+callExp:
+	ID '(' ')'
+|	ID '(' exp-list ')'
+|	_super '.' ID '(' ')'
+|	_super '.' ID '(' exp-list ')'
+|	exp1 '.' ID '(' ')'
+|	exp1 '.' ID '(' exp-list ')'
+; 
+
+exp-list: 
+	exp
+|	exp-list ',' exp
+;
+
+empty-bracket-list:
+	%empty
+|	empty-bracket-list '[' ']'
 ;
 
 
@@ -144,8 +264,8 @@ int main(int argc, char **argv){
 }
 
 void reportTok(char* out){
-	/*printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out);*/
+	/* printf("Line %d.%d: %s\n", 
+		yylloc.first_line,yylloc.first_column, out); */
 }
 
 void yyerror(const char* s) {

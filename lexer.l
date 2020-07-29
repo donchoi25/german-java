@@ -95,39 +95,27 @@ CHARLIT "\'"{charprintable}"\'"
         All Symbols 
     */
 
-"="{ws}*            reportTok("Assign"); return ASSIGN;
-","{ws}*            reportTok("Comma"); return COMMA;
-"."{ws}*            reportTok("Period"); return PERIOD;
-";"{ws}*            reportTok("Semicolon"); return SEMICOLON;
-":"{ws}*            reportTok("Colon"); return COLON;
-
-    /* Logical Operators */
-"=="{ws}*           reportTok("Equal"); return EQUAL;
-"!"{ws}*            reportTok("Not"); return NOT;
-"!="{ws}*           reportTok("Not Equal"); return NOT_EQUAL;
-"<"{ws}*            reportTok("Less"); return LESS;
-"<="{ws}*           reportTok("Less Equal"); return LESS_EQUAL;
-">"{ws}*            reportTok("Greater"); return GREATER;
-">="{ws}*           reportTok("Greater Equal"); return GREATER_EQUAL;
-"&&"{ws}*           reportTok("And"); return AND;
-"||"{ws}*           reportTok("Or"); return OR;
-
-    /* Groupings */
-"("{ws}*            reportTok("Left Paren"); return LEFT_PAREN;
-")"{ws}*            reportTok("Right Paren"); return RIGHT_PAREN;
-"["{ws}*            reportTok("Left Square"); return LEFT_SQUARE;
-"]"{ws}*            reportTok("Right Square"); return RIGHT_SQUARE;
-"{"{ws}*            reportTok("Left Curly"); return *yytext;
-"}"{ws}*            reportTok("Right Curly"); return *yytext;
-
-    /* Math Operations */
-"+"{ws}*            reportTok("Add"); return ADD;
-"-"{ws}*            reportTok("Subtract"); return SUBTRACT;
-"*"{ws}*            reportTok("Multiply"); return MULTIPLY;
-"/"{ws}*            reportTok("Division"); return DIVISION;
-"%"{ws}*            reportTok("Mod"); return MOD;
-"++"{ws}*           reportTok("Increment"); return INCREMENT;
-"--"{ws}*           reportTok("Decrement"); return DECREMENT;
+"="{ws}*            reportTok("Assign"); return '=';
+","{ws}*            reportTok("Comma"); return ',';
+"."{ws}*            reportTok("Period"); return '.';
+";"{ws}*            reportTok("Semicolon"); return ';';
+":"{ws}*            reportTok("Colon"); return ':';
+"!"{ws}*            reportTok("Not"); return '!';
+"<"{ws}*            reportTok("Less"); return '<';
+">"{ws}*            reportTok("Greater"); return '>';
+"&"{ws}*            reportTok("And"); return '&';
+"|"{ws}*            reportTok("Or"); return '|';
+"("{ws}*            reportTok("Left Paren"); return '(';
+")"{ws}*            reportTok("Right Paren"); return ')';
+"["{ws}*            reportTok("Left Square"); return '[';
+"]"{ws}*            reportTok("Right Square"); return ']';
+"{"{ws}*            reportTok("Left Curly"); return '{';
+"}"{ws}*            reportTok("Right Curly"); return '}';
+"+"{ws}*            reportTok("Add"); return '+';
+"-"{ws}*            reportTok("Subtract"); return '-';
+"*"{ws}*            reportTok("Multiply"); return '*';
+"/"{ws}*            reportTok("Division"); return '/';
+"%"{ws}*            reportTok("Mod"); return '%';
 
 
 
