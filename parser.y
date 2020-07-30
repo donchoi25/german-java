@@ -2,13 +2,15 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 #include "include/nodes.h"
+#include "include/Visitor.h"
 
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-AstNode* root;
+std::vector<ClassDecl*> prog;
 
 void yyerror(const char* s);
 %}
@@ -95,11 +97,19 @@ void yyerror(const char* s);
 
 %start program
 
+%type <classDecl> class-decl
+%type <string> ID
+
+%union {
+	ClassDecl *classDecl;
+	std::string *string;
+}
+
 %%
 
 program:
 	%empty
-|	program class-decl
+|	program class-decl {prog.push_back($2);}
 
 ;
 
@@ -111,7 +121,7 @@ type:
 ;
 
 class-decl:
-	_class ID '{' decl-in-class-list '}'	
+	_class ID '{' decl-in-class-list '}'
 |	_class ID _extends ID '{' decl-in-class-list '}'	
 ;
 

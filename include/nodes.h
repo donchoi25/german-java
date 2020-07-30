@@ -1,6 +1,10 @@
 #ifndef __NODES__
 #define __NODES__
 #include "And.h"
+#include "ArrayLength.h"
+#include "ArrayLookup.h"
+#include "ArrayType.h"
+#include "Assign.h"
 #include "AstNode.h"
 #include "BinExp.h"
 #include "Block.h"
@@ -10,6 +14,7 @@
 #include "IdentifierExp.h"
 #include "Statement.h"
 #include "Type.h"
+#include "UnExp.h"
 #include "VarDecl.h"
 #include "Visitor.h"
 #endif

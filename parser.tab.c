@@ -67,17 +67,19 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 #include "include/nodes.h"
+#include "include/Visitor.h"
 
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-AstNode* root;
+std::vector<ClassDecl*> prog;
 
 void yyerror(const char* s);
 
-#line 81 "parser.tab.c" /* yacc.c:339  */
+#line 83 "parser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -173,7 +175,18 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+
+union YYSTYPE
+{
+#line 103 "parser.y" /* yacc.c:355  */
+
+	ClassDecl *classDecl;
+	std::string *string;
+
+#line 187 "parser.tab.c" /* yacc.c:355  */
+};
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -201,7 +214,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 205 "parser.tab.c" /* yacc.c:358  */
+#line 218 "parser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -506,14 +519,14 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   101,   101,   102,   107,   108,   109,   110,   114,   115,
-     119,   120,   124,   128,   132,   133,   137,   141,   142,   146,
-     150,   151,   155,   156,   160,   161,   162,   166,   167,   168,
-     169,   170,   171,   175,   176,   177,   181,   182,   183,   184,
-     188,   189,   194,   195,   199,   200,   201,   202,   207,   208,
-     209,   210,   211,   212,   213,   214,   215,   216,   217,   218,
-     219,   220,   224,   225,   226,   227,   228,   229,   233,   234,
-     238,   239
+       0,   111,   111,   112,   117,   118,   119,   120,   124,   125,
+     129,   130,   134,   138,   142,   143,   147,   151,   152,   156,
+     160,   161,   165,   166,   170,   171,   172,   176,   177,   178,
+     179,   180,   181,   185,   186,   187,   191,   192,   193,   194,
+     198,   199,   204,   205,   209,   210,   211,   212,   217,   218,
+     219,   220,   221,   222,   223,   224,   225,   226,   227,   228,
+     229,   230,   234,   235,   236,   237,   238,   239,   243,   244,
+     248,   249
 };
 #endif
 
@@ -1509,8 +1522,14 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-      
-#line 1514 "parser.tab.c" /* yacc.c:1646  */
+        case 3:
+#line 112 "parser.y" /* yacc.c:1646  */
+    {prog.push_back((yyvsp[0].classDecl));}
+#line 1529 "parser.tab.c" /* yacc.c:1646  */
+    break;
+
+
+#line 1533 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1745,7 +1764,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 243 "parser.y" /* yacc.c:1906  */
+#line 253 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file
