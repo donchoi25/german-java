@@ -4,13 +4,10 @@
 #include <stdlib.h>
 #include <vector>
 #include "include/nodes.h"
-#include "include/Visitor.h"
 
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
-
-std::vector<ClassDecl*> prog;
 
 void yyerror(const char* s);
 %}
@@ -109,7 +106,7 @@ void yyerror(const char* s);
 
 program:
 	%empty
-|	program class-decl {prog.push_back($2);}
+|	program class-decl 
 
 ;
 

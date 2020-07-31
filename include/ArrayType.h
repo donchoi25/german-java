@@ -10,7 +10,7 @@ public:
 
     ArrayType(Type* base);
 
-    bool equals(void* obj);
+    bool equals(Type* obj);
 
     Visitor* accept(Visitor* v);
 };

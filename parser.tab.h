@@ -109,7 +109,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 103 "parser.y" /* yacc.c:1909  */
+#line 100 "parser.y" /* yacc.c:1909  */
 
 	ClassDecl *classDecl;
 	std::string *string;
