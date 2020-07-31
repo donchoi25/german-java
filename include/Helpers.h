@@ -1,12 +1,16 @@
 #ifndef HEPLERS_H
 #define HELPERS_H
 
-#include <type_traits>
 #include <typeinfo>
 
-template <typename Base, typename T>
-inline bool instanceof(const T*){
-    return std::is_base_of<Base, T>::value;
+template <typename Cast, typename Base>
+inline bool instanceof(Base* obj){
+    if(dynamic_cast<Cast*>(obj)){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 class Type;

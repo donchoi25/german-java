@@ -12,7 +12,7 @@ public:
 
     bool equals(Type* obj);
 
-    Visitor* accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

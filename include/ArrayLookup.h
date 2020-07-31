@@ -11,7 +11,7 @@ public:
 
     ArrayLookup(Exp* aarrExp, Exp* aidxExp);
 
-    Visitor* accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

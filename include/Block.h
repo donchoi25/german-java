@@ -11,7 +11,7 @@ public:
 
     Block(std::vector<Statement*> astmts);
 
-    Visitor* accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

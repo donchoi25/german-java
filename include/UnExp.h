@@ -11,7 +11,7 @@ public:
 
     UnExp(Exp* aexp);
 
-    Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v) = 0;
 
 };
 

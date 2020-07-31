@@ -9,7 +9,7 @@ DEPS=$(wildcard $(IDIR)/*.h)
 #flex bison objects
 FB_OBJ=$(ODIR)/parser.tab.o $(ODIR)/lex.yy.o
 
-#all target objects, generated from src dir
+#all target objects, generated from .ccp in src
 OBJ= $(patsubst $(SDIR)/%.cpp,$(ODIR)/%.o,$(wildcard $(SDIR)/*.cpp))
 
 #directories

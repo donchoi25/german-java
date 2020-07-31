@@ -20,4 +20,6 @@ public:
     virtual Visitor* accept(Visitor* v) = 0;
 };
 
+
+#include "../src/AstList.tpp"
 #endif

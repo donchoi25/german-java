@@ -6,8 +6,8 @@ ArrayType::ArrayType(Type* base) : Type(),
 {}
 
 bool ArrayType::equals(Type* obj){
-    return instanceof<ArrayType*>(obj) && sameType(this->baseType, ((ArrayType*)obj)->baseType);
-}
+    return instanceof<ArrayType, Type>(obj) && sameType(this->baseType, ((ArrayType*)obj)->baseType);
+}   
 
 Visitor* ArrayType::accept(Visitor* v){
     return v->visitArrayType(this);

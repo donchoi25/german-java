@@ -9,7 +9,7 @@ class ArrayLength : UnExp{
 public:
     ArrayLength(::Exp* arrExp);
 
-    Visitor* accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

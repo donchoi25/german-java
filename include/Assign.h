@@ -12,7 +12,7 @@ public:
 
     Assign(Exp* alhs, Exp* arhs);
     
-    Visitor* accept(Visitor* v);
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif
