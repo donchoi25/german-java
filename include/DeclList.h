@@ -3,13 +3,12 @@
 
 #include "AstList.h"
 #include "Visitor.h"
-#include "ClassDecl.h"
 #include <vector>
 
-class ClassDecl;
-class ClassDeclList : AstList<ClassDecl*>{
+class Decl;
+class DeclList : AstList<Decl*>{
 public:
-    ClassDeclList(std::vector<ClassDecl*> lst);
+    DeclList(std::vector<Decl*> lst);
 
     virtual Visitor* accept(Visitor* v);
 };

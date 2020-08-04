@@ -1,0 +1,16 @@
+#ifndef FORMALDECL_H
+#define FORMALDECL_H
+
+#include "VarDecl.h"
+#include "Visitor.h"
+#include <string>
+
+class Type;
+class FormalDecl : VarDecl{
+public:
+    FormalDecl(Type* atype, std::string aname);
+
+    virtual Visitor* accept(Visitor* v);
+};
+
+#endif
