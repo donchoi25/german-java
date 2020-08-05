@@ -9,7 +9,7 @@ class Type;
 class Exp;
 class VarDeclList;
 class StatementList;
-class MethodDeclNonVoid : MethodDecl{
+class MethodDeclNonVoid : public MethodDecl{
 public:
     Type* rtnType;
     Exp* rtnExp;

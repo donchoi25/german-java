@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class Divide : BinExp{
+class Divide : public BinExp{
 public:
     Divide(::Exp* ae1, ::Exp* ae2);
 

@@ -38,6 +38,20 @@ class LocalDeclStatement;
 class LocalVarDecl;
 class MethodDeclNonVoid;
 class MethodDeclVoid;
+class Minus;
+class NewArray;
+class NewObject;
+class Not;
+class Null;
+class NullType;
+class Or;
+class Plus;
+class Program;
+class Remainder;
+class StatementList;
+class StringLiteral;
+class Super;
+class Switch;
 
 class Visitor{
 public:
@@ -112,6 +126,33 @@ public:
     virtual Visitor* visitMethodDeclNonVoid(MethodDeclNonVoid* node) = 0;
 
     virtual Visitor* visitMethodDeclVoid(MethodDeclVoid* node) = 0;
-};
+
+    virtual Visitor* visitMinus(Minus* node) = 0;
+
+    virtual Visitor* visitNewArray(NewArray* node) = 0;
+
+    virtual Visitor* visitNewObject(NewObject* node) = 0;
+
+    virtual Visitor* visitNot(Not* node) = 0;
+
+    virtual Visitor* visitNull(Null* node) = 0;
+
+    virtual Visitor* visitNullType(NullType* node) = 0;
+
+    virtual Visitor* visitOr(Or* node) = 0;
+
+    virtual Visitor* visitPlus(Plus* node) = 0;
+
+    virtual Visitor* visitProgram(Program* node) = 0;
+
+    virtual Visitor* visitRemainder(Remainder* node) = 0;
+
+    virtual Visitor* visitStatementList(StatementList* node) = 0;
+
+    virtual Visitor* visitStringLiteral(StringLiteral* node) = 0;
+
+    virtual Visitor* visitSuper(Super* node) = 0;
+    
+    virtual Visitor* visitSwitch(Switch* node) = 0;
 
 #endif

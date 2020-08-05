@@ -5,7 +5,7 @@
 #include "Statement.h"
 
 class Exp;
-class Assign : Statement{
+class Assign : public Statement{
 public:
     Exp* lhs;
     Exp* rhs;

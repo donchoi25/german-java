@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class LocalVarDecl;
-class LocalDeclStatement : Statement{
+class LocalDeclStatement : public Statement{
 public:
     LocalVarDecl* localVarDecl;
 

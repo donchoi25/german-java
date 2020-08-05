@@ -4,7 +4,7 @@
 #include "AstNode.h"
 
 class Visitor;
-class Statement : AstNode{
+class Statement : public AstNode{
 public:
     Statement();
 

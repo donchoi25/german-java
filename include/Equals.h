@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class Equals : BinExp{
+class Equals : public BinExp{
 public:
     Equals(::Exp* ae1, ::Exp* ae2);
 

@@ -4,7 +4,7 @@
 #include "Exp.h"
 #include "Visitor.h"
 
-class ArrayLookup : Exp{
+class ArrayLookup : public Exp{
 public:
     Exp* arrExp;
     Exp* idxExp;

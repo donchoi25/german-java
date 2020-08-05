@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Type;
-class Cast : Exp{
+class Cast : public Exp{
 public:
     Type* castType;
     Exp* exp;

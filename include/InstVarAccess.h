@@ -6,7 +6,7 @@
 #include <string>
 
 class InstVarDecl;
-class InstVarAccess : Exp{
+class InstVarAccess : public Exp{
 public:
     Exp* exp;
     std::string varName;

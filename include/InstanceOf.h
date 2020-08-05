@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Type;
-class InstanceOf : Exp{
+class InstanceOf : public Exp{
 public:
     Exp* exp;
     Type* checkType;

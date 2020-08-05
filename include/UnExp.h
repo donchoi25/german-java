@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class UnExp : Exp {
+class UnExp : public Exp {
 public:
     Exp* exp;
 

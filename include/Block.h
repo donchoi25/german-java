@@ -5,7 +5,7 @@
 #include "Visitor.h"
 #include <vector>
 
-class Block : Statement{
+class Block : public Statement{
 public:
     std::vector<Statement*> stmts;
 

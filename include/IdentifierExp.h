@@ -6,7 +6,7 @@
 #include "Visitor.h"
 
 class VarDecl;
-class IdentifierExp : Exp{
+class IdentifierExp : public Exp{
 public:
     std::string name;
     VarDecl* link;

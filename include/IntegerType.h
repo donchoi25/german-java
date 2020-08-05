@@ -4,7 +4,7 @@
 #include "Type.h"
 #include "Visitor.h"
 
-class IntegerType : Type{
+class IntegerType : public Type{
 public:
     IntegerType();
 

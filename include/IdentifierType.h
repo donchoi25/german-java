@@ -6,7 +6,7 @@
 #include <string>
 
 class ClassDecl;
-class IdentifierType : Type{
+class IdentifierType : public Type{
 public:
     std::string name;
     ClassDecl* link;

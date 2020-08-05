@@ -5,7 +5,7 @@
 
 class Switch;
 class Exp;
-class Label : Statement{
+class Label : public Statement{
 public:
     Switch* enclosingSwitch;
 

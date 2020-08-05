@@ -6,7 +6,7 @@
 #include <string>
 
 class Type;
-class FormalDecl : VarDecl{
+class FormalDecl : public VarDecl{
 public:
     FormalDecl(Type* atype, std::string aname);
 

@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class ArrayLength : UnExp{
+class ArrayLength : public UnExp{
 public:
     ArrayLength(::Exp* arrExp);
 

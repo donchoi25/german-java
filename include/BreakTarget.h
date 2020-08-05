@@ -4,7 +4,7 @@
 #include "Statement.h"
 #include "Visitor.h"
 
-class BreakTarget : Statement{
+class BreakTarget : public Statement{
 public:
     int stackHeight;
 

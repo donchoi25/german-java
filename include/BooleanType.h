@@ -4,7 +4,7 @@
 #include "Type.h"
 #include "Visitor.h"
 
-class BooleanType : Type{
+class BooleanType : public Type{
 public:
     BooleanType();
     

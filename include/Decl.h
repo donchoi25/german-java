@@ -6,7 +6,7 @@
 
 class Type;
 class Visitor;
-class Decl : AstNode{
+class Decl : public AstNode{
 public: 
     std::string name;
 

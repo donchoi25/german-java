@@ -7,7 +7,7 @@
 
 class ExpList;
 class MethodDecl;
-class Call : Exp{
+class Call : public Exp{
 public:
     Exp* obj;
     std::string methName;

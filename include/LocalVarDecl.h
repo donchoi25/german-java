@@ -7,7 +7,7 @@
 
 class Exp;
 class Type;
-class LocalVarDecl : VarDecl{
+class LocalVarDecl : public VarDecl{
 public:
     Exp* initExp;
 

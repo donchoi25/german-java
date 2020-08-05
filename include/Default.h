@@ -4,7 +4,7 @@
 #include "Label.h"
 #include "Visitor.h"
 
-class Default : Label{
+class Default : public Label{
 public:
     Default();
 

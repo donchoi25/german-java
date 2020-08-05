@@ -1,9 +1,8 @@
 #include "../include/AstList.h"
 
 template <typename T>
-AstList<T>::AstList(){
-
-}
+AstList<T>::AstList()
+{}
 
 template <typename T>
 AstList<T>::AstList(std::vector<T> alst) : lst(alst)

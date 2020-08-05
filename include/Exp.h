@@ -6,7 +6,7 @@
 
 class Type;
 class Visitor;
-class Exp : AstNode{
+class Exp : public AstNode{
 public: 
     Type* t;
 

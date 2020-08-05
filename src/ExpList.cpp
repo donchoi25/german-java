@@ -1,5 +1,8 @@
 #include "../include/ExpList.h"
 
+ExpList::ExpList() : AstList<Exp*>()
+{}
+
 ExpList::ExpList(std::vector<Exp*> lst) : AstList<Exp*>(lst)
 {}
 

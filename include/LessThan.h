@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class LessThan : BinExp{
+class LessThan : public BinExp{
 public:
     LessThan(::Exp* ae1, ::Exp* ae2);
 

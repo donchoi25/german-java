@@ -5,7 +5,7 @@
 #include <string>
 
 class Visitor;
-class VarDecl : Decl {
+class VarDecl :  public Decl {
 public:
     Type* type;
     int offset;

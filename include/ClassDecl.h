@@ -10,7 +10,7 @@
 class InstVarDecl;
 class methodDecl;
 class ClassDecl;
-class ClassDecl : Decl {
+class ClassDecl : public Decl {
 public:
     std::string superName;
     std::vector<Decl*> decls;

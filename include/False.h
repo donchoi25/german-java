@@ -4,7 +4,7 @@
 #include "Exp.h"
 #include "Visitor.h"
 
-class False : Exp{
+class False : public Exp{
 public:
     False();
 

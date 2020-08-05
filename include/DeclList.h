@@ -6,8 +6,10 @@
 #include <vector>
 
 class Decl;
-class DeclList : AstList<Decl*>{
+class DeclList : public AstList<Decl*>{
 public:
+    DeclList();
+
     DeclList(std::vector<Decl*> lst);
 
     virtual Visitor* accept(Visitor* v);

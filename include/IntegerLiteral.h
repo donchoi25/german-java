@@ -4,7 +4,7 @@
 #include "Exp.h"
 #include "Visitor.h"
 
-class IntegerLiteral : Exp{
+class IntegerLiteral : public Exp{
 public:
     int val;
 

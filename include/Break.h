@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class BreakTarget;
-class Break : Statement{
+class Break : public Statement{
 public:
     BreakTarget* breakLink;
 

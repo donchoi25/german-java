@@ -3,7 +3,7 @@
 
 #include "Exp.h"
 
-class BinExp : Exp{
+class BinExp : public Exp{
 public:
     Exp* left;
     Exp* right;

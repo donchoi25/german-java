@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class And : BinExp{
+class And : public BinExp{
 public:
     And(::Exp* ae1, ::Exp* ae2);
 

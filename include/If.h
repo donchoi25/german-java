@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class If : Statement{
+class If : public Statement{
 public:
     Exp* exp;
     Statement* trueStmt;

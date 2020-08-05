@@ -1,5 +1,8 @@
 #include "../include/ClassDeclList.h"
 
+ClassDeclList::ClassDeclList() : AstList<ClassDecl*>()
+{}
+
 ClassDeclList::ClassDeclList(std::vector<ClassDecl*> lst) : AstList<ClassDecl*>(lst)
 {}
 

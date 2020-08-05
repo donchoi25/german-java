@@ -4,7 +4,7 @@
 #include "Type.h"
 #include "Visitor.h"
 
-class ArrayType : Type{
+class ArrayType : public Type{
 public:
     Type* baseType;
 

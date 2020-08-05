@@ -3,7 +3,7 @@
 
 #include "AstNode.h"
 
-class Type : AstNode{
+class Type : public AstNode{
 public:
     Type();
 

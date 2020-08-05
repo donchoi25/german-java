@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class Case : Label{
+class Case : public Label{
 public:
     Exp* exp;
 

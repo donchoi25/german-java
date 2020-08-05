@@ -7,7 +7,7 @@
 class VarDeclList;
 class StatementList;
 class ClassDecl;
-class MethodDecl : Decl{
+class MethodDecl : public Decl{
 public:
     VarDeclList* formals;
     StatementList* stmts;

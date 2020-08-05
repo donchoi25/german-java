@@ -7,7 +7,7 @@
 
 class VarDeclList;
 class StatementList;
-class MethodDeclVoid : MethodDecl{
+class MethodDeclVoid : public MethodDecl{
 public:
     MethodDeclVoid(std::string as, VarDeclList* afl, StatementList* asl);
 

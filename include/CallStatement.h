@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Call;
-class CallStatement : Statement{
+class CallStatement : public Statement{
 public:
     Call* callExp;
 

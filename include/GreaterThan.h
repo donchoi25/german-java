@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class GreaterThan : BinExp{
+class GreaterThan : public BinExp{
 public:
     GreaterThan(::Exp* ae1, ::Exp* ae2);
 
