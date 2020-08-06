@@ -154,5 +154,5 @@ public:
     virtual Visitor* visitSuper(Super* node) = 0;
     
     virtual Visitor* visitSwitch(Switch* node) = 0;
-
+};
 #endif

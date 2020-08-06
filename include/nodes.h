@@ -58,6 +58,7 @@
 #include "StatementList.h"
 #include "StringLiteral.h"
 #include "Super.h"
+#include "Switch.h"
 #include "Type.h"
 #include "UnExp.h"
 #include "VarDecl.h"
