@@ -52,6 +52,12 @@ class StatementList;
 class StringLiteral;
 class Super;
 class Switch;
+class This;
+class Times;
+class True;
+class VarDeclList;
+class VoidType;
+class While;
 
 class Visitor{
 public:
@@ -154,5 +160,17 @@ public:
     virtual Visitor* visitSuper(Super* node) = 0;
     
     virtual Visitor* visitSwitch(Switch* node) = 0;
+
+    virtual Visitor* visitThis(This* node) = 0;
+
+    virtual Visitor* visitTimes(Times* node) = 0;
+
+    virtual Visitor* visitTrue(True* node) = 0;
+
+    virtual Visitor* visitVarDeclList(VarDeclList* node) = 0;
+
+    virtual Visitor* visitVoidType(VoidType* node) = 0;
+
+    virtual Visitor* visitWhile(While* node) = 0;
 };
 #endif
