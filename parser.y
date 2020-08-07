@@ -9,10 +9,15 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
+Program* program;
+
 void yyerror(const char* s);
 %}
 %locations
 
+/* Define our terminal symbols (tokens).Should match
+   our lexer.l file.
+*/
 %token _boolean
 %token _class
 %token _extends
@@ -94,12 +99,69 @@ void yyerror(const char* s);
 
 %start program
 
-%type <classDecl> class-decl
+%type <NclassDecl> class-decl
 %type <string> ID
 
 %union {
-	ClassDecl *classDecl;
-	std::string *string;
+
+
+	AstNode* NastNode;
+	And* Nand;
+	ClassDecl* NclassDecl;
+	IdentifierExp* NidentifierExp;
+	Block* Nblock;
+	ArrayLength* NarrayLength;
+	ArrayLookup* NarrayLookup;
+	ArrayType* NarrayType;
+	Assign* Nassign;
+	BooleanType* NbooleanType;
+	Break* Nbreak;
+	BreakTarget* NbreakTarget;
+	Call* Ncall;
+	CallStatement* NcallStatement;
+	Case* Ncase;
+	Cast* Ncast;
+	ClassDeclList* NcallDeclList;
+	DeclList* NdeclList;
+	Default* Ndefault;
+	Divide* Ndivide;
+	Equals* Nequals;
+	ExpList* NexpList;
+	False* Nfalse;
+	FormalDecl* NformalDecl;
+	GreaterThan* NgreaterThan;
+	IdentifierType* NidentifierType;
+	If* Nif;
+	InstanceOf* NinstanceOf;
+	InstVarAccess* NinstVarAccess;
+	InstVarDecl* NinstVarDecl;
+	IntegerLiteral* NintegerLiteral;
+	IntegerType* NintegerType;
+	LessThan* NlessThan;
+	LocalDeclStatement* NlocalDeclStatement;
+	LocalVarDecl* NlocalVarDecl;
+	MethodDeclNonVoid* NmethodDeclNonVoid;
+	MethodDeclVoid* NmethodDeclVoid;
+	Minus* Nminus;
+	NewArray* NnewArray;
+	NewObject* NnewObject;
+	Not* Nnot;
+	Null* Nnull;
+	NullType* NnullType;
+	Or* Nor;
+	Plus* Nplus;
+	Program* Nprogram;
+	Remainder* Nremainder;
+	StatementList* NstatementList;
+	StringLiteral* NstringLiteral;
+	Super* Nsuper;
+	Switch* Nswitch;
+ 	This* Nthis;
+	Times* Ntimes;
+	True* Ntrue;
+	VarDeclList* NvarDeclList;
+	VoidType* NvoidType;
+	While* Nwhile;
 }
 
 %%

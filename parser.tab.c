@@ -74,9 +74,11 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
+Program* program;
+
 void yyerror(const char* s);
 
-#line 80 "parser.tab.c" /* yacc.c:339  */
+#line 82 "parser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -175,12 +177,67 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 100 "parser.y" /* yacc.c:355  */
+#line 102 "parser.y" /* yacc.c:355  */
 
-	ClassDecl *classDecl;
-	std::string *string;
+	AstNode* NastNode;
+	And* Nand;
+	ClassDecl* NclassDecl;
+	IdentifierExp* NidentifierExp;
+	Block* Nblock;
+	ArrayLength* NarrayLength;
+	ArrayLookup* NarrayLookup;
+	ArrayType* NarrayType;
+	Assign* Nassign;
+	BooleanType* NbooleanType;
+	Break* Nbreak;
+	BreakTarget* NbreakTarget;
+	Call* Ncall;
+	CallStatement* NcallStatement;
+	Case* Ncase;
+	Cast* Ncast;
+	ClassDeclList* NcallDeclList;
+	DeclList* NdeclList;
+	Default* Ndefault;
+	Divide* Ndivide;
+	Equals* Nequals;
+	ExpList* NexpList;
+	False* Nfalse;
+	FormalDecl* NformalDecl;
+	GreaterThan* NgreaterThan;
+	IdentifierType* NidentifierType;
+	If* Nif;
+	InstanceOf* NinstanceOf;
+	InstVarAccess* NinstVarAccess;
+	InstVarDecl* NinstVarDecl;
+	IntegerLiteral* NintegerLiteral;
+	IntegerType* NintegerType;
+	LessThan* NlessThan;
+	LocalDeclStatement* NlocalDeclStatement;
+	LocalVarDecl* NlocalVarDecl;
+	MethodDeclNonVoid* NmethodDeclNonVoid;
+	MethodDeclVoid* NmethodDeclVoid;
+	Minus* Nminus;
+	NewArray* NnewArray;
+	NewObject* NnewObject;
+	Not* Nnot;
+	Null* Nnull;
+	NullType* NnullType;
+	Or* Nor;
+	Plus* Nplus;
+	Program* Nprogram;
+	Remainder* Nremainder;
+	StatementList* NstatementList;
+	StringLiteral* NstringLiteral;
+	Super* Nsuper;
+	Switch* Nswitch;
+ 	This* Nthis;
+	Times* Ntimes;
+	True* Ntrue;
+	VarDeclList* NvarDeclList;
+	VoidType* NvoidType;
+	While* Nwhile;
 
-#line 184 "parser.tab.c" /* yacc.c:355  */
+#line 241 "parser.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -211,7 +268,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 215 "parser.tab.c" /* yacc.c:358  */
+#line 272 "parser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -514,16 +571,16 @@ static const yytype_uint8 yytranslate[] =
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_uint16 yyrline[] =
 {
-       0,   108,   108,   109,   114,   115,   116,   117,   121,   122,
-     126,   127,   131,   135,   139,   140,   144,   148,   149,   153,
-     157,   158,   162,   163,   167,   168,   169,   173,   174,   175,
-     176,   177,   178,   182,   183,   184,   188,   189,   190,   191,
-     195,   196,   201,   202,   206,   207,   208,   209,   214,   215,
-     216,   217,   218,   219,   220,   221,   222,   223,   224,   225,
-     226,   227,   231,   232,   233,   234,   235,   236,   240,   241,
-     245,   246
+       0,   165,   165,   166,   171,   172,   173,   174,   178,   179,
+     183,   184,   188,   192,   196,   197,   201,   205,   206,   210,
+     214,   215,   219,   220,   224,   225,   226,   230,   231,   232,
+     233,   234,   235,   239,   240,   241,   245,   246,   247,   248,
+     252,   253,   258,   259,   263,   264,   265,   266,   271,   272,
+     273,   274,   275,   276,   277,   278,   279,   280,   281,   282,
+     283,   284,   288,   289,   290,   291,   292,   293,   297,   298,
+     302,   303
 };
 #endif
 
@@ -1520,7 +1577,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1524 "parser.tab.c" /* yacc.c:1646  */
+#line 1581 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1755,7 +1812,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 250 "parser.y" /* yacc.c:1906  */
+#line 307 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file
