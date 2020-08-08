@@ -9,19 +9,20 @@
 
 class InstVarDecl;
 class methodDecl;
-class ClassDecl;
+class DeclList;
+class ClassDeclList;
 class ClassDecl : public Decl {
 public:
     std::string superName;
-    std::vector<Decl*> decls;
+    DeclList* decls;
 
     ClassDecl* superlink;
-    std::vector<ClassDecl*> subclasses;
+    ClassDeclList* subclasses;
     std::map<std::string,InstVarDecl*> instVarTable;
     std::map<std::string,methodDecl*> methodTable;
 
     ClassDecl(std::string aname, std::string 
-        asuperName, std::vector<ClassDecl*> aDeclList);
+        asuperName, DeclList* aDeclList);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -5,11 +5,12 @@
 #include "Visitor.h"
 #include <vector>
 
+class StatementList;
 class Block : public Statement{
 public:
-    std::vector<Statement*> stmts;
+    StatementList* stmts;
 
-    Block(std::vector<Statement*> astmts);
+    Block(StatementList* astmts);
 
     virtual Visitor* accept(Visitor* v);
 };

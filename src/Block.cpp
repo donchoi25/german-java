@@ -1,6 +1,6 @@
 #include "../include/Block.h"
 
-Block::Block(std::vector<Statement*> astmts):  Statement(),    
+Block::Block(StatementList* astmts):  Statement(),    
                                                stmts(astmts)
 {}
 

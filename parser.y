@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <string>
 #include "include/nodes.h"
 
 extern int yylex();
@@ -100,77 +101,98 @@ void yyerror(const char* s);
 %start program
 
 %type <NclassDecl> class-decl
-%type <string> ID
+%type <NclassDeclList> class-decl-list
+%type <NdeclList> decl-in-class-list
+%type <String> ID
+%type <Ndecl> decl-in-class method-decl
+%type <NStatementList> stmt-decl-list
+%type <NStatement> stmt-decl stmt
+%type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp
+%type <NExpList> exp-list
+%type <NType> type
 
 %union {
+	std::string* String;
 
-
-	AstNode* NastNode;
-	And* Nand;
-	ClassDecl* NclassDecl;
-	IdentifierExp* NidentifierExp;
-	Block* Nblock;
-	ArrayLength* NarrayLength;
-	ArrayLookup* NarrayLookup;
-	ArrayType* NarrayType;
-	Assign* Nassign;
-	BooleanType* NbooleanType;
-	Break* Nbreak;
-	BreakTarget* NbreakTarget;
-	Call* Ncall;
-	CallStatement* NcallStatement;
-	Case* Ncase;
-	Cast* Ncast;
-	ClassDeclList* NcallDeclList;
-	DeclList* NdeclList;
-	Default* Ndefault;
-	Divide* Ndivide;
-	Equals* Nequals;
-	ExpList* NexpList;
-	False* Nfalse;
-	FormalDecl* NformalDecl;
-	GreaterThan* NgreaterThan;
-	IdentifierType* NidentifierType;
-	If* Nif;
-	InstanceOf* NinstanceOf;
-	InstVarAccess* NinstVarAccess;
-	InstVarDecl* NinstVarDecl;
-	IntegerLiteral* NintegerLiteral;
-	IntegerType* NintegerType;
-	LessThan* NlessThan;
-	LocalDeclStatement* NlocalDeclStatement;
-	LocalVarDecl* NlocalVarDecl;
-	MethodDeclNonVoid* NmethodDeclNonVoid;
-	MethodDeclVoid* NmethodDeclVoid;
-	Minus* Nminus;
-	NewArray* NnewArray;
-	NewObject* NnewObject;
-	Not* Nnot;
-	Null* Nnull;
-	NullType* NnullType;
-	Or* Nor;
-	Plus* Nplus;
-	Program* Nprogram;
-	Remainder* Nremainder;
-	StatementList* NstatementList;
-	StringLiteral* NstringLiteral;
-	Super* Nsuper;
-	Switch* Nswitch;
- 	This* Nthis;
-	Times* Ntimes;
-	True* Ntrue;
-	VarDeclList* NvarDeclList;
-	VoidType* NvoidType;
-	While* Nwhile;
+	And* NAnd;
+	ArrayLength* NArrayLength;
+	ArrayLookup* NArrayLookup;
+	ArrayType* NArrayType;
+	Assign* NAssign;
+	AstNode* NAstNode;
+	BinExp* NBinExp;
+	Block* NBlock;
+	BooleanType* NBooleanType;
+	Break* NBreak;
+	BreakTarget* NBreakTarget;
+	Call* NCall;
+	CallStatement* NCallStatement;
+	Case* NCase;
+	Cast* NCast;
+	ClassDecl* NClassDecl;
+	ClassDeclList* NClassDeclList;
+	Decl* NDecl;
+	DeclList* NDeclList;
+	Default* NDefault;
+	Divide* NDivide;
+	Equals* NEquals;
+	Exp* NExp;
+	ExpList* NExpList;
+	False* NFalse;
+	FormalDecl* NFormalDecl;
+	GreaterThan* NGreaterThan;
+	Helpers* NHelpers;
+	IdentifierExp* NIdentifierExp;
+	IdentifierType* NIdentifierType;
+	If* NIf;
+	InstVarAccess* NInstVarAccess;
+	InstVarDecl* NInstVarDecl;
+	InstanceOf* NInstanceOf;
+	IntegerLiteral* NIntegerLiteral;
+	IntegerType* NIntegerType;
+	Label* NLabel;
+	LessThan* NLessThan;
+	LocalDeclStatement* NLocalDeclStatement;
+	LocalVarDecl* NLocalVarDecl;
+	MethodDecl* NMethodDecl;
+	MethodDeclNonVoid* NMethodDeclNonVoid;
+	MethodDeclVoid* NMethodDeclVoid;
+	Minus* NMinus;
+	NewArray* NNewArray;
+	NewObject* NNewObject;
+	Not* NNot;
+	Null* NNull;
+	NullType* NNullType;
+	Or* NOr;
+	Plus* NPlus;
+	Program* NProgram;
+	Remainder* NRemainder;
+	Statement* NStatement;
+	StatementList* NStatementList;
+	StringLiteral* NStringLiteral;
+	Super* NSuper;
+	Switch* NSwitch;
+	This* NThis;
+	Times* NTimes;
+	True* NTrue;
+	Type* NType;
+	UnExp* NUnExp;
+	VarDecl* NVarDecl;
+	VarDeclList* NVarDeclList;
+	VoidType* NVoidType;
+	While* NWhile;
 }
 
 %%
 
 program:
-	%empty
-|	program class-decl 
+	class-decl-list { program = new Program($1); }
 
 ;
+
+class-decl-list:
+	class-decl { $$ = new ClassDeclList(); $$->push_back($1); }
+|	class-decl-list class-decl { $1->push_back($2); }
 
 type:
 	_int
@@ -180,102 +202,102 @@ type:
 ;
 
 class-decl:
-	_class ID '{' decl-in-class-list '}'
-|	_class ID _extends ID '{' decl-in-class-list '}'	
+	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, "Object", $4); }
+|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, *$4, $6); }	
 ;
 
 decl-in-class-list:
-	%empty
-|	decl-in-class decl-in-class-list
+	decl-in-class { $$ = new DeclList(); $$->push_back($1); }
+|	decl-in-class-list decl-in-class { $1->push_back($2); }
 ;
 
 decl-in-class:
-	method-decl
+	method-decl { $$ = $1; }
 ;
 
 method-decl:
-	_public _void ID '(' ')' '{' stmt-decl-list '}'
+	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(*$3, new VarDeclList(), $7); }
 ;
 
 stmt-decl-list:
-	%empty
-|	stmt-decl-list stmt-decl 
+	stmt-decl { $$ = new StatementList(); $$->push_back($1); }
+|	stmt-decl-list stmt-decl  { $1->push_back($2); }
 ;
 
 stmt-decl:
-	stmt
+	stmt { $$ = $1; }
 ;
 
 stmt:
-	'{' stmt-decl-list '}'
-|	_if '(' exp ')' stmt
+	'{' stmt-decl-list '}' { $$ = new Block($2); }
+|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList())); }
 ;
 
 exp:
-	exp8
+	exp8 { $$ = $1; }
 ;
 
 exp8:
-	exp8 '|' '|' exp7
-|	exp7
+	exp8 '|' '|' exp7 { $$ = new Or($1, $4); }
+|	exp7 { $$ = $1; }
 ;
 
 exp7:
-	exp7 '&' '&' exp6
-|	exp6
+	exp7 '&' '&' exp6 { $$ = new And($1, $4); }
+|	exp6 { $$ = $1; }
 ;
 
 exp6: 
-	exp6 '=' '=' exp5
-|	exp6 '!' '=' exp5
-|	exp5
+	exp6 '=' '=' exp5 { $$ = new Equals($1, $4); }
+|	exp6 '!' '=' exp5 { $$ = new Not(new Equals($1, $4)); }
+|	exp5 { $$ = $1; }
 ;
 
 exp5:
-	exp5 '<' exp4
-|	exp5 '>' exp4
-|	exp5 '<' '=' exp4
-|	exp5 '>' '=' exp4
-|	exp5 _instanceof ID
-|	exp4
+	exp5 '<' exp4 { $$ = new LessThan($1, $3); }
+|	exp5 '>' exp4 { $$ = new GreaterThan($1, $3); }
+|	exp5 '<' '=' exp4 { $$ = new Not(new GreaterThan($1, $4)); }
+|	exp5 '>' '=' exp4 { $$ = new Not(new LessThan($1, $4)); }
+|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType(*$3)); }
+|	exp4 { $$ = $1; }
 ;
 
 exp4:
-	exp4 '+' exp3
-|	exp4 '-' exp3
-|	exp3
+	exp4 '+' exp3 { $$ = new Plus($1, $3); }
+|	exp4 '-' exp3 { $$ = new Minus($1, $3); }
+|	exp3 { $$ = $1; }
 ;
 
 exp3:
-	exp3 '*' exp2
-|	exp3 '/' exp2
-|	exp3 '%' exp2
-|	exp2
+	exp3 '*' exp2 { $$ = new Times($1, $3); }
+|	exp3 '/' exp2 { $$ = new Divide($1, $3); }
+|	exp3 '%' exp2 { $$ = new Remainder($1, $3); }
+|	exp2 { $$ = $1; }
 ;
 
 exp2: 
-	cast-exp
-|	unary-exp
+	cast-exp { $$ = $1; }
+|	unary-exp { $$ = $1; }
 ;
 
 
 cast-exp:
-	'(' type ')' cast-exp
-|	'(' type ')' exp1
+	'(' type ')' cast-exp { $$ = new Cast($2, $4); }
+|	'(' type ')' exp1 { $$ = new Cast($2, $4); }
 ;
 
 unary-exp:
-	'-' unary-exp
-|	'!' unary-exp
-|	'+' unary-exp
-|	exp1
+	'-' unary-exp { $$ = new Minus(new IntegerLiteral(0), $2); }
+|	'!' unary-exp { $$ = new Not($2); }
+|	'+' unary-exp { $$ = new Plus(new IntegerLiteral(0), $2); }
+|	exp1 { $$ = $1; }
 ;
 
 
 exp1:
-	ID
-|	exp1 '[' exp ']'
-|	_new type '[' exp ']' empty-bracket-list
+	ID { $$ = new IdentifierType(*$1); }
+|	exp1 '[' exp ']' { $$ = new ArrayLookup($1, $3); }
+|	_new type '[' exp ']' empty-bracket-list { }
 |	_new ID '(' ')'
 |	INTLIT
 |	callExp
