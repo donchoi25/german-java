@@ -39,93 +39,93 @@ CHARLIT "\'"{charprintable}"\'"
     /* 
         Reserved Words 
     */
-"boolean"{ws}*		reportTok("Boolean"); return _boolean;
-"class"{ws}*		reportTok("Class"); return _class;
-"extends"{ws}*		reportTok("Extends"); return _extends;
-"void"{ws}*			reportTok("Void"); return _void;
-"int"{ws}*			reportTok("Integer"); return _int;
-"while"{ws}*		reportTok("While"); return _while;
-"if"{ws}*			reportTok("If"); return _if;
-"else"{ws}*			reportTok("Else"); return _else;
-"for"{ws}*			reportTok("For"); return _for;
-"break"{ws}*		reportTok("Break"); return _break;
-"this"{ws}*			reportTok("This"); return _this;
-"false"{ws}*		reportTok("False"); return _false;
-"true"{ws}*			reportTok("True"); return _true;
-"super"{ws}*		reportTok("Super"); return _super;
-"null"{ws}*			reportTok("Null"); return _null;
-"return"{ws}*		reportTok("Return"); return _return;
-"instanceof"{ws}*	reportTok("InstanceOf"); return _instanceof;
-"new"{ws}*			reportTok("New"); return _new;
-"abstract"{ws}*		reportTok("Abstract"); return _abstract;
-"assert"{ws}*		reportTok("Assert"); return _assert;
-"byte"{ws}*			reportTok("Byte"); return _byte;
-"case"{ws}*			reportTok("Case"); return _case;
-"catch"{ws}*		reportTok("Catch"); return _catch;
-"char"{ws}*         reportTok("Char"); return _char;
-"const"{ws}*        reportTok("Const"); return _const;
-"continue"{ws}*     reportTok("Continue"); return _continue;
-"default"{ws}*      reportTok("Default"); return _default;
-"do"{ws}*           reportTok("Do"); return _do;
-"double"{ws}*       reportTok("Double"); return _double;
-"enum"{ws}*         reportTok("Enum"); return _enum;
-"final"{ws}*        reportTok("Final"); return _final;
-"finally"{ws}*      reportTok("Finally"); return _finally;
-"float"{ws}*        reportTok("Float"); return _float;
-"goto"{ws}*         reportTok("Goto"); return _goto;
-"implements"{ws}*   reportTok("Implements"); return _implements;
-"import"{ws}*       reportTok("Import"); return _import;
-"interface"{ws}*    reportTok("Interface"); return _interface;
-"long"{ws}*         reportTok("Long"); return _long;
-"package"{ws}*      reportTok("Package"); return _package;
-"private"{ws}*      reportTok("Private"); return _private;
-"protected"{ws}*    reportTok("Protected"); return _protected;
-"public"{ws}*       reportTok("Public"); return _public;
-"short"{ws}*        reportTok("Short"); return _short;
-"static"{ws}*       reportTok("Static"); return _static;
-"strictfp"{ws}*     reportTok("Strictfp"); return _strictfp;
-"switch"{ws}*       reportTok("Switch"); return _switch;
-"synchronized"{ws}* reportTok("Synchronized"); return _synchronized;
-"throw"{ws}*        reportTok("Throw"); return _throw;
-"throws"{ws}*       reportTok("Throws"); return _throws;
-"transient"{ws}*    reportTok("Transient"); return _transient;
-"try"{ws}*          reportTok("Try"); return _try;
-"volatile"{ws}*     reportTok("Volatile"); return _volatile;
+"boolean"		reportTok("Boolean"); return _boolean;
+"class"		    reportTok("Class"); return _class;
+"extends"		reportTok("Extends"); return _extends;
+"void"			reportTok("Void"); return _void;
+"int"			reportTok("Integer"); return _int;
+"while"		    reportTok("While"); return _while;
+"if"			reportTok("If"); return _if;
+"else"			reportTok("Else"); return _else;
+"for"			reportTok("For"); return _for;
+"break"		    reportTok("Break"); return _break;
+"this"			reportTok("This"); return _this;
+"false"		    reportTok("False"); return _false;
+"true"			reportTok("True"); return _true;
+"super"		    reportTok("Super"); return _super;
+"null"			reportTok("Null"); return _null;
+"return"		reportTok("Return"); return _return;
+"instanceof"	reportTok("InstanceOf"); return _instanceof;
+"new"			reportTok("New"); return _new;
+"abstract"		reportTok("Abstract"); return _abstract;
+"assert"	    reportTok("Assert"); return _assert;
+"byte"		    reportTok("Byte"); return _byte;
+"case"		    reportTok("Case"); return _case;
+"catch"		    reportTok("Catch"); return _catch;
+"char"          reportTok("Char"); return _char;
+"const"         reportTok("Const"); return _const;
+"continue"      reportTok("Continue"); return _continue;
+"default"       reportTok("Default"); return _default;
+"do"            reportTok("Do"); return _do;
+"double"        reportTok("Double"); return _double;
+"enum"          reportTok("Enum"); return _enum;
+"final"         reportTok("Final"); return _final;
+"finally"       reportTok("Finally"); return _finally;
+"float"         reportTok("Float"); return _float;
+"goto"          reportTok("Goto"); return _goto;
+"implements"    reportTok("Implements"); return _implements;
+"import"        reportTok("Import"); return _import;
+"interface"     reportTok("Interface"); return _interface;
+"long"          reportTok("Long"); return _long;
+"package"       reportTok("Package"); return _package;
+"private"       reportTok("Private"); return _private;
+"protected"     reportTok("Protected"); return _protected;
+"public"        reportTok("Public"); return _public;
+"short"         reportTok("Short"); return _short;
+"static"        reportTok("Static"); return _static;
+"strictfp"      reportTok("Strictfp"); return _strictfp;
+"switch"        reportTok("Switch"); return _switch;
+"synchronized"  reportTok("Synchronized"); return _synchronized;
+"throw"         reportTok("Throw"); return _throw;
+"throws"        reportTok("Throws"); return _throws;
+"transient"     reportTok("Transient"); return _transient;
+"try"           reportTok("Try"); return _try;
+"volatile"      reportTok("Volatile"); return _volatile;
 
     /* 
         All Symbols 
     */
 
-"="{ws}*            reportTok("Assign"); return '=';
-","{ws}*            reportTok("Comma"); return ',';
-"."{ws}*            reportTok("Period"); return '.';
-";"{ws}*            reportTok("Semicolon"); return ';';
-":"{ws}*            reportTok("Colon"); return ':';
-"!"{ws}*            reportTok("Not"); return '!';
-"<"{ws}*            reportTok("Less"); return '<';
-">"{ws}*            reportTok("Greater"); return '>';
-"&"{ws}*            reportTok("And"); return '&';
-"|"{ws}*            reportTok("Or"); return '|';
-"("{ws}*            reportTok("Left Paren"); return '(';
-")"{ws}*            reportTok("Right Paren"); return ')';
-"["{ws}*            reportTok("Left Square"); return '[';
-"]"{ws}*            reportTok("Right Square"); return ']';
-"{"{ws}*            reportTok("Left Curly"); return '{';
-"}"{ws}*            reportTok("Right Curly"); return '}';
-"+"{ws}*            reportTok("Add"); return '+';
-"-"{ws}*            reportTok("Subtract"); return '-';
-"*"{ws}*            reportTok("Multiply"); return '*';
-"/"{ws}*            reportTok("Division"); return '/';
-"%"{ws}*            reportTok("Mod"); return '%';
+"="             reportTok("Assign"); return '=';
+","             reportTok("Comma"); return ',';
+"."             reportTok("Period"); return '.';
+";"             reportTok("Semicolon"); return ';';
+":"             reportTok("Colon"); return ':';
+"!"             reportTok("Not"); return '!';
+"<"             reportTok("Less"); return '<';
+">"             reportTok("Greater"); return '>';
+"&"             reportTok("And"); return '&';
+"|"             reportTok("Or"); return '|';
+"("             reportTok("Left Paren"); return '(';
+")"             reportTok("Right Paren"); return ')';
+"["             reportTok("Left Square"); return '[';
+"]"             reportTok("Right Square"); return ']';
+"{"             reportTok("Left Curly"); return '{';
+"}"             reportTok("Right Curly"); return '}';
+"+"             reportTok("Add"); return '+';
+"-"             reportTok("Subtract"); return '-';
+"*"             reportTok("Multiply"); return '*';
+"/"             reportTok("Division"); return '/';
+"%"             reportTok("Mod"); return '%';
 
 
 
 
 
     /* Literals, newline, and unaccepted characters */
-\n 	{}
-{intLit}{ws}*		reportTok("Integer Literal"); return INTLIT;
-{ID}{ws}*           SAVE_TOKEN; reportTok("Identifier"); return ID;
-{STRINGLIT}{ws}*    SAVE_TOKEN; reportTok("String Literal"); return STRINGLIT;
-{CHARLIT}{ws}*      SAVE_TOKEN; reportTok("Char Literal"); return CHARLIT;
-.				    yyerror("Token not recognized");
+{ws}*           {}
+{intLit}        reportTok("Integer Literal"); return INTLIT;
+{ID}            SAVE_TOKEN; reportTok("Identifier"); return ID;
+{STRINGLIT}     SAVE_TOKEN; reportTok("String Literal"); return STRINGLIT;
+{CHARLIT}       SAVE_TOKEN; reportTok("Char Literal"); return CHARLIT;
+.		        yyerror("Token not recognized");
