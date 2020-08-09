@@ -11,7 +11,7 @@ class LocalVarDecl : public VarDecl{
 public:
     Exp* initExp;
 
-    LocalVarDecl(Type* at, std::string as, Exp* initX);
+    LocalVarDecl(Type* at, const std::string as, Exp* initX);
 
     Visitor* accept(Visitor* v);
 };

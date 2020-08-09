@@ -11,7 +11,7 @@ public:
     std::string name;
     VarDecl* link;
 
-    IdentifierExp(std::string aname);
+    IdentifierExp(const std::string aname);
 
     virtual Visitor* accept(Visitor* v);
 };

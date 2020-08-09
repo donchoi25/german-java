@@ -1,6 +1,6 @@
 #include "../include/Call.h"
 
-Call::Call(Exp *aobj, std::string amethName, ExpList* aparms) : Exp(),
+Call::Call(Exp *aobj, const std::string amethName, ExpList* aparms) : Exp(),
                                                                 obj(aobj),
                                                                 methName(amethName),
                                                                 parms(aparms),

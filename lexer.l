@@ -1,7 +1,6 @@
 %{
 	#include "parser.tab.h"
 
-
     int char_position = 0;
     int line_start = 0;
 	//updates position every token

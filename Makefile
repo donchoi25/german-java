@@ -1,7 +1,7 @@
 #compiled with c++ compiler
 CC=g++
 
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -ggdb
 
 #header files
 DEPS=$(wildcard $(IDIR)/*.h)
@@ -28,13 +28,13 @@ $(ODIR)/parser.tab.o: parser.tab.c parser.y $(IDIR)/nodes.h
 	bison -d parser.y
 #compiles master header file 
 	$(CC) $(CFLAGS) parser.tab.c -o $@
+	./HeaderGen.sh
 
-$(ODIR)/lex.yy.o: lex.yy.c lexer.l
+$(ODIR)/lex.yy.o: lexer.l
 	flex lexer.l
 	$(CC) $(CFLAGS) lex.yy.c -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
-	./HeaderGen.sh
 	$(CC) $(CFLAGS) $< -o $@
 
 clean:

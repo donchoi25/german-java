@@ -1,4 +1,4 @@
-%{
+%code top{
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,11 +10,83 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-Program* program;
+Program* RootProgram;
 
 void yyerror(const char* s);
-%}
+}
 %locations
+
+%union {
+	int Int;
+	std::string* Str;
+
+	And* NAnd;
+	ArrayLength* NArrayLength;
+	ArrayLookup* NArrayLookup;
+	ArrayType* NArrayType;
+	Assign* NAssign;
+	AstNode* NAstNode;
+	BinExp* NBinExp;
+	Block* NBlock;
+	BooleanType* NBooleanType;
+	Break* NBreak;
+	BreakTarget* NBreakTarget;
+	Call* NCall;
+	CallStatement* NCallStatement;
+	Case* NCase;
+	Cast* NCast;
+	ClassDecl* NClassDecl;
+	ClassDeclList* NClassDeclList;
+	Decl* NDecl;
+	DeclList* NDeclList;
+	Default* NDefault;
+	Divide* NDivide;
+	Equals* NEquals;
+	Exp* NExp;
+	ExpList* NExpList;
+	False* NFalse;
+	FormalDecl* NFormalDecl;
+	GreaterThan* NGreaterThan;
+	IdentifierExp* NIdentifierExp;
+	IdentifierType* NIdentifierType;
+	If* NIf;
+	InstVarAccess* NInstVarAccess;
+	InstVarDecl* NInstVarDecl;
+	InstanceOf* NInstanceOf;
+	IntegerLiteral* NIntegerLiteral;
+	IntegerType* NIntegerType;
+	Label* NLabel;
+	LessThan* NLessThan;
+	LocalDeclStatement* NLocalDeclStatement;
+	LocalVarDecl* NLocalVarDecl;
+	MethodDecl* NMethodDecl;
+	MethodDeclNonVoid* NMethodDeclNonVoid;
+	MethodDeclVoid* NMethodDeclVoid;
+	Minus* NMinus;
+	NewArray* NNewArray;
+	NewObject* NNewObject;
+	Not* NNot;
+	Null* NNull;
+	NullType* NNullType;
+	Or* NOr;
+	Plus* NPlus;
+	Program* NProgram;
+	Remainder* NRemainder;
+	Statement* NStatement;
+	StatementList* NStatementList;
+	StringLiteral* NStringLiteral;
+	Super* NSuper;
+	Switch* NSwitch;
+	This* NThis;
+	Times* NTimes;
+	True* NTrue;
+	Type* NType;
+	UnExp* NUnExp;
+	VarDecl* NVarDecl;
+	VarDeclList* NVarDeclList;
+	VoidType* NVoidType;
+	While* NWhile;
+}
 
 /* Define our terminal symbols (tokens).Should match
    our lexer.l file.
@@ -98,96 +170,24 @@ void yyerror(const char* s);
 %token STRINGLIT
 %token CHARLIT
 
-%start program
-
-%type <NclassDecl> class-decl
-%type <NclassDeclList> class-decl-list
-%type <NdeclList> decl-in-class-list
-%type <String> ID
-%type <Ndecl> decl-in-class method-decl
+%type <NClassDecl> class-decl
+%type <NClassDeclList> class-decl-list
+%type <NDeclList> decl-in-class-list
+%type <Str> ID STRINGLIT
+%type <NDecl> decl-in-class method-decl
 %type <NStatementList> stmt-decl-list
 %type <NStatement> stmt-decl stmt
 %type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp
 %type <NExpList> exp-list
 %type <NType> type
+%type <Int> empty-bracket-list INTLIT CHARLIT
 
-%union {
-	std::string* String;
-
-	And* NAnd;
-	ArrayLength* NArrayLength;
-	ArrayLookup* NArrayLookup;
-	ArrayType* NArrayType;
-	Assign* NAssign;
-	AstNode* NAstNode;
-	BinExp* NBinExp;
-	Block* NBlock;
-	BooleanType* NBooleanType;
-	Break* NBreak;
-	BreakTarget* NBreakTarget;
-	Call* NCall;
-	CallStatement* NCallStatement;
-	Case* NCase;
-	Cast* NCast;
-	ClassDecl* NClassDecl;
-	ClassDeclList* NClassDeclList;
-	Decl* NDecl;
-	DeclList* NDeclList;
-	Default* NDefault;
-	Divide* NDivide;
-	Equals* NEquals;
-	Exp* NExp;
-	ExpList* NExpList;
-	False* NFalse;
-	FormalDecl* NFormalDecl;
-	GreaterThan* NGreaterThan;
-	Helpers* NHelpers;
-	IdentifierExp* NIdentifierExp;
-	IdentifierType* NIdentifierType;
-	If* NIf;
-	InstVarAccess* NInstVarAccess;
-	InstVarDecl* NInstVarDecl;
-	InstanceOf* NInstanceOf;
-	IntegerLiteral* NIntegerLiteral;
-	IntegerType* NIntegerType;
-	Label* NLabel;
-	LessThan* NLessThan;
-	LocalDeclStatement* NLocalDeclStatement;
-	LocalVarDecl* NLocalVarDecl;
-	MethodDecl* NMethodDecl;
-	MethodDeclNonVoid* NMethodDeclNonVoid;
-	MethodDeclVoid* NMethodDeclVoid;
-	Minus* NMinus;
-	NewArray* NNewArray;
-	NewObject* NNewObject;
-	Not* NNot;
-	Null* NNull;
-	NullType* NNullType;
-	Or* NOr;
-	Plus* NPlus;
-	Program* NProgram;
-	Remainder* NRemainder;
-	Statement* NStatement;
-	StatementList* NStatementList;
-	StringLiteral* NStringLiteral;
-	Super* NSuper;
-	Switch* NSwitch;
-	This* NThis;
-	Times* NTimes;
-	True* NTrue;
-	Type* NType;
-	UnExp* NUnExp;
-	VarDecl* NVarDecl;
-	VarDeclList* NVarDeclList;
-	VoidType* NVoidType;
-	While* NWhile;
-}
+%start program
 
 %%
 
 program:
-	class-decl-list { program = new Program($1); }
-
+	class-decl-list { RootProgram = new Program($1); }
 ;
 
 class-decl-list:
@@ -195,15 +195,15 @@ class-decl-list:
 |	class-decl-list class-decl { $1->push_back($2); }
 
 type:
-	_int
-|	_boolean
-|	ID
-|	type '[' ']'
+	_int { $$ = new IntegerType(); }
+|	_boolean { $$ = new BooleanType(); }
+|	ID { $$ = new IdentifierType(""); }
+|	type '[' ']' { $$ = new ArrayType($1); }
 ;
 
 class-decl:
 	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, "Object", $4); }
-|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, *$4, $6); }	
+|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl("", "", $6); }	
 ;
 
 decl-in-class-list:
@@ -216,11 +216,12 @@ decl-in-class:
 ;
 
 method-decl:
-	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(*$3, new VarDeclList(), $7); }
+	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid("", new VarDeclList(), $7); }
 ;
 
 stmt-decl-list:
-	stmt-decl { $$ = new StatementList(); $$->push_back($1); }
+	%empty
+|	stmt-decl { $$ = new StatementList(); $$->push_back($1); }
 |	stmt-decl-list stmt-decl  { $1->push_back($2); }
 ;
 
@@ -230,7 +231,8 @@ stmt-decl:
 
 stmt:
 	'{' stmt-decl-list '}' { $$ = new Block($2); }
-|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList())); }
+|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList())); }	
+
 ;
 
 exp:
@@ -258,7 +260,7 @@ exp5:
 |	exp5 '>' exp4 { $$ = new GreaterThan($1, $3); }
 |	exp5 '<' '=' exp4 { $$ = new Not(new GreaterThan($1, $4)); }
 |	exp5 '>' '=' exp4 { $$ = new Not(new LessThan($1, $4)); }
-|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType(*$3)); }
+|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType("")); }
 |	exp4 { $$ = $1; }
 ;
 
@@ -295,39 +297,53 @@ unary-exp:
 
 
 exp1:
-	ID { $$ = new IdentifierType(*$1); }
+	ID { $$ = new IdentifierExp(""); }
 |	exp1 '[' exp ']' { $$ = new ArrayLookup($1, $3); }
-|	_new type '[' exp ']' empty-bracket-list { }
-|	_new ID '(' ')'
-|	INTLIT
-|	callExp
-|	STRINGLIT
-|	exp1 '.' ID
-|	_this
-|	_false
-|	_true
-|	_null
-|	CHARLIT
-|	'(' exp ')'
+|	_new type '[' exp ']' empty-bracket-list 
+	{ 
+		if($6 > 0){
+			Type* arrayType = new ArrayType($2);
+
+			for(int i = 0; i < $6; ++i){
+				arrayType = new ArrayType(arrayType);
+			}
+
+			$$ = new NewArray(arrayType, $4);
+		}
+		else{
+			$$ = new NewArray($2, $4);
+		}
+	}
+|	_new ID '(' ')' { $$ = new NewObject(new IdentifierType("")); }
+|	INTLIT { $$ = new IntegerLiteral($1); }
+|	callExp { $$ = $1; }
+|	STRINGLIT { $$ = new StringLiteral(""); }
+|	exp1 '.' ID { $$ = new InstVarAccess($1, *$3); }
+|	_this { $$ = new This(); }
+|	_false { $$ = new False(); }
+|	_true { $$ = new True(); }
+|	_null { $$ = new Null(); }
+|	CHARLIT { $$ = new IntegerLiteral($1); }
+|	'(' exp ')' { $$ = $2; }
 ;
 
 callExp:
-	ID '(' ')'
-|	ID '(' exp-list ')'
-|	_super '.' ID '(' ')'
-|	_super '.' ID '(' exp-list ')'
-|	exp1 '.' ID '(' ')'
-|	exp1 '.' ID '(' exp-list ')'
+	ID '(' ')' { $$ = new Call(new This(), "", new ExpList()); }
+|	ID '(' exp-list ')' { $$ = new Call(new This(), "", $3); }
+|	_super '.' ID '(' ')' { $$ = new Call(new Super(), "", new ExpList()); }
+|	_super '.' ID '(' exp-list ')' { $$ = new Call(new Super(), "", $5); }
+|	exp1 '.' ID '(' ')' { $$ = new Call($1, "", new ExpList()); }
+|	exp1 '.' ID '(' exp-list ')' { $$ = new Call($1, "", $5); }
 ; 
 
 exp-list: 
-	exp
-|	exp-list ',' exp
+	exp { $$ = new ExpList(); $$->push_back($1); }
+|	exp-list ',' exp { $$->push_back($3); }
 ;
 
 empty-bracket-list:
-	%empty
-|	empty-bracket-list '[' ']'
+	'[' ']' { $$ = 1; }
+|	empty-bracket-list '[' ']' { $1++; }
 ;
 
 

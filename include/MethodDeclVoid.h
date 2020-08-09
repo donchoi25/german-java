@@ -9,7 +9,7 @@ class VarDeclList;
 class StatementList;
 class MethodDeclVoid : public MethodDecl{
 public:
-    MethodDeclVoid(std::string as, VarDeclList* afl, StatementList* asl);
+    MethodDeclVoid(const std::string as, VarDeclList* afl, StatementList* asl);
 
     Visitor* accept(Visitor* v);
 };

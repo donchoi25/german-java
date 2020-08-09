@@ -14,7 +14,7 @@ public:
     ExpList* parms;
     MethodDecl* methodLink;
 
-    Call(Exp *aobj, std::string amethName, ExpList* aparms);
+    Call(Exp *aobj, const std::string amethName, ExpList* aparms);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -1,6 +1,6 @@
 #include "../include/ClassDecl.h"
 
-ClassDecl::ClassDecl(std::string aname, std::string 
+ClassDecl::ClassDecl(const std::string aname, const std::string 
         asuperName, DeclList* aDeclList):Decl(aname),
                                                        superName(asuperName),
                                                        superlink(nullptr)

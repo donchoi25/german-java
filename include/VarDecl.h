@@ -10,7 +10,7 @@ public:
     Type* type;
     int offset;
 
-    VarDecl(Type* atype, std::string aname);
+    VarDecl(Type* atype, const std::string aname);
 
     virtual Visitor* accept(Visitor* v) = 0;
 };

@@ -1,5 +1,5 @@
-#ifndef CLASSDECLLIST_H
-#define CLASSDECLLIST_H
+#ifndef DECLLIST_H
+#define DECLLIST_H
 
 #include "AstList.h"
 #include "Visitor.h"

@@ -12,7 +12,7 @@ public:
     std::string varName;
     InstVarDecl* varDec;
 
-    InstVarAccess(Exp* aexp, std::string avarName);
+    InstVarAccess(Exp* aexp, const std::string avarName);
 
     virtual Visitor* accept(Visitor* v);
 };

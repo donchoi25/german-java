@@ -1,6 +1,6 @@
 #include "../include/MethodDeclVoid.h"
 
-MethodDeclVoid::MethodDeclVoid(std::string as, VarDeclList* afl, StatementList* asl) : 
+MethodDeclVoid::MethodDeclVoid(const std::string as, VarDeclList* afl, StatementList* asl) : 
 MethodDecl(as, afl, asl)
 {}
 

@@ -1,6 +1,6 @@
 #include "../include/StringLiteral.h"
 
-StringLiteral::StringLiteral(std::string astr) :
+StringLiteral::StringLiteral(const std::string astr) :
 Exp(),
 str(astr),
 uniqueCgRep(nullptr)

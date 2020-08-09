@@ -1,5 +1,5 @@
 #include "../include/Decl.h"
 
-Decl::Decl(std::string aname):AstNode(), name(aname){
+Decl::Decl(const std::string aname):AstNode(), name(aname){
     
 }

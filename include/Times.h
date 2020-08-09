@@ -5,7 +5,7 @@
 #include "Visitor.h"
 
 class Exp;
-class Times : BinExp{
+class Times : public BinExp{
 public:
     Times(Exp* ae1, Exp* ae2);
 

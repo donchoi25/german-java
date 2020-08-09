@@ -1,6 +1,6 @@
 #include "../include/IdentifierExp.h"
 
-IdentifierExp::IdentifierExp(std::string aname): Exp(),
+IdentifierExp::IdentifierExp(const std::string aname): Exp(),
                                 name(aname),
                                 link(nullptr)   
 {}

@@ -1,6 +1,6 @@
 #include "../include/InstVarDecl.h"
 
-InstVarDecl::InstVarDecl(Type* atype, std::string aname) :
+InstVarDecl::InstVarDecl(Type* atype, const std::string aname) :
 VarDecl(atype, aname)
 {}
 

@@ -1,6 +1,6 @@
 #include "../include/MethodDeclNonVoid.h"
 
-MethodDeclNonVoid::MethodDeclNonVoid(Type* at, std::string as, VarDeclList* afl, StatementList* asl, Exp* ae) :
+MethodDeclNonVoid::MethodDeclNonVoid(Type* at, const std::string as, VarDeclList* afl, StatementList* asl, Exp* ae) :
 MethodDecl(as, afl, asl),
 rtnType(at),
 rtnExp(ae)

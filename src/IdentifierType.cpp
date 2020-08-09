@@ -1,7 +1,7 @@
 #include "../include/IdentifierType.h"
 #include "../include/Helpers.h"
 
-IdentifierType::IdentifierType(std::string aname) : Type(),
+IdentifierType::IdentifierType(const std::string aname) : Type(),
                                                     name(aname),
                                                     link(nullptr)
 {}

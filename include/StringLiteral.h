@@ -10,7 +10,7 @@ public:
     std::string str;
     StringLiteral* uniqueCgRep; //for code generation
 
-    StringLiteral(std::string astr);
+    StringLiteral(const std::string astr);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -14,7 +14,7 @@ public:
     Type* rtnType;
     Exp* rtnExp;
 
-    MethodDeclNonVoid(Type* at, std::string as, VarDeclList* afl, StatementList* asl, Exp* ae);
+    MethodDeclNonVoid(Type* at, const std::string as, VarDeclList* afl, StatementList* asl, Exp* ae);
 
     Visitor* accept(Visitor* v);
 };

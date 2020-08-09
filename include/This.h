@@ -4,7 +4,7 @@
 #include "Exp.h"
 #include "Visitor.h"
 
-class This : Exp{
+class This : public Exp{
 public:
     This();
 

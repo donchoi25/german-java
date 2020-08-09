@@ -8,7 +8,7 @@
 class Type;
 class InstVarDecl : public VarDecl{
 public:
-    InstVarDecl(Type* atype, std::string aname);
+    InstVarDecl(Type* atype, const std::string aname);
 
     virtual Visitor* accept(Visitor* v);
 };

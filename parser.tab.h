@@ -109,9 +109,10 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 110 "parser.y" /* yacc.c:1909  */
+#line 19 "parser.y" /* yacc.c:1909  */
 
-	std::string String;
+	int Int;
+	std::string* Str;
 
 	And* NAnd;
 	ArrayLength* NArrayLength;
@@ -140,7 +141,6 @@ union YYSTYPE
 	False* NFalse;
 	FormalDecl* NFormalDecl;
 	GreaterThan* NGreaterThan;
-	Helpers* NHelpers;
 	IdentifierExp* NIdentifierExp;
 	IdentifierType* NIdentifierType;
 	If* NIf;

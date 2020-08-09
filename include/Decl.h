@@ -10,7 +10,7 @@ class Decl : public AstNode{
 public: 
     std::string name;
 
-    Decl(std::string aname);
+    Decl(const std::string aname);
 
     virtual Visitor* accept(Visitor* v) = 0;
 };
