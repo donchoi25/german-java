@@ -3,6 +3,8 @@
 
     int char_position = 0;
     int line_start = 0;
+    //saves token value into string
+    #define SAVE_TOKEN yylval.Str = new std::string(yytext, yyleng)
 	//updates position every token
 	#define YY_USER_ACTION                                \
         char_position += yyleng;                          \
@@ -123,7 +125,7 @@ CHARLIT "\'"{charprintable}"\'"
     /* Literals, newline, and unaccepted characters */
 \n 	{}
 {intLit}{ws}*		reportTok("Integer Literal"); return INTLIT;
-{ID}{ws}*           reportTok("Identifier"); return ID;
-{STRINGLIT}{ws}*    reportTok("String Literal"); return STRINGLIT;
-{CHARLIT}{ws}*      reportTok("Char Literal"); return CHARLIT;
+{ID}{ws}*           SAVE_TOKEN; reportTok("Identifier"); return ID;
+{STRINGLIT}{ws}*    SAVE_TOKEN; reportTok("String Literal"); return STRINGLIT;
+{CHARLIT}{ws}*      SAVE_TOKEN; reportTok("Char Literal"); return CHARLIT;
 .				    yyerror("Token not recognized");

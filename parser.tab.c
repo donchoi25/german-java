@@ -58,31 +58,12 @@
 /* Pull parsers.  */
 #define YYPULL 1
 
-/* "%code top" blocks.  */
-#line 1 "parser.y" /* yacc.c:316  */
-
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <vector>
-#include <string>
-#include "include/nodes.h"
-
-extern int yylex();
-extern int yyparse();
-extern FILE* yyin;
-
-Program* RootProgram;
-
-void yyerror(const char* s);
-
-#line 80 "parser.tab.c" /* yacc.c:316  */
 
 
 
 /* Copy the first part of user declarations.  */
 
-#line 86 "parser.tab.c" /* yacc.c:339  */
+#line 67 "parser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -111,6 +92,23 @@ void yyerror(const char* s);
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 1 "parser.y" /* yacc.c:355  */
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
+#include <string>
+#include "include/nodes.h"
+
+extern int yylex();
+extern int yyparse();
+extern FILE* yyin;
+
+void yyerror(const char* s);
+
+#line 112 "parser.tab.c" /* yacc.c:355  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -181,7 +179,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 19 "parser.y" /* yacc.c:355  */
+#line 25 "parser.y" /* yacc.c:355  */
 
 	int Int;
 	std::string* Str;
@@ -253,7 +251,7 @@ union YYSTYPE
 	VoidType* NVoidType;
 	While* NWhile;
 
-#line 257 "parser.tab.c" /* yacc.c:355  */
+#line 255 "parser.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -279,12 +277,24 @@ struct YYLTYPE
 extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
 int yyparse (void);
+/* "%code provides" blocks.  */
+#line 17 "parser.y" /* yacc.c:355  */
+
+	extern Program* RootProgram;
+
+#line 286 "parser.tab.c" /* yacc.c:355  */
 
 #endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 288 "parser.tab.c" /* yacc.c:358  */
+#line 292 "parser.tab.c" /* yacc.c:358  */
+/* Unqualified %code blocks.  */
+#line 21 "parser.y" /* yacc.c:359  */
+
+	Program* RootProgram;
+
+#line 298 "parser.tab.c" /* yacc.c:359  */
 
 #ifdef short
 # undef short
@@ -589,14 +599,14 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   190,   190,   194,   195,   198,   199,   200,   201,   205,
-     206,   210,   211,   215,   219,   223,   224,   225,   229,   233,
-     234,   239,   243,   244,   248,   249,   253,   254,   255,   259,
-     260,   261,   262,   263,   264,   268,   269,   270,   274,   275,
-     276,   277,   281,   282,   287,   288,   292,   293,   294,   295,
-     300,   301,   302,   317,   318,   319,   320,   321,   322,   323,
-     324,   325,   326,   327,   331,   332,   333,   334,   335,   336,
-     340,   341,   345,   346
+       0,   196,   196,   200,   201,   204,   205,   206,   207,   211,
+     212,   216,   217,   221,   225,   229,   230,   231,   235,   239,
+     240,   245,   249,   250,   254,   255,   259,   260,   261,   265,
+     266,   267,   268,   269,   270,   274,   275,   276,   280,   281,
+     282,   283,   287,   288,   293,   294,   298,   299,   300,   301,
+     306,   307,   308,   323,   324,   325,   326,   327,   328,   329,
+     330,   331,   332,   333,   337,   338,   339,   340,   341,   342,
+     346,   347,   351,   352
 };
 #endif
 
@@ -1596,301 +1606,301 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 190 "parser.y" /* yacc.c:1646  */
+#line 196 "parser.y" /* yacc.c:1646  */
     { RootProgram = new Program((yyvsp[0].NClassDeclList)); }
-#line 1602 "parser.tab.c" /* yacc.c:1646  */
+#line 1612 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 194 "parser.y" /* yacc.c:1646  */
+#line 200 "parser.y" /* yacc.c:1646  */
     { (yyval.NClassDeclList) = new ClassDeclList(); (yyval.NClassDeclList)->push_back((yyvsp[0].NClassDecl)); }
-#line 1608 "parser.tab.c" /* yacc.c:1646  */
+#line 1618 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 195 "parser.y" /* yacc.c:1646  */
+#line 201 "parser.y" /* yacc.c:1646  */
     { (yyvsp[-1].NClassDeclList)->push_back((yyvsp[0].NClassDecl)); }
-#line 1614 "parser.tab.c" /* yacc.c:1646  */
+#line 1624 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 198 "parser.y" /* yacc.c:1646  */
+#line 204 "parser.y" /* yacc.c:1646  */
     { (yyval.NType) = new IntegerType(); }
-#line 1620 "parser.tab.c" /* yacc.c:1646  */
+#line 1630 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 199 "parser.y" /* yacc.c:1646  */
+#line 205 "parser.y" /* yacc.c:1646  */
     { (yyval.NType) = new BooleanType(); }
-#line 1626 "parser.tab.c" /* yacc.c:1646  */
+#line 1636 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 200 "parser.y" /* yacc.c:1646  */
-    { (yyval.NType) = new IdentifierType(""); }
-#line 1632 "parser.tab.c" /* yacc.c:1646  */
+#line 206 "parser.y" /* yacc.c:1646  */
+    { (yyval.NType) = new IdentifierType(*(yyvsp[0].Str)); }
+#line 1642 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 201 "parser.y" /* yacc.c:1646  */
+#line 207 "parser.y" /* yacc.c:1646  */
     { (yyval.NType) = new ArrayType((yyvsp[-2].NType)); }
-#line 1638 "parser.tab.c" /* yacc.c:1646  */
+#line 1648 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 205 "parser.y" /* yacc.c:1646  */
+#line 211 "parser.y" /* yacc.c:1646  */
     { (yyval.NClassDecl) = new ClassDecl(*(yyvsp[-3].Str), "Object", (yyvsp[-1].NDeclList)); }
-#line 1644 "parser.tab.c" /* yacc.c:1646  */
+#line 1654 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 206 "parser.y" /* yacc.c:1646  */
-    { (yyval.NClassDecl) = new ClassDecl("", "", (yyvsp[-1].NDeclList)); }
-#line 1650 "parser.tab.c" /* yacc.c:1646  */
+#line 212 "parser.y" /* yacc.c:1646  */
+    { (yyval.NClassDecl) = new ClassDecl(*(yyvsp[-5].Str), *(yyvsp[-3].Str), (yyvsp[-1].NDeclList)); }
+#line 1660 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 210 "parser.y" /* yacc.c:1646  */
+#line 216 "parser.y" /* yacc.c:1646  */
     { (yyval.NDeclList) = new DeclList(); (yyval.NDeclList)->push_back((yyvsp[0].NDecl)); }
-#line 1656 "parser.tab.c" /* yacc.c:1646  */
+#line 1666 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 211 "parser.y" /* yacc.c:1646  */
+#line 217 "parser.y" /* yacc.c:1646  */
     { (yyvsp[-1].NDeclList)->push_back((yyvsp[0].NDecl)); }
-#line 1662 "parser.tab.c" /* yacc.c:1646  */
+#line 1672 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 215 "parser.y" /* yacc.c:1646  */
+#line 221 "parser.y" /* yacc.c:1646  */
     { (yyval.NDecl) = (yyvsp[0].NDecl); }
-#line 1668 "parser.tab.c" /* yacc.c:1646  */
+#line 1678 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 219 "parser.y" /* yacc.c:1646  */
-    { (yyval.NDecl) = new MethodDeclVoid("", new VarDeclList(), (yyvsp[-1].NStatementList)); }
-#line 1674 "parser.tab.c" /* yacc.c:1646  */
+#line 225 "parser.y" /* yacc.c:1646  */
+    { (yyval.NDecl) = new MethodDeclVoid(*(yyvsp[-5].Str), new VarDeclList(), (yyvsp[-1].NStatementList)); }
+#line 1684 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 224 "parser.y" /* yacc.c:1646  */
+#line 230 "parser.y" /* yacc.c:1646  */
     { (yyval.NStatementList) = new StatementList(); (yyval.NStatementList)->push_back((yyvsp[0].NStatement)); }
-#line 1680 "parser.tab.c" /* yacc.c:1646  */
+#line 1690 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 225 "parser.y" /* yacc.c:1646  */
+#line 231 "parser.y" /* yacc.c:1646  */
     { (yyvsp[-1].NStatementList)->push_back((yyvsp[0].NStatement)); }
-#line 1686 "parser.tab.c" /* yacc.c:1646  */
+#line 1696 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 229 "parser.y" /* yacc.c:1646  */
+#line 235 "parser.y" /* yacc.c:1646  */
     { (yyval.NStatement) = (yyvsp[0].NStatement); }
-#line 1692 "parser.tab.c" /* yacc.c:1646  */
+#line 1702 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 233 "parser.y" /* yacc.c:1646  */
+#line 239 "parser.y" /* yacc.c:1646  */
     { (yyval.NStatement) = new Block((yyvsp[-1].NStatementList)); }
-#line 1698 "parser.tab.c" /* yacc.c:1646  */
+#line 1708 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 234 "parser.y" /* yacc.c:1646  */
+#line 240 "parser.y" /* yacc.c:1646  */
     { (yyval.NStatement) = new If((yyvsp[-2].NExp), (yyvsp[0].NStatement), new Block(new StatementList())); }
-#line 1704 "parser.tab.c" /* yacc.c:1646  */
+#line 1714 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 239 "parser.y" /* yacc.c:1646  */
+#line 245 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1710 "parser.tab.c" /* yacc.c:1646  */
+#line 1720 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 243 "parser.y" /* yacc.c:1646  */
+#line 249 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Or((yyvsp[-3].NExp), (yyvsp[0].NExp)); }
-#line 1716 "parser.tab.c" /* yacc.c:1646  */
+#line 1726 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 244 "parser.y" /* yacc.c:1646  */
+#line 250 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1722 "parser.tab.c" /* yacc.c:1646  */
+#line 1732 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 248 "parser.y" /* yacc.c:1646  */
+#line 254 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new And((yyvsp[-3].NExp), (yyvsp[0].NExp)); }
-#line 1728 "parser.tab.c" /* yacc.c:1646  */
+#line 1738 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 249 "parser.y" /* yacc.c:1646  */
+#line 255 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1734 "parser.tab.c" /* yacc.c:1646  */
+#line 1744 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 253 "parser.y" /* yacc.c:1646  */
+#line 259 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Equals((yyvsp[-3].NExp), (yyvsp[0].NExp)); }
-#line 1740 "parser.tab.c" /* yacc.c:1646  */
+#line 1750 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 254 "parser.y" /* yacc.c:1646  */
+#line 260 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Not(new Equals((yyvsp[-3].NExp), (yyvsp[0].NExp))); }
-#line 1746 "parser.tab.c" /* yacc.c:1646  */
+#line 1756 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 255 "parser.y" /* yacc.c:1646  */
+#line 261 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1752 "parser.tab.c" /* yacc.c:1646  */
+#line 1762 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 259 "parser.y" /* yacc.c:1646  */
+#line 265 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new LessThan((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1758 "parser.tab.c" /* yacc.c:1646  */
+#line 1768 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 260 "parser.y" /* yacc.c:1646  */
+#line 266 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new GreaterThan((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1764 "parser.tab.c" /* yacc.c:1646  */
+#line 1774 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 261 "parser.y" /* yacc.c:1646  */
+#line 267 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Not(new GreaterThan((yyvsp[-3].NExp), (yyvsp[0].NExp))); }
-#line 1770 "parser.tab.c" /* yacc.c:1646  */
+#line 1780 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 262 "parser.y" /* yacc.c:1646  */
+#line 268 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Not(new LessThan((yyvsp[-3].NExp), (yyvsp[0].NExp))); }
-#line 1776 "parser.tab.c" /* yacc.c:1646  */
+#line 1786 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 263 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new InstanceOf((yyvsp[-2].NExp), new IdentifierType("")); }
-#line 1782 "parser.tab.c" /* yacc.c:1646  */
+#line 269 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new InstanceOf((yyvsp[-2].NExp), new IdentifierType(*(yyvsp[0].Str))); }
+#line 1792 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 264 "parser.y" /* yacc.c:1646  */
+#line 270 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1788 "parser.tab.c" /* yacc.c:1646  */
+#line 1798 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 268 "parser.y" /* yacc.c:1646  */
+#line 274 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Plus((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1794 "parser.tab.c" /* yacc.c:1646  */
+#line 1804 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 269 "parser.y" /* yacc.c:1646  */
+#line 275 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Minus((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1800 "parser.tab.c" /* yacc.c:1646  */
+#line 1810 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 270 "parser.y" /* yacc.c:1646  */
+#line 276 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1806 "parser.tab.c" /* yacc.c:1646  */
+#line 1816 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 274 "parser.y" /* yacc.c:1646  */
+#line 280 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Times((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1812 "parser.tab.c" /* yacc.c:1646  */
+#line 1822 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 275 "parser.y" /* yacc.c:1646  */
+#line 281 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Divide((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1818 "parser.tab.c" /* yacc.c:1646  */
+#line 1828 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 276 "parser.y" /* yacc.c:1646  */
+#line 282 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Remainder((yyvsp[-2].NExp), (yyvsp[0].NExp)); }
-#line 1824 "parser.tab.c" /* yacc.c:1646  */
+#line 1834 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 277 "parser.y" /* yacc.c:1646  */
+#line 283 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1830 "parser.tab.c" /* yacc.c:1646  */
+#line 1840 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 281 "parser.y" /* yacc.c:1646  */
+#line 287 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1836 "parser.tab.c" /* yacc.c:1646  */
+#line 1846 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 282 "parser.y" /* yacc.c:1646  */
+#line 288 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1842 "parser.tab.c" /* yacc.c:1646  */
+#line 1852 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 287 "parser.y" /* yacc.c:1646  */
+#line 293 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Cast((yyvsp[-2].NType), (yyvsp[0].NExp)); }
-#line 1848 "parser.tab.c" /* yacc.c:1646  */
+#line 1858 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 288 "parser.y" /* yacc.c:1646  */
+#line 294 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Cast((yyvsp[-2].NType), (yyvsp[0].NExp)); }
-#line 1854 "parser.tab.c" /* yacc.c:1646  */
+#line 1864 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 292 "parser.y" /* yacc.c:1646  */
+#line 298 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Minus(new IntegerLiteral(0), (yyvsp[0].NExp)); }
-#line 1860 "parser.tab.c" /* yacc.c:1646  */
+#line 1870 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 293 "parser.y" /* yacc.c:1646  */
+#line 299 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Not((yyvsp[0].NExp)); }
-#line 1866 "parser.tab.c" /* yacc.c:1646  */
+#line 1876 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 294 "parser.y" /* yacc.c:1646  */
+#line 300 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Plus(new IntegerLiteral(0), (yyvsp[0].NExp)); }
-#line 1872 "parser.tab.c" /* yacc.c:1646  */
+#line 1882 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 295 "parser.y" /* yacc.c:1646  */
+#line 301 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1878 "parser.tab.c" /* yacc.c:1646  */
+#line 1888 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 300 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IdentifierExp(""); }
-#line 1884 "parser.tab.c" /* yacc.c:1646  */
+#line 306 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new IdentifierExp(*(yyvsp[0].Str)); }
+#line 1894 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 301 "parser.y" /* yacc.c:1646  */
+#line 307 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new ArrayLookup((yyvsp[-3].NExp), (yyvsp[-1].NExp)); }
-#line 1890 "parser.tab.c" /* yacc.c:1646  */
+#line 1900 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 303 "parser.y" /* yacc.c:1646  */
+#line 309 "parser.y" /* yacc.c:1646  */
     { 
 		if((yyvsp[0].Int) > 0){
 			Type* arrayType = new ArrayType((yyvsp[-4].NType));
@@ -1905,137 +1915,137 @@ yyreduce:
 			(yyval.NExp) = new NewArray((yyvsp[-4].NType), (yyvsp[-2].NExp));
 		}
 	}
-#line 1909 "parser.tab.c" /* yacc.c:1646  */
+#line 1919 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 317 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new NewObject(new IdentifierType("")); }
-#line 1915 "parser.tab.c" /* yacc.c:1646  */
+#line 323 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new NewObject(new IdentifierType(*(yyvsp[-2].Str))); }
+#line 1925 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 318 "parser.y" /* yacc.c:1646  */
+#line 324 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new IntegerLiteral((yyvsp[0].Int)); }
-#line 1921 "parser.tab.c" /* yacc.c:1646  */
+#line 1931 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 319 "parser.y" /* yacc.c:1646  */
+#line 325 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
-#line 1927 "parser.tab.c" /* yacc.c:1646  */
+#line 1937 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 320 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new StringLiteral(""); }
-#line 1933 "parser.tab.c" /* yacc.c:1646  */
+#line 326 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new StringLiteral(*(yyvsp[0].Str)); }
+#line 1943 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 321 "parser.y" /* yacc.c:1646  */
+#line 327 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new InstVarAccess((yyvsp[-2].NExp), *(yyvsp[0].Str)); }
-#line 1939 "parser.tab.c" /* yacc.c:1646  */
+#line 1949 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 322 "parser.y" /* yacc.c:1646  */
+#line 328 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new This(); }
-#line 1945 "parser.tab.c" /* yacc.c:1646  */
+#line 1955 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 323 "parser.y" /* yacc.c:1646  */
+#line 329 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new False(); }
-#line 1951 "parser.tab.c" /* yacc.c:1646  */
+#line 1961 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 324 "parser.y" /* yacc.c:1646  */
+#line 330 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new True(); }
-#line 1957 "parser.tab.c" /* yacc.c:1646  */
+#line 1967 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 325 "parser.y" /* yacc.c:1646  */
+#line 331 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new Null(); }
-#line 1963 "parser.tab.c" /* yacc.c:1646  */
+#line 1973 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 326 "parser.y" /* yacc.c:1646  */
+#line 332 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = new IntegerLiteral((yyvsp[0].Int)); }
-#line 1969 "parser.tab.c" /* yacc.c:1646  */
+#line 1979 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 327 "parser.y" /* yacc.c:1646  */
+#line 333 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[-1].NExp); }
-#line 1975 "parser.tab.c" /* yacc.c:1646  */
+#line 1985 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 331 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(new This(), "", new ExpList()); }
-#line 1981 "parser.tab.c" /* yacc.c:1646  */
+#line 337 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call(new This(), *(yyvsp[-2].Str), new ExpList()); }
+#line 1991 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 332 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(new This(), "", (yyvsp[-1].NExpList)); }
-#line 1987 "parser.tab.c" /* yacc.c:1646  */
+#line 338 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call(new This(), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+#line 1997 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 333 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(new Super(), "", new ExpList()); }
-#line 1993 "parser.tab.c" /* yacc.c:1646  */
+#line 339 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call(new Super(), *(yyvsp[-2].Str), new ExpList()); }
+#line 2003 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 334 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(new Super(), "", (yyvsp[-1].NExpList)); }
-#line 1999 "parser.tab.c" /* yacc.c:1646  */
+#line 340 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call(new Super(), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+#line 2009 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 335 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call((yyvsp[-4].NExp), "", new ExpList()); }
-#line 2005 "parser.tab.c" /* yacc.c:1646  */
+#line 341 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call((yyvsp[-4].NExp), *(yyvsp[-2].Str), new ExpList()); }
+#line 2015 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 336 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call((yyvsp[-5].NExp), "", (yyvsp[-1].NExpList)); }
-#line 2011 "parser.tab.c" /* yacc.c:1646  */
+#line 342 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call((yyvsp[-5].NExp), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+#line 2021 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 340 "parser.y" /* yacc.c:1646  */
+#line 346 "parser.y" /* yacc.c:1646  */
     { (yyval.NExpList) = new ExpList(); (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
-#line 2017 "parser.tab.c" /* yacc.c:1646  */
+#line 2027 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 341 "parser.y" /* yacc.c:1646  */
+#line 347 "parser.y" /* yacc.c:1646  */
     { (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
-#line 2023 "parser.tab.c" /* yacc.c:1646  */
+#line 2033 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 345 "parser.y" /* yacc.c:1646  */
+#line 351 "parser.y" /* yacc.c:1646  */
     { (yyval.Int) = 1; }
-#line 2029 "parser.tab.c" /* yacc.c:1646  */
+#line 2039 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 346 "parser.y" /* yacc.c:1646  */
+#line 352 "parser.y" /* yacc.c:1646  */
     { (yyvsp[-2].Int)++; }
-#line 2035 "parser.tab.c" /* yacc.c:1646  */
+#line 2045 "parser.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 2039 "parser.tab.c" /* yacc.c:1646  */
+#line 2049 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2270,7 +2280,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 350 "parser.y" /* yacc.c:1906  */
+#line 356 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file

@@ -39,6 +39,23 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 1 "parser.y" /* yacc.c:1909  */
+
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <vector>
+#include <string>
+#include "include/nodes.h"
+
+extern int yylex();
+extern int yyparse();
+extern FILE* yyin;
+
+void yyerror(const char* s);
+
+#line 59 "parser.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -109,7 +126,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 19 "parser.y" /* yacc.c:1909  */
+#line 25 "parser.y" /* yacc.c:1909  */
 
 	int Int;
 	std::string* Str;
@@ -181,7 +198,7 @@ union YYSTYPE
 	VoidType* NVoidType;
 	While* NWhile;
 
-#line 185 "parser.tab.h" /* yacc.c:1909  */
+#line 202 "parser.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -207,5 +224,11 @@ struct YYLTYPE
 extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
 int yyparse (void);
+/* "%code provides" blocks.  */
+#line 17 "parser.y" /* yacc.c:1909  */
+
+	extern Program* RootProgram;
+
+#line 233 "parser.tab.h" /* yacc.c:1909  */
 
 #endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */

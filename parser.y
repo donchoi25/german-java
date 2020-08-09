@@ -1,4 +1,4 @@
-%code top{
+%code requires {
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,11 +10,17 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-Program* RootProgram;
-
 void yyerror(const char* s);
 }
 %locations
+
+%code provides {
+	extern Program* RootProgram;
+}
+
+%code {
+	Program* RootProgram;
+}
 
 %union {
 	int Int;
@@ -197,13 +203,13 @@ class-decl-list:
 type:
 	_int { $$ = new IntegerType(); }
 |	_boolean { $$ = new BooleanType(); }
-|	ID { $$ = new IdentifierType(""); }
+|	ID { $$ = new IdentifierType(*$1); }
 |	type '[' ']' { $$ = new ArrayType($1); }
 ;
 
 class-decl:
 	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, "Object", $4); }
-|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl("", "", $6); }	
+|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, *$4, $6); }	
 ;
 
 decl-in-class-list:
@@ -216,7 +222,7 @@ decl-in-class:
 ;
 
 method-decl:
-	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid("", new VarDeclList(), $7); }
+	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(*$3, new VarDeclList(), $7); }
 ;
 
 stmt-decl-list:
@@ -260,7 +266,7 @@ exp5:
 |	exp5 '>' exp4 { $$ = new GreaterThan($1, $3); }
 |	exp5 '<' '=' exp4 { $$ = new Not(new GreaterThan($1, $4)); }
 |	exp5 '>' '=' exp4 { $$ = new Not(new LessThan($1, $4)); }
-|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType("")); }
+|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType(*$3)); }
 |	exp4 { $$ = $1; }
 ;
 
@@ -297,7 +303,7 @@ unary-exp:
 
 
 exp1:
-	ID { $$ = new IdentifierExp(""); }
+	ID { $$ = new IdentifierExp(*$1); }
 |	exp1 '[' exp ']' { $$ = new ArrayLookup($1, $3); }
 |	_new type '[' exp ']' empty-bracket-list 
 	{ 
@@ -314,10 +320,10 @@ exp1:
 			$$ = new NewArray($2, $4);
 		}
 	}
-|	_new ID '(' ')' { $$ = new NewObject(new IdentifierType("")); }
+|	_new ID '(' ')' { $$ = new NewObject(new IdentifierType(*$2)); }
 |	INTLIT { $$ = new IntegerLiteral($1); }
 |	callExp { $$ = $1; }
-|	STRINGLIT { $$ = new StringLiteral(""); }
+|	STRINGLIT { $$ = new StringLiteral(*$1); }
 |	exp1 '.' ID { $$ = new InstVarAccess($1, *$3); }
 |	_this { $$ = new This(); }
 |	_false { $$ = new False(); }
@@ -328,12 +334,12 @@ exp1:
 ;
 
 callExp:
-	ID '(' ')' { $$ = new Call(new This(), "", new ExpList()); }
-|	ID '(' exp-list ')' { $$ = new Call(new This(), "", $3); }
-|	_super '.' ID '(' ')' { $$ = new Call(new Super(), "", new ExpList()); }
-|	_super '.' ID '(' exp-list ')' { $$ = new Call(new Super(), "", $5); }
-|	exp1 '.' ID '(' ')' { $$ = new Call($1, "", new ExpList()); }
-|	exp1 '.' ID '(' exp-list ')' { $$ = new Call($1, "", $5); }
+	ID '(' ')' { $$ = new Call(new This(), *$1, new ExpList()); }
+|	ID '(' exp-list ')' { $$ = new Call(new This(), *$1, $3); }
+|	_super '.' ID '(' ')' { $$ = new Call(new Super(), *$3, new ExpList()); }
+|	_super '.' ID '(' exp-list ')' { $$ = new Call(new Super(), *$3, $5); }
+|	exp1 '.' ID '(' ')' { $$ = new Call($1, *$3, new ExpList()); }
+|	exp1 '.' ID '(' exp-list ')' { $$ = new Call($1, *$3, $5); }
 ; 
 
 exp-list: 
