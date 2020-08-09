@@ -179,14 +179,14 @@ void yyerror(const char* s);
 %type <NClassDecl> class-decl
 %type <NClassDeclList> class-decl-list
 %type <NDeclList> decl-in-class-list
-%type <Str> ID STRINGLIT
+%type <Str> ID STRINGLIT INTLIT CHARLIT
 %type <NDecl> decl-in-class method-decl
 %type <NStatementList> stmt-decl-list
 %type <NStatement> stmt-decl stmt
 %type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp
 %type <NExpList> exp-list
 %type <NType> type
-%type <Int> empty-bracket-list INTLIT CHARLIT
+%type <Int> empty-bracket-list
 
 %start program
 
@@ -321,7 +321,7 @@ exp1:
 		}
 	}
 |	_new ID '(' ')' { $$ = new NewObject(new IdentifierType(*$2)); }
-|	INTLIT { $$ = new IntegerLiteral($1); }
+|	INTLIT { $$ = new IntegerLiteral(atoi($1->c_str())); }
 |	callExp { $$ = $1; }
 |	STRINGLIT { $$ = new StringLiteral(*$1); }
 |	exp1 '.' ID { $$ = new InstVarAccess($1, *$3); }
@@ -329,7 +329,7 @@ exp1:
 |	_false { $$ = new False(); }
 |	_true { $$ = new True(); }
 |	_null { $$ = new Null(); }
-|	CHARLIT { $$ = new IntegerLiteral($1); }
+|	CHARLIT { $$ = new IntegerLiteral(int(*($1->c_str()))); }
 |	'(' exp ')' { $$ = $2; }
 ;
 

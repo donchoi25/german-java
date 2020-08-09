@@ -1926,7 +1926,7 @@ yyreduce:
 
   case 54:
 #line 324 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IntegerLiteral((yyvsp[0].Int)); }
+    { (yyval.NExp) = new IntegerLiteral(atoi((yyvsp[0].Str)->c_str())); }
 #line 1931 "parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1974,7 +1974,7 @@ yyreduce:
 
   case 62:
 #line 332 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IntegerLiteral((yyvsp[0].Int)); }
+    { (yyval.NExp) = new IntegerLiteral(int(*((yyvsp[0].Str)->c_str()))); }
 #line 1979 "parser.tab.c" /* yacc.c:1646  */
     break;
 
