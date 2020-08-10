@@ -1,8 +1,8 @@
 #ifndef AST_NODE_H
 #define AST_NODE_H
 
-#include "Visitor.h"
 
+class Visitor;
 class AstNode {
 private:
 public: 

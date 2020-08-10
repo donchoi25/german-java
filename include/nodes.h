@@ -1,5 +1,6 @@
 #ifndef __NODES__
 #define __NODES__
+#include "ASTvisitor.h"
 #include "And.h"
 #include "ArrayLength.h"
 #include "ArrayLookup.h"

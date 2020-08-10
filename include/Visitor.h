@@ -6,10 +6,6 @@
 	class ArrayLookup; 
 	class ArrayType; 
 	class Assign; 
-
-    template <typename T>
-    class AstList;
-
 	class AstNode; 
 	class BinExp; 
 	class Block; 

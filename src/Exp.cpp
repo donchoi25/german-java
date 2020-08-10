@@ -4,6 +4,6 @@ Exp::Exp():AstNode(){
     
 }
 
-Visitor* accept(Visitor* v){
+Visitor* Exp::accept(Visitor* v){
     return v->visitExp(this);
 }

@@ -4,6 +4,6 @@ Label::Label() : Statement(),
                  enclosingSwitch(nullptr)
 {}
 
-Visitor* accept(Visitor* v){
+Visitor* Label::accept(Visitor* v){
     return v->visitLabel(this);
 }
