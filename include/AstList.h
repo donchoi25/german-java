@@ -16,8 +16,6 @@ public:
     void push_back(T n);
 
     void push_front(T n);
-
-    virtual Visitor* accept(Visitor* v) = 0;
 };
 
 

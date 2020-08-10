@@ -3,6 +3,7 @@
 
 #include "Decl.h"
 #include <string>
+#include "Visitor.h"
 
 class VarDeclList;
 class StatementList;
@@ -18,7 +19,7 @@ public:
 
     MethodDecl(const std::string aname, VarDeclList* aformals, StatementList* astmts);
 
-    virtual Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

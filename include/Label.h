@@ -2,6 +2,7 @@
 #define LABEL_H
 
 #include "Statement.h"
+#include "Visitor.h"
 
 class Switch;
 class Exp;
@@ -13,7 +14,7 @@ public:
 
     virtual Exp* labelValue() = 0;
 
-    virtual Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

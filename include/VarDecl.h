@@ -2,6 +2,7 @@
 #define VARDECL_H
 
 #include "Decl.h"
+#include "Visitor.h"
 #include <string>
 
 class Visitor;
@@ -12,7 +13,7 @@ public:
 
     VarDecl(Type* atype, const std::string aname);
 
-    virtual Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

@@ -8,3 +8,6 @@ superMethod(nullptr),
 vtableOffset(0)
 {}
 
+Visitor* MethodDecl::accept(Visitor* v){
+    return v->visitMethodDecl(this);
+}

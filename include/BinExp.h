@@ -2,6 +2,7 @@
 #define BIN_EXP_H
 
 #include "Exp.h"
+#include "Visitor.h"
 
 class BinExp : public Exp{
 public:
@@ -10,7 +11,7 @@ public:
 
     BinExp(Exp* aleft, Exp* aright);
 
-    virtual Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif

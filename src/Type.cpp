@@ -5,3 +5,7 @@
 Type::Type():AstNode(){
 
 }
+
+Visitor* Type::accept(Visitor* v){
+    return v->visitType(this);
+}

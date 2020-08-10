@@ -2,13 +2,14 @@
 #define STATEMENT_H
 
 #include "AstNode.h"
+#include "Visitor.h"
 
 class Visitor;
 class Statement : public AstNode{
 public:
     Statement();
 
-    virtual Visitor* accept(Visitor* v) = 0;
+    virtual Visitor* accept(Visitor* v);
 };
 
 #endif
