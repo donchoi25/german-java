@@ -67,6 +67,10 @@
 #include "../include/VoidType.h" 
 #include "../include/While.h"
 
+ASTvisitor::ASTvisitor() :
+Visitor()
+{}
+
 Visitor* ASTvisitor::visitAnd(And* node){
     return ASTvisitor::visitBinExp(node);
 }

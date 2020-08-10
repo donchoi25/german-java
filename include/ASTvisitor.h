@@ -5,6 +5,8 @@
 
 class ASTvisitor : public Visitor{
 public:
+    ASTvisitor();
+
     virtual Visitor* visitAnd(And* node);
     
     virtual Visitor* visitArrayLength(ArrayLength* node);

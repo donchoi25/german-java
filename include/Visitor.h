@@ -69,6 +69,8 @@
 	class While; 
 class Visitor{
 public:
+    Visitor();
+
     virtual Visitor* visitAnd(And* node) = 0;
     
     virtual Visitor* visitArrayLength(ArrayLength* node) = 0;

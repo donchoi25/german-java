@@ -5,3 +5,19 @@ class bob {
         }
     }
 }
+
+class bob {
+    public void exec() {
+        if(5 == 5) {
+
+        }
+    }
+}
+
+class bob {
+    public void exec() {
+        if(5 == 5) {
+
+        }
+    }
+}

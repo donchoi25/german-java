@@ -7,5 +7,5 @@ ClassDeclList::ClassDeclList(std::vector<ClassDecl*> lst) : AstList<ClassDecl*>(
 {}
 
 Visitor* ClassDeclList::accept(Visitor* v){
-
+    return v->visitClassDeclList(this);
 }

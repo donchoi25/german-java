@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <string>
+#include "assert.h"
 #include "include/nodes.h"
 
 extern int yylex();
@@ -188,12 +189,15 @@ void yyerror(const char* s);
 %type <NType> type
 %type <Int> empty-bracket-list
 
+%printer { fprintf(std::cout, "Test"); } <NClassDecl>
+
 %start program
 
 %%
 
 program:
-	class-decl-list { RootProgram = new Program($1); }
+	class-decl-list { RootProgram = new Program($1); 
+	assert(RootProgram != nullptr);}
 ;
 
 class-decl-list:
@@ -237,7 +241,7 @@ stmt-decl:
 
 stmt:
 	'{' stmt-decl-list '}' { $$ = new Block($2); }
-|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList())); }	
+|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList()));}	
 
 ;
 
@@ -373,6 +377,11 @@ int main(int argc, char **argv){
 	} while(!feof(yyin));
 
 	fprintf(stderr, "Compiled Successfully\n");
+
+	PrintVisitor* printVisitor = new PrintVisitor();
+
+	RootProgram->accept(printVisitor);
+
 	return 0;
 }
 

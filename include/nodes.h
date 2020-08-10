@@ -53,6 +53,7 @@
 #include "NullType.h"
 #include "Or.h"
 #include "Plus.h"
+#include "PrintVisitor.h"
 #include "Program.h"
 #include "Remainder.h"
 #include "Statement.h"
