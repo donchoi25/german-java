@@ -343,8 +343,8 @@ Visitor* ASTvisitor::visitPlus(Plus* node){
 
 Visitor* ASTvisitor::visitProgram(Program* node){
     this->visitAstNode(node);
-    node->mainStatement->accept(this);
     node->classDecls->accept(this);
+    node->mainStatement->accept(this);
     return nullptr;
 }
 
