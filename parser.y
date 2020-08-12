@@ -233,7 +233,7 @@ method-decl:
 ;
 
 stmt-decl-list:
-	%empty
+	%empty { $$ = new StatementList(); }
 |	stmt-decl { $$ = new StatementList(); $$->push_back($1); }
 |	stmt-decl-list stmt-decl  { $1->push_back($2); }
 ;

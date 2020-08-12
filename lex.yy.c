@@ -944,15 +944,26 @@ char *yytext;
     #define SAVE_TOKEN yylval.Str = new std::string(yytext, yyleng)
 
     #define YY_USER_ACTION  updateLoc();
+    //yylloc.first_line = yylloc.last_line = yylineno;
 
     void updateLoc(){
-        yylloc.first_line = yylloc.last_line = yylineno;
+        yylloc.first_line = yylloc.last_line; \
+        yylloc.first_column = yylloc.last_column; \
+        for(int i = 0; yytext[i] != '\0'; i++) { \
+            if(yytext[i] == '\n') { \
+                yylloc.last_line++; \
+                yylloc.last_column = 0; \
+            } \
+            else { \
+                yylloc.last_column++; \
+            } \
+        } 
     }
 
     extern void reportTok(char* out);
     extern void yyerror(const char* s);
-#line 955 "lex.yy.c"
-#line 956 "lex.yy.c"
+#line 966 "lex.yy.c"
+#line 967 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -1169,13 +1180,13 @@ YY_DECL
 		}
 
 	{
-#line 32 "lexer.l"
+#line 43 "lexer.l"
 
-#line 34 "lexer.l"
+#line 45 "lexer.l"
     /* 
         Reserved Words 
     */
-#line 1179 "lex.yy.c"
+#line 1190 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1245,313 +1256,313 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 37 "lexer.l"
+#line 48 "lexer.l"
 reportTok("Boolean"); return _boolean;
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 38 "lexer.l"
+#line 49 "lexer.l"
 reportTok("Class"); return _class;
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 39 "lexer.l"
+#line 50 "lexer.l"
 reportTok("Extends"); return _extends;
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
 YY_RULE_SETUP
-#line 40 "lexer.l"
+#line 51 "lexer.l"
 reportTok("Void"); return _void;
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 41 "lexer.l"
+#line 52 "lexer.l"
 reportTok("Integer"); return _int;
 	YY_BREAK
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 42 "lexer.l"
+#line 53 "lexer.l"
 reportTok("While"); return _while;
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 43 "lexer.l"
+#line 54 "lexer.l"
 reportTok("If"); return _if;
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 44 "lexer.l"
+#line 55 "lexer.l"
 reportTok("Else"); return _else;
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 45 "lexer.l"
+#line 56 "lexer.l"
 reportTok("For"); return _for;
 	YY_BREAK
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 46 "lexer.l"
+#line 57 "lexer.l"
 reportTok("Break"); return _break;
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 47 "lexer.l"
+#line 58 "lexer.l"
 reportTok("This"); return _this;
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 48 "lexer.l"
+#line 59 "lexer.l"
 reportTok("False"); return _false;
 	YY_BREAK
 case 13:
 /* rule 13 can match eol */
 YY_RULE_SETUP
-#line 49 "lexer.l"
+#line 60 "lexer.l"
 reportTok("True"); return _true;
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 50 "lexer.l"
+#line 61 "lexer.l"
 reportTok("Super"); return _super;
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 51 "lexer.l"
+#line 62 "lexer.l"
 reportTok("Null"); return _null;
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 52 "lexer.l"
+#line 63 "lexer.l"
 reportTok("Return"); return _return;
 	YY_BREAK
 case 17:
 /* rule 17 can match eol */
 YY_RULE_SETUP
-#line 53 "lexer.l"
+#line 64 "lexer.l"
 reportTok("InstanceOf"); return _instanceof;
 	YY_BREAK
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
-#line 54 "lexer.l"
+#line 65 "lexer.l"
 reportTok("New"); return _new;
 	YY_BREAK
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 55 "lexer.l"
+#line 66 "lexer.l"
 reportTok("Abstract"); return _abstract;
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 56 "lexer.l"
+#line 67 "lexer.l"
 reportTok("Assert"); return _assert;
 	YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 57 "lexer.l"
+#line 68 "lexer.l"
 reportTok("Byte"); return _byte;
 	YY_BREAK
 case 22:
 /* rule 22 can match eol */
 YY_RULE_SETUP
-#line 58 "lexer.l"
+#line 69 "lexer.l"
 reportTok("Case"); return _case;
 	YY_BREAK
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 59 "lexer.l"
+#line 70 "lexer.l"
 reportTok("Catch"); return _catch;
 	YY_BREAK
 case 24:
 /* rule 24 can match eol */
 YY_RULE_SETUP
-#line 60 "lexer.l"
+#line 71 "lexer.l"
 reportTok("Char"); return _char;
 	YY_BREAK
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 61 "lexer.l"
+#line 72 "lexer.l"
 reportTok("Const"); return _const;
 	YY_BREAK
 case 26:
 /* rule 26 can match eol */
 YY_RULE_SETUP
-#line 62 "lexer.l"
+#line 73 "lexer.l"
 reportTok("Continue"); return _continue;
 	YY_BREAK
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 63 "lexer.l"
+#line 74 "lexer.l"
 reportTok("Default"); return _default;
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 64 "lexer.l"
+#line 75 "lexer.l"
 reportTok("Do"); return _do;
 	YY_BREAK
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 65 "lexer.l"
+#line 76 "lexer.l"
 reportTok("Double"); return _double;
 	YY_BREAK
 case 30:
 /* rule 30 can match eol */
 YY_RULE_SETUP
-#line 66 "lexer.l"
+#line 77 "lexer.l"
 reportTok("Enum"); return _enum;
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */
 YY_RULE_SETUP
-#line 67 "lexer.l"
+#line 78 "lexer.l"
 reportTok("Final"); return _final;
 	YY_BREAK
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 68 "lexer.l"
+#line 79 "lexer.l"
 reportTok("Finally"); return _finally;
 	YY_BREAK
 case 33:
 /* rule 33 can match eol */
 YY_RULE_SETUP
-#line 69 "lexer.l"
+#line 80 "lexer.l"
 reportTok("Float"); return _float;
 	YY_BREAK
 case 34:
 /* rule 34 can match eol */
 YY_RULE_SETUP
-#line 70 "lexer.l"
+#line 81 "lexer.l"
 reportTok("Goto"); return _goto;
 	YY_BREAK
 case 35:
 /* rule 35 can match eol */
 YY_RULE_SETUP
-#line 71 "lexer.l"
+#line 82 "lexer.l"
 reportTok("Implements"); return _implements;
 	YY_BREAK
 case 36:
 /* rule 36 can match eol */
 YY_RULE_SETUP
-#line 72 "lexer.l"
+#line 83 "lexer.l"
 reportTok("Import"); return _import;
 	YY_BREAK
 case 37:
 /* rule 37 can match eol */
 YY_RULE_SETUP
-#line 73 "lexer.l"
+#line 84 "lexer.l"
 reportTok("Interface"); return _interface;
 	YY_BREAK
 case 38:
 /* rule 38 can match eol */
 YY_RULE_SETUP
-#line 74 "lexer.l"
+#line 85 "lexer.l"
 reportTok("Long"); return _long;
 	YY_BREAK
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 75 "lexer.l"
+#line 86 "lexer.l"
 reportTok("Package"); return _package;
 	YY_BREAK
 case 40:
 /* rule 40 can match eol */
 YY_RULE_SETUP
-#line 76 "lexer.l"
+#line 87 "lexer.l"
 reportTok("Private"); return _private;
 	YY_BREAK
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 77 "lexer.l"
+#line 88 "lexer.l"
 reportTok("Protected"); return _protected;
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 78 "lexer.l"
+#line 89 "lexer.l"
 reportTok("Public"); return _public;
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 79 "lexer.l"
+#line 90 "lexer.l"
 reportTok("Short"); return _short;
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 80 "lexer.l"
+#line 91 "lexer.l"
 reportTok("Static"); return _static;
 	YY_BREAK
 case 45:
 /* rule 45 can match eol */
 YY_RULE_SETUP
-#line 81 "lexer.l"
+#line 92 "lexer.l"
 reportTok("Strictfp"); return _strictfp;
 	YY_BREAK
 case 46:
 /* rule 46 can match eol */
 YY_RULE_SETUP
-#line 82 "lexer.l"
+#line 93 "lexer.l"
 reportTok("Switch"); return _switch;
 	YY_BREAK
 case 47:
 /* rule 47 can match eol */
 YY_RULE_SETUP
-#line 83 "lexer.l"
+#line 94 "lexer.l"
 reportTok("Synchronized"); return _synchronized;
 	YY_BREAK
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 84 "lexer.l"
+#line 95 "lexer.l"
 reportTok("Throw"); return _throw;
 	YY_BREAK
 case 49:
 /* rule 49 can match eol */
 YY_RULE_SETUP
-#line 85 "lexer.l"
+#line 96 "lexer.l"
 reportTok("Throws"); return _throws;
 	YY_BREAK
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 86 "lexer.l"
+#line 97 "lexer.l"
 reportTok("Transient"); return _transient;
 	YY_BREAK
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 87 "lexer.l"
+#line 98 "lexer.l"
 reportTok("Try"); return _try;
 	YY_BREAK
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 88 "lexer.l"
+#line 99 "lexer.l"
 reportTok("Volatile"); return _volatile;
 	YY_BREAK
 /* 
@@ -1560,165 +1571,165 @@ reportTok("Volatile"); return _volatile;
 case 53:
 /* rule 53 can match eol */
 YY_RULE_SETUP
-#line 94 "lexer.l"
+#line 105 "lexer.l"
 reportTok("Assign"); return '=';
 	YY_BREAK
 case 54:
 /* rule 54 can match eol */
 YY_RULE_SETUP
-#line 95 "lexer.l"
+#line 106 "lexer.l"
 reportTok("Comma"); return ',';
 	YY_BREAK
 case 55:
 /* rule 55 can match eol */
 YY_RULE_SETUP
-#line 96 "lexer.l"
+#line 107 "lexer.l"
 reportTok("Period"); return '.';
 	YY_BREAK
 case 56:
 /* rule 56 can match eol */
 YY_RULE_SETUP
-#line 97 "lexer.l"
+#line 108 "lexer.l"
 reportTok("Semicolon"); return ';';
 	YY_BREAK
 case 57:
 /* rule 57 can match eol */
 YY_RULE_SETUP
-#line 98 "lexer.l"
+#line 109 "lexer.l"
 reportTok("Colon"); return ':';
 	YY_BREAK
 case 58:
 /* rule 58 can match eol */
 YY_RULE_SETUP
-#line 99 "lexer.l"
+#line 110 "lexer.l"
 reportTok("Not"); return '!';
 	YY_BREAK
 case 59:
 /* rule 59 can match eol */
 YY_RULE_SETUP
-#line 100 "lexer.l"
+#line 111 "lexer.l"
 reportTok("Less"); return '<';
 	YY_BREAK
 case 60:
 /* rule 60 can match eol */
 YY_RULE_SETUP
-#line 101 "lexer.l"
+#line 112 "lexer.l"
 reportTok("Greater"); return '>';
 	YY_BREAK
 case 61:
 /* rule 61 can match eol */
 YY_RULE_SETUP
-#line 102 "lexer.l"
+#line 113 "lexer.l"
 reportTok("And"); return '&';
 	YY_BREAK
 case 62:
 /* rule 62 can match eol */
 YY_RULE_SETUP
-#line 103 "lexer.l"
+#line 114 "lexer.l"
 reportTok("Or"); return '|';
 	YY_BREAK
 case 63:
 /* rule 63 can match eol */
 YY_RULE_SETUP
-#line 104 "lexer.l"
+#line 115 "lexer.l"
 reportTok("Left Paren"); return '(';
 	YY_BREAK
 case 64:
 /* rule 64 can match eol */
 YY_RULE_SETUP
-#line 105 "lexer.l"
+#line 116 "lexer.l"
 reportTok("Right Paren"); return ')';
 	YY_BREAK
 case 65:
 /* rule 65 can match eol */
 YY_RULE_SETUP
-#line 106 "lexer.l"
+#line 117 "lexer.l"
 reportTok("Left Square"); return '[';
 	YY_BREAK
 case 66:
 /* rule 66 can match eol */
 YY_RULE_SETUP
-#line 107 "lexer.l"
+#line 118 "lexer.l"
 reportTok("Right Square"); return ']';
 	YY_BREAK
 case 67:
 /* rule 67 can match eol */
 YY_RULE_SETUP
-#line 108 "lexer.l"
+#line 119 "lexer.l"
 reportTok("Left Curly"); return '{';
 	YY_BREAK
 case 68:
 /* rule 68 can match eol */
 YY_RULE_SETUP
-#line 109 "lexer.l"
+#line 120 "lexer.l"
 reportTok("Right Curly"); return '}';
 	YY_BREAK
 case 69:
 /* rule 69 can match eol */
 YY_RULE_SETUP
-#line 110 "lexer.l"
+#line 121 "lexer.l"
 reportTok("Add"); return '+';
 	YY_BREAK
 case 70:
 /* rule 70 can match eol */
 YY_RULE_SETUP
-#line 111 "lexer.l"
+#line 122 "lexer.l"
 reportTok("Subtract"); return '-';
 	YY_BREAK
 case 71:
 /* rule 71 can match eol */
 YY_RULE_SETUP
-#line 112 "lexer.l"
+#line 123 "lexer.l"
 reportTok("Multiply"); return '*';
 	YY_BREAK
 case 72:
 /* rule 72 can match eol */
 YY_RULE_SETUP
-#line 113 "lexer.l"
+#line 124 "lexer.l"
 reportTok("Division"); return '/';
 	YY_BREAK
 case 73:
 /* rule 73 can match eol */
 YY_RULE_SETUP
-#line 114 "lexer.l"
+#line 125 "lexer.l"
 reportTok("Mod"); return '%';
 	YY_BREAK
 /* Literals, newline, and unaccepted characters */
 case 74:
 /* rule 74 can match eol */
 YY_RULE_SETUP
-#line 121 "lexer.l"
+#line 132 "lexer.l"
 reportTok("Integer Literal"); return INTLIT;
 	YY_BREAK
 case 75:
 /* rule 75 can match eol */
 YY_RULE_SETUP
-#line 122 "lexer.l"
+#line 133 "lexer.l"
 SAVE_TOKEN; reportTok("Identifier"); return ID;
 	YY_BREAK
 case 76:
 /* rule 76 can match eol */
 YY_RULE_SETUP
-#line 123 "lexer.l"
+#line 134 "lexer.l"
 SAVE_TOKEN; reportTok("String Literal"); return STRINGLIT;
 	YY_BREAK
 case 77:
 /* rule 77 can match eol */
 YY_RULE_SETUP
-#line 124 "lexer.l"
+#line 135 "lexer.l"
 SAVE_TOKEN; reportTok("Char Literal"); return CHARLIT;
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 125 "lexer.l"
+#line 136 "lexer.l"
 yyerror("Token not recognized");
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 126 "lexer.l"
+#line 137 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1722 "lex.yy.c"
+#line 1733 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2735,4 +2746,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 126 "lexer.l"
+#line 137 "lexer.l"

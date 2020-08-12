@@ -12,6 +12,6 @@ Visitor* AstNode::accept(Visitor* v){
 }
 
 void AstNode::printLoc(){
-    printf(" LINE %d", row);
+    printf(" LINE %d.%d", row, col);
 }
  
