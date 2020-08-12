@@ -549,7 +549,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  25
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  73
+#define YYNRULES  75
 /* YYNSTATES -- Number of states.  */
 #define YYNSTATES  144
 
@@ -604,13 +604,13 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint16 yyrline[] =
 {
        0,   202,   202,   207,   208,   211,   212,   213,   214,   218,
-     219,   223,   224,   228,   232,   236,   237,   238,   242,   246,
-     247,   252,   256,   257,   261,   262,   266,   267,   268,   272,
-     273,   274,   275,   276,   277,   281,   282,   283,   287,   288,
-     289,   290,   294,   295,   300,   301,   305,   306,   307,   308,
-     313,   314,   315,   330,   331,   332,   333,   334,   335,   336,
-     337,   338,   339,   340,   344,   345,   346,   347,   348,   349,
-     353,   354,   358,   359
+     219,   223,   224,   225,   229,   233,   237,   238,   239,   243,
+     247,   248,   253,   257,   258,   262,   263,   267,   268,   269,
+     273,   274,   275,   276,   277,   278,   282,   283,   284,   288,
+     289,   290,   291,   295,   296,   301,   302,   306,   307,   308,
+     309,   314,   315,   316,   331,   332,   333,   334,   335,   336,
+     337,   338,   339,   340,   341,   345,   346,   347,   348,   349,
+     350,   354,   355,   359,   360,   361
 };
 #endif
 
@@ -630,11 +630,11 @@ static const char *const yytname[] =
   "_transient", "_try", "_volatile", "'!'", "'%'", "'&'", "'*'", "'('",
   "')'", "'{'", "'}'", "'-'", "'+'", "'='", "'['", "']'", "'|'", "'<'",
   "','", "'>'", "'.'", "';'", "'/'", "':'", "ID", "INTLIT", "STRINGLIT",
-  "CHARLIT", "$accept", "program", "class-decl-list", "type", "class-decl",
-  "decl-in-class-list", "decl-in-class", "method-decl", "stmt-decl-list",
-  "stmt-decl", "stmt", "exp", "exp8", "exp7", "exp6", "exp5", "exp4",
-  "exp3", "exp2", "cast-exp", "unary-exp", "exp1", "callExp", "exp-list",
-  "empty-bracket-list", YY_NULLPTR
+  "CHARLIT", "$accept", "program", "class-decl-1plus", "type",
+  "class-decl", "decl-in-class-0plus", "decl-in-class", "method-decl",
+  "stmt-decl-0plus", "stmt-decl", "stmt", "exp", "exp8", "exp7", "exp6",
+  "exp5", "exp4", "exp3", "exp2", "cast-exp", "unary-exp", "exp1",
+  "callExp", "exp-list", "empty-bracket-list", YY_NULLPTR
 };
 #endif
 
@@ -690,21 +690,21 @@ static const yytype_int16 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     0,     0,     2,     3,     0,     1,     4,     0,     0,
-       0,     0,     0,    11,    13,     0,     0,     9,    12,     0,
-       0,    10,     0,     0,    15,     0,    15,     0,    16,    18,
-       0,     0,    14,    17,    58,    59,    60,     0,    61,     0,
-       0,     0,     0,     0,    50,    54,    56,    62,     0,    21,
-      23,    25,    28,    34,    37,    41,    42,    43,    49,    55,
-      19,     0,     6,     5,     7,     0,     0,    47,    50,     0,
-       0,    46,    48,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     2,     3,     0,     1,     4,     0,    11,
+       0,     0,     0,    12,    14,    11,     0,     9,    13,     0,
+       0,    10,     0,     0,    16,     0,    16,     0,    17,    19,
+       0,     0,    15,    18,    59,    60,    61,     0,    62,     0,
+       0,     0,     0,     0,    51,    55,    57,    63,     0,    22,
+      24,    26,    29,    35,    38,    42,    43,    44,    50,    56,
+      20,     0,     6,     5,     7,     0,     0,    48,    51,     0,
+       0,    47,    49,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    63,    64,    70,     0,    20,     0,
-       0,     0,     0,    33,     0,    29,     0,    30,    36,    35,
-      40,    38,    39,     0,    57,     0,    53,     8,     0,    44,
-      45,    65,     0,    22,    24,    27,    26,    31,    32,    51,
-       0,    66,     0,     0,    71,    68,     0,    67,     0,    52,
-      69,    72,     0,    73
+       0,     0,     0,     0,    64,    65,    71,     0,    21,     0,
+       0,     0,     0,    34,     0,    30,     0,    31,    37,    36,
+      41,    39,    40,     0,    58,     0,    54,     8,     0,    45,
+      46,    66,     0,    23,    25,    28,    27,    32,    33,    52,
+       0,    67,     0,    73,    72,    69,     0,    68,     0,    53,
+      70,    74,     0,    75
 };
 
   /* YYPGOTO[NTERM-NUM].  */
@@ -821,26 +821,26 @@ static const yytype_uint8 yystos[] =
 static const yytype_uint8 yyr1[] =
 {
        0,    80,    81,    82,    82,    83,    83,    83,    83,    84,
-      84,    85,    85,    86,    87,    88,    88,    88,    89,    90,
-      90,    91,    92,    92,    93,    93,    94,    94,    94,    95,
-      95,    95,    95,    95,    95,    96,    96,    96,    97,    97,
-      97,    97,    98,    98,    99,    99,   100,   100,   100,   100,
-     101,   101,   101,   101,   101,   101,   101,   101,   101,   101,
-     101,   101,   101,   101,   102,   102,   102,   102,   102,   102,
-     103,   103,   104,   104
+      84,    85,    85,    85,    86,    87,    88,    88,    88,    89,
+      90,    90,    91,    92,    92,    93,    93,    94,    94,    94,
+      95,    95,    95,    95,    95,    95,    96,    96,    96,    97,
+      97,    97,    97,    98,    98,    99,    99,   100,   100,   100,
+     100,   101,   101,   101,   101,   101,   101,   101,   101,   101,
+     101,   101,   101,   101,   101,   102,   102,   102,   102,   102,
+     102,   103,   103,   104,   104,   104
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     1,     1,     2,     1,     1,     1,     3,     5,
-       7,     1,     2,     1,     8,     0,     1,     2,     1,     3,
-       5,     1,     4,     1,     4,     1,     4,     4,     1,     3,
-       3,     4,     4,     3,     1,     3,     3,     1,     3,     3,
-       3,     1,     1,     1,     4,     4,     2,     2,     2,     1,
-       1,     4,     6,     4,     1,     1,     1,     3,     1,     1,
-       1,     1,     1,     3,     3,     4,     5,     6,     5,     6,
-       1,     3,     2,     3
+       7,     0,     1,     2,     1,     8,     0,     1,     2,     1,
+       3,     5,     1,     4,     1,     4,     1,     4,     4,     1,
+       3,     3,     4,     4,     3,     1,     3,     3,     1,     3,
+       3,     3,     1,     1,     1,     4,     4,     2,     2,     2,
+       1,     1,     4,     6,     4,     1,     1,     1,     3,     1,
+       1,     1,     1,     1,     3,     3,     4,     5,     6,     5,
+       6,     1,     3,     0,     2,     3
 };
 
 
@@ -1677,192 +1677,192 @@ yyreduce:
 
   case 11:
 #line 223 "parser.y" /* yacc.c:1646  */
-    { (yyval.NDeclList) = new DeclList(); (yyval.NDeclList)->push_back((yyvsp[0].NDecl)); }
+    { (yyval.NDeclList) = new DeclList(); }
 #line 1682 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 224 "parser.y" /* yacc.c:1646  */
-    { (yyvsp[-1].NDeclList)->push_back((yyvsp[0].NDecl)); }
+    { (yyval.NDeclList) = new DeclList(); (yyval.NDeclList)->push_back((yyvsp[0].NDecl)); }
 #line 1688 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 228 "parser.y" /* yacc.c:1646  */
-    { (yyval.NDecl) = (yyvsp[0].NDecl); }
+#line 225 "parser.y" /* yacc.c:1646  */
+    { (yyvsp[-1].NDeclList)->push_back((yyvsp[0].NDecl)); }
 #line 1694 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 232 "parser.y" /* yacc.c:1646  */
-    { (yyval.NDecl) = new MethodDeclVoid(ROW((yyloc)), COL((yyloc)), *(yyvsp[-5].Str), new VarDeclList(), (yyvsp[-1].NStatementList)); }
+#line 229 "parser.y" /* yacc.c:1646  */
+    { (yyval.NDecl) = (yyvsp[0].NDecl); }
 #line 1700 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 236 "parser.y" /* yacc.c:1646  */
-    { (yyval.NStatementList) = new StatementList(); }
+#line 233 "parser.y" /* yacc.c:1646  */
+    { (yyval.NDecl) = new MethodDeclVoid(ROW((yyloc)), COL((yyloc)), *(yyvsp[-5].Str), new VarDeclList(), (yyvsp[-1].NStatementList)); }
 #line 1706 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 237 "parser.y" /* yacc.c:1646  */
-    { (yyval.NStatementList) = new StatementList(); (yyval.NStatementList)->push_back((yyvsp[0].NStatement)); }
+    { (yyval.NStatementList) = new StatementList(); }
 #line 1712 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
 #line 238 "parser.y" /* yacc.c:1646  */
-    { (yyvsp[-1].NStatementList)->push_back((yyvsp[0].NStatement)); }
+    { (yyval.NStatementList) = new StatementList(); (yyval.NStatementList)->push_back((yyvsp[0].NStatement)); }
 #line 1718 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 242 "parser.y" /* yacc.c:1646  */
-    { (yyval.NStatement) = (yyvsp[0].NStatement); }
+#line 239 "parser.y" /* yacc.c:1646  */
+    { (yyvsp[-1].NStatementList)->push_back((yyvsp[0].NStatement)); }
 #line 1724 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 246 "parser.y" /* yacc.c:1646  */
-    { (yyval.NStatement) = new Block(ROW((yyloc)), COL((yyloc)), (yyvsp[-1].NStatementList)); }
+#line 243 "parser.y" /* yacc.c:1646  */
+    { (yyval.NStatement) = (yyvsp[0].NStatement); }
 #line 1730 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
 #line 247 "parser.y" /* yacc.c:1646  */
-    { (yyval.NStatement) = new If(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NStatement), new Block(ROW((yyloc)), COL((yyloc)), new StatementList()));}
+    { (yyval.NStatement) = new Block(ROW((yyloc)), COL((yyloc)), (yyvsp[-1].NStatementList)); }
 #line 1736 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 252 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+#line 248 "parser.y" /* yacc.c:1646  */
+    { (yyval.NStatement) = new If(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NStatement), new Block(ROW((yyloc)), COL((yyloc)), new StatementList()));}
 #line 1742 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 256 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Or(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
+#line 253 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1748 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
 #line 257 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new Or(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
 #line 1754 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 261 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new And((yyloc).first_line, COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
+#line 258 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1760 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
 #line 262 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new And((yyloc).first_line, COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
 #line 1766 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 266 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Equals(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
+#line 263 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1772 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
 #line 267 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new Equals(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
+    { (yyval.NExp) = new Equals(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp)); }
 #line 1778 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
 #line 268 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new Equals(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
 #line 1784 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 272 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new LessThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+#line 269 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1790 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
 #line 273 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new GreaterThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new LessThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1796 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
 #line 274 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new GreaterThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
+    { (yyval.NExp) = new GreaterThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1802 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
 #line 275 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new LessThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
+    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new GreaterThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
 #line 1808 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
 #line 276 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new InstanceOf(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), new IdentifierType(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str))); }
+    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), new LessThan(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[0].NExp))); }
 #line 1814 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
 #line 277 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new InstanceOf(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), new IdentifierType(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str))); }
 #line 1820 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 281 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Plus(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+#line 278 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1826 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
 #line 282 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Minus(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new Plus(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1832 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
 #line 283 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new Minus(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1838 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 287 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Times(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+#line 284 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1844 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
 #line 288 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Divide(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new Times(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1850 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
 #line 289 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Remainder(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new Divide(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1856 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
 #line 290 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new Remainder(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), (yyvsp[0].NExp)); }
 #line 1862 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 294 "parser.y" /* yacc.c:1646  */
+#line 291 "parser.y" /* yacc.c:1646  */
     { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1868 "parser.tab.c" /* yacc.c:1646  */
     break;
@@ -1874,8 +1874,8 @@ yyreduce:
     break;
 
   case 44:
-#line 300 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Cast(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NType), (yyvsp[0].NExp)); }
+#line 296 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1880 "parser.tab.c" /* yacc.c:1646  */
     break;
 
@@ -1886,43 +1886,49 @@ yyreduce:
     break;
 
   case 46:
-#line 305 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Minus(ROW((yyloc)), COL((yyloc)), new IntegerLiteral(ROW((yyloc)), COL((yyloc)), 0), (yyvsp[0].NExp)); }
+#line 302 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Cast(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NType), (yyvsp[0].NExp)); }
 #line 1892 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
 #line 306 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new Minus(ROW((yyloc)), COL((yyloc)), new IntegerLiteral(ROW((yyloc)), COL((yyloc)), 0), (yyvsp[0].NExp)); }
 #line 1898 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
 #line 307 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Plus(ROW((yyloc)), COL((yyloc)), new IntegerLiteral(ROW((yyloc)), COL((yyloc)), 0), (yyvsp[0].NExp)); }
+    { (yyval.NExp) = new Not(ROW((yyloc)), COL((yyloc)), (yyvsp[0].NExp)); }
 #line 1904 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
 #line 308 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new Plus(ROW((yyloc)), COL((yyloc)), new IntegerLiteral(ROW((yyloc)), COL((yyloc)), 0), (yyvsp[0].NExp)); }
 #line 1910 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 313 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IdentifierExp(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str)); }
+#line 309 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1916 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
 #line 314 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new ArrayLookup(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[-1].NExp)); }
+    { (yyval.NExp) = new IdentifierExp(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str)); }
 #line 1922 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 316 "parser.y" /* yacc.c:1646  */
+#line 315 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new ArrayLookup(ROW((yyloc)), COL((yyloc)), (yyvsp[-3].NExp), (yyvsp[-1].NExp)); }
+#line 1928 "parser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 53:
+#line 317 "parser.y" /* yacc.c:1646  */
     { 
 		if((yyvsp[0].Int) > 0){
 			Type* arrayType = new ArrayType(ROW((yyloc)), COL((yyloc)), (yyvsp[-4].NType));
@@ -1937,137 +1943,143 @@ yyreduce:
 			(yyval.NExp) = new NewArray(ROW((yyloc)), COL((yyloc)), (yyvsp[-4].NType), (yyvsp[-2].NExp));
 		}
 	}
-#line 1941 "parser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 53:
-#line 330 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new NewObject(ROW((yyloc)), COL((yyloc)), new IdentifierType(ROW((yyloc)), COL((yyloc)), *(yyvsp[-2].Str))); }
 #line 1947 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
 #line 331 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IntegerLiteral(ROW((yyloc)), COL((yyloc)), atoi((yyvsp[0].Str)->c_str())); }
+    { (yyval.NExp) = new NewObject(ROW((yyloc)), COL((yyloc)), new IdentifierType(ROW((yyloc)), COL((yyloc)), *(yyvsp[-2].Str))); }
 #line 1953 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
 #line 332 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[0].NExp); }
+    { (yyval.NExp) = new IntegerLiteral(ROW((yyloc)), COL((yyloc)), atoi((yyvsp[0].Str)->c_str())); }
 #line 1959 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
 #line 333 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new StringLiteral(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str)); }
+    { (yyval.NExp) = (yyvsp[0].NExp); }
 #line 1965 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
 #line 334 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new InstVarAccess(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), *(yyvsp[0].Str)); }
+    { (yyval.NExp) = new StringLiteral(ROW((yyloc)), COL((yyloc)), *(yyvsp[0].Str)); }
 #line 1971 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
 #line 335 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new This(ROW((yyloc)), COL((yyloc))); }
+    { (yyval.NExp) = new InstVarAccess(ROW((yyloc)), COL((yyloc)), (yyvsp[-2].NExp), *(yyvsp[0].Str)); }
 #line 1977 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
 #line 336 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new False(ROW((yyloc)), COL((yyloc))); }
+    { (yyval.NExp) = new This(ROW((yyloc)), COL((yyloc))); }
 #line 1983 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
 #line 337 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new True(ROW((yyloc)), COL((yyloc))); }
+    { (yyval.NExp) = new False(ROW((yyloc)), COL((yyloc))); }
 #line 1989 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
 #line 338 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Null(ROW((yyloc)), COL((yyloc))); }
+    { (yyval.NExp) = new True(ROW((yyloc)), COL((yyloc))); }
 #line 1995 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
 #line 339 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new IntegerLiteral(ROW((yyloc)), COL((yyloc)), int(*((yyvsp[0].Str)->c_str()))); }
+    { (yyval.NExp) = new Null(ROW((yyloc)), COL((yyloc))); }
 #line 2001 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
 #line 340 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = (yyvsp[-1].NExp); }
+    { (yyval.NExp) = new IntegerLiteral(ROW((yyloc)), COL((yyloc)), int(*((yyvsp[0].Str)->c_str()))); }
 #line 2007 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 344 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new This(ROW((yyloc)), COL((yyloc))), *(yyvsp[-2].Str), new ExpList()); }
+#line 341 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = (yyvsp[-1].NExp); }
 #line 2013 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
 #line 345 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new This(ROW((yyloc)), COL((yyloc))), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new This(ROW((yyloc)), COL((yyloc))), *(yyvsp[-2].Str), new ExpList()); }
 #line 2019 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
 #line 346 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new Super(ROW((yyloc)), COL((yyloc))), *(yyvsp[-2].Str), new ExpList()); }
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new This(ROW((yyloc)), COL((yyloc))), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
 #line 2025 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
 #line 347 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new Super(ROW((yyloc)), COL((yyloc))), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new Super(ROW((yyloc)), COL((yyloc))), *(yyvsp[-2].Str), new ExpList()); }
 #line 2031 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
 #line 348 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), (yyvsp[-4].NExp), *(yyvsp[-2].Str), new ExpList()); }
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), new Super(ROW((yyloc)), COL((yyloc))), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
 #line 2037 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
 #line 349 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), (yyvsp[-5].NExp), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), (yyvsp[-4].NExp), *(yyvsp[-2].Str), new ExpList()); }
 #line 2043 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 353 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExpList) = new ExpList(); (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
+#line 350 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExp) = new Call(ROW((yyloc)), COL((yyloc)), (yyvsp[-5].NExp), *(yyvsp[-3].Str), (yyvsp[-1].NExpList)); }
 #line 2049 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
 #line 354 "parser.y" /* yacc.c:1646  */
-    { (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
+    { (yyval.NExpList) = new ExpList(); (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
 #line 2055 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 358 "parser.y" /* yacc.c:1646  */
-    { (yyval.Int) = 1; }
+#line 355 "parser.y" /* yacc.c:1646  */
+    { (yyval.NExpList)->push_back((yyvsp[0].NExp)); }
 #line 2061 "parser.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
 #line 359 "parser.y" /* yacc.c:1646  */
-    { (yyvsp[-2].Int)++; }
+    { (yyval.Int) = 0;}
 #line 2067 "parser.tab.c" /* yacc.c:1646  */
     break;
 
+  case 74:
+#line 360 "parser.y" /* yacc.c:1646  */
+    { (yyval.Int) = 1; }
+#line 2073 "parser.tab.c" /* yacc.c:1646  */
+    break;
 
-#line 2071 "parser.tab.c" /* yacc.c:1646  */
+  case 75:
+#line 361 "parser.y" /* yacc.c:1646  */
+    { ++(yyval.Int); }
+#line 2079 "parser.tab.c" /* yacc.c:1646  */
+    break;
+
+
+#line 2083 "parser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2302,7 +2314,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 363 "parser.y" /* yacc.c:1906  */
+#line 365 "parser.y" /* yacc.c:1906  */
 
 int main(int argc, char **argv){
 	// open file

@@ -181,11 +181,11 @@
 %token CHARLIT
 
 %type <NClassDecl> class-decl
-%type <NClassDeclList> class-decl-list
-%type <NDeclList> decl-in-class-list
+%type <NClassDeclList> class-decl-1plus
+%type <NDeclList> decl-in-class-0plus
 %type <Str> ID STRINGLIT INTLIT CHARLIT
 %type <NDecl> decl-in-class method-decl
-%type <NStatementList> stmt-decl-list
+%type <NStatementList> stmt-decl-0plus
 %type <NStatement> stmt-decl stmt
 %type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp
 %type <NExpList> exp-list
@@ -199,13 +199,12 @@
 %%
 
 program:
-	class-decl-list { RootProgram = new Program(@$.first_line, COL(@$), $1); 
-	assert(RootProgram != nullptr);}
+	class-decl-1plus { RootProgram = new Program(@$.first_line, COL(@$), $1); }
 ;
 
-class-decl-list:
+class-decl-1plus:
 	class-decl { $$ = new ClassDeclList(); $$->push_back($1); }
-|	class-decl-list class-decl { $1->push_back($2); }
+|	class-decl-1plus class-decl { $1->push_back($2); }
 
 type:
 	_int { $$ = new IntegerType(ROW(@$), COL(@$)); }
@@ -215,13 +214,14 @@ type:
 ;
 
 class-decl:
-	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, "Object", $4); }
-|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, *$4, $6); }	
+	_class ID '{' decl-in-class-0plus '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, "Object", $4); }
+|	_class ID _extends ID '{' decl-in-class-0plus '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, *$4, $6); }	
 ;
 
-decl-in-class-list:
-	decl-in-class { $$ = new DeclList(); $$->push_back($1); }
-|	decl-in-class-list decl-in-class { $1->push_back($2); }
+decl-in-class-0plus:
+	%empty { $$ = new DeclList(); }
+|	decl-in-class { $$ = new DeclList(); $$->push_back($1); }
+|	decl-in-class-0plus decl-in-class { $1->push_back($2); }
 ;
 
 decl-in-class:
@@ -229,13 +229,13 @@ decl-in-class:
 ;
 
 method-decl:
-	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(ROW(@$), COL(@$), *$3, new VarDeclList(), $7); }
+	_public _void ID '(' ')' '{' stmt-decl-0plus '}' { $$ = new MethodDeclVoid(ROW(@$), COL(@$), *$3, new VarDeclList(), $7); }
 ;
 
-stmt-decl-list:
+stmt-decl-0plus:
 	%empty { $$ = new StatementList(); }
 |	stmt-decl { $$ = new StatementList(); $$->push_back($1); }
-|	stmt-decl-list stmt-decl  { $1->push_back($2); }
+|	stmt-decl-0plus stmt-decl  { $1->push_back($2); }
 ;
 
 stmt-decl:
@@ -243,7 +243,7 @@ stmt-decl:
 ;
 
 stmt:
-	'{' stmt-decl-list '}' { $$ = new Block(ROW(@$), COL(@$), $2); }
+	'{' stmt-decl-0plus '}' { $$ = new Block(ROW(@$), COL(@$), $2); }
 |	_if '(' exp ')' stmt { $$ = new If(ROW(@$), COL(@$), $3, $5, new Block(ROW(@$), COL(@$), new StatementList()));}	
 
 ;
@@ -355,8 +355,9 @@ exp-list:
 ;
 
 empty-bracket-list:
-	'[' ']' { $$ = 1; }
-|	empty-bracket-list '[' ']' { $1++; }
+	%empty { $$ = 0;}
+|	'[' ']' { $$ = 1; }
+|	empty-bracket-list '[' ']' { ++$$; }
 ;
 
 
