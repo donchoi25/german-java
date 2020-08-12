@@ -7,7 +7,7 @@
 class Exp;
 class Equals : public BinExp{
 public:
-    Equals(::Exp* ae1, ::Exp* ae2);
+    Equals(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

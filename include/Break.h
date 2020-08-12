@@ -9,7 +9,7 @@ class Break : public Statement{
 public:
     BreakTarget* breakLink;
 
-    Break();
+    Break(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

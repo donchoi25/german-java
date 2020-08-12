@@ -10,7 +10,7 @@ class Block : public Statement{
 public:
     StatementList* stmts;
 
-    Block(StatementList* astmts);
+    Block(int arow, int acol, StatementList* astmts);
 
     virtual Visitor* accept(Visitor* v);
 };

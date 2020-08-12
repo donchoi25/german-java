@@ -1,7 +1,7 @@
 #include "../include/MethodDeclVoid.h"
 
-MethodDeclVoid::MethodDeclVoid(const std::string as, VarDeclList* afl, StatementList* asl) : 
-MethodDecl(as, afl, asl)
+MethodDeclVoid::MethodDeclVoid(int arow, int acol, const std::string as, VarDeclList* afl, StatementList* asl) : 
+MethodDecl(arow, acol, as, afl, asl)
 {}
 
 Visitor* MethodDeclVoid::accept(Visitor* v){

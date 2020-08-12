@@ -1,8 +1,9 @@
 #include "../include/IdentifierExp.h"
 
-IdentifierExp::IdentifierExp(const std::string aname): Exp(),
-                                name(aname),
-                                link(nullptr)   
+IdentifierExp::IdentifierExp(int arow, int acol, const std::string aname) : 
+Exp(arow, acol),
+name(aname),
+link(nullptr)   
 {}
 
 Visitor* IdentifierExp::accept(Visitor* v){

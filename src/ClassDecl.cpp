@@ -1,8 +1,7 @@
 #include "../include/ClassDecl.h"
 
-ClassDecl::ClassDecl(const std::string aname, const std::string 
-        asuperName, DeclList* aDeclList):
-Decl(aname),
+ClassDecl::ClassDecl(int arow, int acol, const std::string aname, const std::string asuperName, DeclList* aDeclList):
+Decl(arow, acol, aname),
 decls(aDeclList),
 superName(asuperName),
 superlink(nullptr)

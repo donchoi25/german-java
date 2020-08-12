@@ -1,8 +1,9 @@
 #include "../include/BinExp.h"
 
-BinExp::BinExp(Exp* aleft, Exp* aright):Exp(), 
-                                        left(aleft),
-                                        right(aright)
+BinExp::BinExp(int arow, int acol, Exp* aleft, Exp* aright):
+Exp(arow, acol), 
+left(aleft),
+right(aright)
 {}
 
 Visitor* BinExp::accept(Visitor* v){

@@ -9,7 +9,7 @@ class Case : public Label{
 public:
     Exp* exp;
 
-    Case(Exp* aexp);
+    Case(int arow, int acol, Exp* aexp);
 
     virtual Exp* labelValue();
 

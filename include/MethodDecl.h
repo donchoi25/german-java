@@ -17,7 +17,7 @@ public:
     int vtableOffset;
     ClassDecl* classDecl;
 
-    MethodDecl(const std::string aname, VarDeclList* aformals, StatementList* astmts);
+    MethodDecl(int arow, int acol, const std::string aname, VarDeclList* aformals, StatementList* astmts);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -1,7 +1,8 @@
 #include "../include/UnExp.h"
 
-UnExp::UnExp(Exp* aexp) : Exp(),
-                          exp(aexp)
+UnExp::UnExp(int arow, int acol, Exp* aexp) : 
+Exp(arow, acol),
+exp(aexp)
 {}
 
 Visitor* UnExp::accept(Visitor* v){

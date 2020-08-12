@@ -7,7 +7,7 @@
 class Exp;
 class Or : public BinExp {
 public:
-    Or(::Exp* ae1, ::Exp* ae2);
+    Or(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

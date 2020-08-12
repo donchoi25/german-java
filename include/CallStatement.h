@@ -9,7 +9,7 @@ class CallStatement : public Statement{
 public:
     Call* callExp;
 
-    CallStatement(Call* aexp);
+    CallStatement(int arow, int acol, Call* aexp);
 
     virtual Visitor* accept(Visitor* v);
 };

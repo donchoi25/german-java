@@ -18,7 +18,7 @@ public:
     ClassDeclList* classDecls;
     Statement* mainStatement;
 
-    Program(ClassDeclList* acl);
+    Program(int arow, int acol, ClassDeclList* acl);
 
     virtual Visitor* accept(Visitor* v);
 };

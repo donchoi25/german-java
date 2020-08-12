@@ -1,7 +1,7 @@
 #include "../include/NewObject.h"
 
-NewObject::NewObject(IdentifierType* atype) :
-Exp(),
+NewObject::NewObject(int arow, int acol, IdentifierType* atype) :
+Exp(arow, acol),
 objType(atype)
 {}
 

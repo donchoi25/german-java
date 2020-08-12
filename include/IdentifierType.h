@@ -11,7 +11,7 @@ public:
     std::string name;
     ClassDecl* link;
 
-    IdentifierType(const std::string aname);
+    IdentifierType(int arow, int acol, const std::string aname);
 
     bool equals(Type* obj);
 

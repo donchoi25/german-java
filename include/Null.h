@@ -6,7 +6,7 @@
 
 class Null : public Exp {
 public:
-    Null();
+    Null(int arow, int acol);
 
     Visitor* accept(Visitor* v);
 };

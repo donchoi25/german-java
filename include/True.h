@@ -6,7 +6,7 @@
 
 class True : public Exp{
 public:
-    True();
+    True(int arow, int acol);
 
     Visitor* accept(Visitor* v);
 };

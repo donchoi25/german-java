@@ -1,6 +1,7 @@
 #include "../include/FormalDecl.h"
 
-FormalDecl::FormalDecl(Type* atype, const std::string aname) : VarDecl(atype, aname)
+FormalDecl::FormalDecl(int arow, int acol, Type* atype, const std::string aname) : 
+VarDecl(arow, acol, atype, aname)
 {}
 
 Visitor* FormalDecl::accept(Visitor* v){

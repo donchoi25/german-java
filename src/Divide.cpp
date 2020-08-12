@@ -1,6 +1,7 @@
 #include "../include/Divide.h"
 
-Divide::Divide(::Exp* ae1, ::Exp* ae2) : BinExp(ae1, ae2)
+Divide::Divide(int arow, int acol, ::Exp* ae1, ::Exp* ae2) : 
+BinExp(arow, acol, ae1, ae2)
 {}
 
 Visitor* Divide::accept(Visitor* v){

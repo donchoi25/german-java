@@ -10,7 +10,7 @@ public:
     Exp* sizeExp;
     Type* objType;
 
-    NewArray(Type* atype, Exp* asizeExp);
+    NewArray(int arow, int acol, Type* atype, Exp* asizeExp);
 
     virtual Visitor* accept(Visitor* v);
 };

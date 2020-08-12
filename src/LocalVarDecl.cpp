@@ -1,7 +1,7 @@
 #include "../include/LocalVarDecl.h"
 
-LocalVarDecl::LocalVarDecl(Type* at, const std::string as, Exp* initX) :
-VarDecl(at, as),
+LocalVarDecl::LocalVarDecl(int arow, int acol, Type* at, const std::string as, Exp* initX) :
+VarDecl(arow, acol, at, as),
 initExp(initX)
 {}
 

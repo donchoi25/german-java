@@ -1,7 +1,8 @@
 #include "../include/CallStatement.h"
 
-CallStatement::CallStatement(Call* aexp) : Statement(),
-                                           callExp(aexp)
+CallStatement::CallStatement(int arow, int acol, Call* aexp) : 
+Statement(arow, acol),
+callExp(aexp)
 {}
 
 Visitor* CallStatement::accept(Visitor* v){

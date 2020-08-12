@@ -1,15 +1,15 @@
 #include "../include/Program.h"
 
-Program::Program(ClassDeclList* acl) : 
-AstNode()
+Program::Program(int arow, int acol, ClassDeclList* acl) : 
+AstNode(arow, acol)
 {
-    IdentifierType* mainType = new IdentifierType("Main");
+    IdentifierType* mainType = new IdentifierType(arow, acol, "Main");
 
-    Exp* newExp = new NewObject(mainType);
+    Exp* newExp = new NewObject(arow, acol, mainType);
 
-    Call* callExp = new Call(newExp, "main", new ExpList());
+    Call* callExp = new Call(arow, acol, newExp, "main", new ExpList());
 
-    mainStatement = new CallStatement(callExp);
+    mainStatement = new CallStatement(arow, acol, callExp);
 
     classDecls = acl;
 }

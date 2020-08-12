@@ -9,7 +9,7 @@ public:
     Exp* left;
     Exp* right;
 
-    BinExp(Exp* aleft, Exp* aright);
+    BinExp(int arow, int acol, Exp* aleft, Exp* aright);
 
     virtual Visitor* accept(Visitor* v);
 };

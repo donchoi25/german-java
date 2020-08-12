@@ -1,7 +1,7 @@
 #include "../include/Switch.h"
 
-Switch::Switch(Exp* aexp, StatementList* astmts) :
-BreakTarget(),
+Switch::Switch(int arow, int acol, Exp* aexp, StatementList* astmts) :
+BreakTarget(arow, acol),
 exp(aexp),
 stmts(astmts)
 {}

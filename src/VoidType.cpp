@@ -1,8 +1,8 @@
 #include "../include/VoidType.h"
 #include "../include/Helpers.h"
 
-VoidType::VoidType() :
-Type()
+VoidType::VoidType(int arow, int acol) :
+Type(arow, acol)
 {}
 
 bool VoidType::equals(Type* obj){

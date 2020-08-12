@@ -8,7 +8,7 @@ class ArrayType : public Type{
 public:
     Type* baseType;
 
-    ArrayType(Type* base);
+    ArrayType(int arow, int acol, Type* base);
 
     bool equals(Type* obj);
 

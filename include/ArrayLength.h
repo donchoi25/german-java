@@ -7,7 +7,7 @@
 class Exp;
 class ArrayLength : public UnExp{
 public:
-    ArrayLength(::Exp* arrExp);
+    ArrayLength(int arow, int acol, ::Exp* arrExp);
 
     virtual Visitor* accept(Visitor* v);
 };

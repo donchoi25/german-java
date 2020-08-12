@@ -7,7 +7,7 @@
 class Exp;
 class Minus : public BinExp {
 public:
-    Minus(::Exp* ae1, ::Exp* ae2);
+    Minus(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

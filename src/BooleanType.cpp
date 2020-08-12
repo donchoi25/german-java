@@ -1,7 +1,8 @@
 #include "../include/BooleanType.h"
 #include "../include/Helpers.h"
 
-BooleanType::BooleanType() : Type()
+BooleanType::BooleanType(int arow, int acol) : 
+Type(arow, acol)
 {}
 
 bool BooleanType::equals(Type* obj){

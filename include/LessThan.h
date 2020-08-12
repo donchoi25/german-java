@@ -7,7 +7,7 @@
 class Exp;
 class LessThan : public BinExp{
 public:
-    LessThan(::Exp* ae1, ::Exp* ae2);
+    LessThan(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     Visitor* accept(Visitor* v);
 };

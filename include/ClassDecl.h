@@ -21,8 +21,7 @@ public:
     std::map<std::string,InstVarDecl*> instVarTable;
     std::map<std::string,methodDecl*> methodTable;
 
-    ClassDecl(const std::string aname, const std::string 
-        asuperName, DeclList* aDeclList);
+    ClassDecl(int arow, int acol, const std::string aname, const std::string asuperName, DeclList* aDeclList);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -1,7 +1,7 @@
 #include "../include/This.h"
 
-This::This() :
-Exp()
+This::This(int arow, int acol) :
+Exp(arow, acol)
 {}
 
 Visitor* This::accept(Visitor* v){

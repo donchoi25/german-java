@@ -1,7 +1,7 @@
 #include "../include/Not.h"
 
-Not::Not(::Exp* ae) :
-UnExp(ae)
+Not::Not(int arow, int acol, ::Exp* ae) :
+UnExp(arow, acol, ae)
 {}
 
 Visitor* Not::accept(Visitor* v){

@@ -7,7 +7,7 @@
 class Visitor;
 class Statement : public AstNode{
 public:
-    Statement();
+    Statement(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

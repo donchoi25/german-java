@@ -10,7 +10,7 @@ public:
     Type* castType;
     Exp* exp;
 
-    Cast(Type* atype, Exp* aexp);
+    Cast(int arow, int acol, Type* atype, Exp* aexp);
 
     virtual Visitor* accept(Visitor* v);
 };

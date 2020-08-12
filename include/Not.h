@@ -7,7 +7,7 @@
 class Exp;
 class Not : public UnExp {
 public:
-    Not(::Exp* ae);
+    Not(int arow, int acol, ::Exp* ae);
 
     Visitor* accept(Visitor* v);
 };

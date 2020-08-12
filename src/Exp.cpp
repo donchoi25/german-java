@@ -1,8 +1,8 @@
 #include "../include/Exp.h"
 
-Exp::Exp():AstNode(){
-    
-}
+Exp::Exp(int arow, int acol) : 
+AstNode(arow, acol)
+{}
 
 Visitor* Exp::accept(Visitor* v){
     return v->visitExp(this);

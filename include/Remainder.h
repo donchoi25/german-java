@@ -7,7 +7,7 @@
 class Exp;
 class Remainder : public BinExp{
 public:
-    Remainder(::Exp* ae1, ::Exp* ae2);
+    Remainder(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

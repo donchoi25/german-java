@@ -10,7 +10,7 @@ public:
     Exp* exp;
     Type* checkType;
 
-    InstanceOf(Exp* aexp, Type* atype);
+    InstanceOf(int arow, int acol, Exp* aexp, Type* atype);
 
     virtual Visitor* accept(Visitor* v);
 };

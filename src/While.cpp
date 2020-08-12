@@ -1,7 +1,7 @@
 #include "../include/While.h"
 
-While::While(Exp* aexp, Statement* abody) :
-BreakTarget(),
+While::While(int arow, int acol, Exp* aexp, Statement* abody) :
+BreakTarget(arow, acol),
 exp(aexp),
 body(abody)
 {}

@@ -7,7 +7,7 @@
 class Exp;
 class And : public BinExp{
 public:
-    And(::Exp* ae1, ::Exp* ae2);
+    And(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

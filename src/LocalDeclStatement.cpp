@@ -1,7 +1,7 @@
 #include "../include/LocalDeclStatement.h"
 
-LocalDeclStatement::LocalDeclStatement(LocalVarDecl* decl) :
-Statement(),
+LocalDeclStatement::LocalDeclStatement(int arow, int acol, LocalVarDecl* decl) :
+Statement(arow, acol),
 localVarDecl(decl)
 {}
 

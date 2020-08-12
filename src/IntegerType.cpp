@@ -1,8 +1,8 @@
 #include "../include/IntegerType.h"
 #include "../include/Helpers.h"
 
-IntegerType::IntegerType() :
-Type()
+IntegerType::IntegerType(int arow, int acol) :
+Type(arow, acol)
 {}
 
 bool IntegerType::equals(Type* obj){

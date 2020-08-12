@@ -7,7 +7,7 @@
 class Exp;
 class Divide : public BinExp{
 public:
-    Divide(::Exp* ae1, ::Exp* ae2);
+    Divide(int arow, int acol, ::Exp* ae1, ::Exp* ae2);
 
     virtual Visitor* accept(Visitor* v);
 };

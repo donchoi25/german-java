@@ -1,7 +1,7 @@
 #include "../include/InstVarDecl.h"
 
-InstVarDecl::InstVarDecl(Type* atype, const std::string aname) :
-VarDecl(atype, aname)
+InstVarDecl::InstVarDecl(int arow, int acol, Type* atype, const std::string aname) :
+VarDecl(arow, acol, atype, aname)
 {}
 
 Visitor* InstVarDecl::accept(Visitor* v){

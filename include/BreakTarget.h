@@ -8,7 +8,7 @@ class BreakTarget : public Statement{
 public:
     int stackHeight;
 
-    BreakTarget();
+    BreakTarget(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

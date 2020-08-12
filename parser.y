@@ -1,17 +1,20 @@
 %code requires {
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <vector>
-#include <string>
-#include "assert.h"
-#include "include/nodes.h"
+	#include <iostream>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <vector>
+	#include <string>
+	#include "assert.h"
+	#include "include/nodes.h"
 
-extern int yylex();
-extern int yyparse();
-extern FILE* yyin;
+	extern int yylex();
+	extern int yyparse();
+	extern FILE* yyin;
 
-void yyerror(const char* s);
+	#define ROW(node) node .first_line
+	#define COL(node) node .first_column
+
+	void yyerror(const char* s);
 }
 %locations
 
@@ -196,7 +199,7 @@ void yyerror(const char* s);
 %%
 
 program:
-	class-decl-list { RootProgram = new Program($1); 
+	class-decl-list { RootProgram = new Program(@$.first_line, COL(@$), $1); 
 	assert(RootProgram != nullptr);}
 ;
 
@@ -205,15 +208,15 @@ class-decl-list:
 |	class-decl-list class-decl { $1->push_back($2); }
 
 type:
-	_int { $$ = new IntegerType(); }
-|	_boolean { $$ = new BooleanType(); }
-|	ID { $$ = new IdentifierType(*$1); }
-|	type '[' ']' { $$ = new ArrayType($1); }
+	_int { $$ = new IntegerType(ROW(@$), COL(@$)); }
+|	_boolean { $$ = new BooleanType(ROW(@$), COL(@$)); }
+|	ID { $$ = new IdentifierType(ROW(@$), COL(@$), *$1); }
+|	type '[' ']' { $$ = new ArrayType(ROW(@$), COL(@$), $1); }
 ;
 
 class-decl:
-	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, "Object", $4); }
-|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(*$2, *$4, $6); }	
+	_class ID '{' decl-in-class-list '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, "Object", $4); }
+|	_class ID _extends ID '{' decl-in-class-list '}' { $$ = new ClassDecl(ROW(@$), COL(@$), *$2, *$4, $6); }	
 ;
 
 decl-in-class-list:
@@ -226,7 +229,7 @@ decl-in-class:
 ;
 
 method-decl:
-	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(*$3, new VarDeclList(), $7); }
+	_public _void ID '(' ')' '{' stmt-decl-list '}' { $$ = new MethodDeclVoid(ROW(@$), COL(@$), *$3, new VarDeclList(), $7); }
 ;
 
 stmt-decl-list:
@@ -240,8 +243,8 @@ stmt-decl:
 ;
 
 stmt:
-	'{' stmt-decl-list '}' { $$ = new Block($2); }
-|	_if '(' exp ')' stmt { $$ = new If($3, $5, new Block(new StatementList()));}	
+	'{' stmt-decl-list '}' { $$ = new Block(ROW(@$), COL(@$), $2); }
+|	_if '(' exp ')' stmt { $$ = new If(ROW(@$), COL(@$), $3, $5, new Block(ROW(@$), COL(@$), new StatementList()));}	
 
 ;
 
@@ -250,40 +253,40 @@ exp:
 ;
 
 exp8:
-	exp8 '|' '|' exp7 { $$ = new Or($1, $4); }
+	exp8 '|' '|' exp7 { $$ = new Or(ROW(@$), COL(@$), $1, $4); }
 |	exp7 { $$ = $1; }
 ;
 
 exp7:
-	exp7 '&' '&' exp6 { $$ = new And($1, $4); }
+	exp7 '&' '&' exp6 { $$ = new And(@$.first_line, COL(@$), $1, $4); }
 |	exp6 { $$ = $1; }
 ;
 
 exp6: 
-	exp6 '=' '=' exp5 { $$ = new Equals($1, $4); }
-|	exp6 '!' '=' exp5 { $$ = new Not(new Equals($1, $4)); }
+	exp6 '=' '=' exp5 { $$ = new Equals(ROW(@$), COL(@$), $1, $4); }
+|	exp6 '!' '=' exp5 { $$ = new Not(ROW(@$), COL(@$), new Equals(ROW(@$), COL(@$), $1, $4)); }
 |	exp5 { $$ = $1; }
 ;
 
 exp5:
-	exp5 '<' exp4 { $$ = new LessThan($1, $3); }
-|	exp5 '>' exp4 { $$ = new GreaterThan($1, $3); }
-|	exp5 '<' '=' exp4 { $$ = new Not(new GreaterThan($1, $4)); }
-|	exp5 '>' '=' exp4 { $$ = new Not(new LessThan($1, $4)); }
-|	exp5 _instanceof ID { $$ = new InstanceOf($1, new IdentifierType(*$3)); }
+	exp5 '<' exp4 { $$ = new LessThan(ROW(@$), COL(@$), $1, $3); }
+|	exp5 '>' exp4 { $$ = new GreaterThan(ROW(@$), COL(@$), $1, $3); }
+|	exp5 '<' '=' exp4 { $$ = new Not(ROW(@$), COL(@$), new GreaterThan(ROW(@$), COL(@$), $1, $4)); }
+|	exp5 '>' '=' exp4 { $$ = new Not(ROW(@$), COL(@$), new LessThan(ROW(@$), COL(@$), $1, $4)); }
+|	exp5 _instanceof ID { $$ = new InstanceOf(ROW(@$), COL(@$), $1, new IdentifierType(ROW(@$), COL(@$), *$3)); }
 |	exp4 { $$ = $1; }
 ;
 
 exp4:
-	exp4 '+' exp3 { $$ = new Plus($1, $3); }
-|	exp4 '-' exp3 { $$ = new Minus($1, $3); }
+	exp4 '+' exp3 { $$ = new Plus(ROW(@$), COL(@$), $1, $3); }
+|	exp4 '-' exp3 { $$ = new Minus(ROW(@$), COL(@$), $1, $3); }
 |	exp3 { $$ = $1; }
 ;
 
 exp3:
-	exp3 '*' exp2 { $$ = new Times($1, $3); }
-|	exp3 '/' exp2 { $$ = new Divide($1, $3); }
-|	exp3 '%' exp2 { $$ = new Remainder($1, $3); }
+	exp3 '*' exp2 { $$ = new Times(ROW(@$), COL(@$), $1, $3); }
+|	exp3 '/' exp2 { $$ = new Divide(ROW(@$), COL(@$), $1, $3); }
+|	exp3 '%' exp2 { $$ = new Remainder(ROW(@$), COL(@$), $1, $3); }
 |	exp2 { $$ = $1; }
 ;
 
@@ -294,56 +297,56 @@ exp2:
 
 
 cast-exp:
-	'(' type ')' cast-exp { $$ = new Cast($2, $4); }
-|	'(' type ')' exp1 { $$ = new Cast($2, $4); }
+	'(' type ')' cast-exp { $$ = new Cast(ROW(@$), COL(@$), $2, $4); }
+|	'(' type ')' exp1 { $$ = new Cast(ROW(@$), COL(@$), $2, $4); }
 ;
 
 unary-exp:
-	'-' unary-exp { $$ = new Minus(new IntegerLiteral(0), $2); }
-|	'!' unary-exp { $$ = new Not($2); }
-|	'+' unary-exp { $$ = new Plus(new IntegerLiteral(0), $2); }
+	'-' unary-exp { $$ = new Minus(ROW(@$), COL(@$), new IntegerLiteral(ROW(@$), COL(@$), 0), $2); }
+|	'!' unary-exp { $$ = new Not(ROW(@$), COL(@$), $2); }
+|	'+' unary-exp { $$ = new Plus(ROW(@$), COL(@$), new IntegerLiteral(ROW(@$), COL(@$), 0), $2); }
 |	exp1 { $$ = $1; }
 ;
 
 
 exp1:
-	ID { $$ = new IdentifierExp(*$1); }
-|	exp1 '[' exp ']' { $$ = new ArrayLookup($1, $3); }
+	ID { $$ = new IdentifierExp(ROW(@$), COL(@$), *$1); }
+|	exp1 '[' exp ']' { $$ = new ArrayLookup(ROW(@$), COL(@$), $1, $3); }
 |	_new type '[' exp ']' empty-bracket-list 
 	{ 
 		if($6 > 0){
-			Type* arrayType = new ArrayType($2);
+			Type* arrayType = new ArrayType(ROW(@$), COL(@$), $2);
 
 			for(int i = 0; i < $6; ++i){
-				arrayType = new ArrayType(arrayType);
+				arrayType = new ArrayType(ROW(@$), COL(@$), arrayType);
 			}
 
-			$$ = new NewArray(arrayType, $4);
+			$$ = new NewArray(ROW(@$), COL(@$), arrayType, $4);
 		}
 		else{
-			$$ = new NewArray($2, $4);
+			$$ = new NewArray(ROW(@$), COL(@$), $2, $4);
 		}
 	}
-|	_new ID '(' ')' { $$ = new NewObject(new IdentifierType(*$2)); }
-|	INTLIT { $$ = new IntegerLiteral(atoi($1->c_str())); }
+|	_new ID '(' ')' { $$ = new NewObject(ROW(@$), COL(@$), new IdentifierType(ROW(@$), COL(@$), *$2)); }
+|	INTLIT { $$ = new IntegerLiteral(ROW(@$), COL(@$), atoi($1->c_str())); }
 |	callExp { $$ = $1; }
-|	STRINGLIT { $$ = new StringLiteral(*$1); }
-|	exp1 '.' ID { $$ = new InstVarAccess($1, *$3); }
-|	_this { $$ = new This(); }
-|	_false { $$ = new False(); }
-|	_true { $$ = new True(); }
-|	_null { $$ = new Null(); }
-|	CHARLIT { $$ = new IntegerLiteral(int(*($1->c_str()))); }
+|	STRINGLIT { $$ = new StringLiteral(ROW(@$), COL(@$), *$1); }
+|	exp1 '.' ID { $$ = new InstVarAccess(ROW(@$), COL(@$), $1, *$3); }
+|	_this { $$ = new This(ROW(@$), COL(@$)); }
+|	_false { $$ = new False(ROW(@$), COL(@$)); }
+|	_true { $$ = new True(ROW(@$), COL(@$)); }
+|	_null { $$ = new Null(ROW(@$), COL(@$)); }
+|	CHARLIT { $$ = new IntegerLiteral(ROW(@$), COL(@$), int(*($1->c_str()))); }
 |	'(' exp ')' { $$ = $2; }
 ;
 
 callExp:
-	ID '(' ')' { $$ = new Call(new This(), *$1, new ExpList()); }
-|	ID '(' exp-list ')' { $$ = new Call(new This(), *$1, $3); }
-|	_super '.' ID '(' ')' { $$ = new Call(new Super(), *$3, new ExpList()); }
-|	_super '.' ID '(' exp-list ')' { $$ = new Call(new Super(), *$3, $5); }
-|	exp1 '.' ID '(' ')' { $$ = new Call($1, *$3, new ExpList()); }
-|	exp1 '.' ID '(' exp-list ')' { $$ = new Call($1, *$3, $5); }
+	ID '(' ')' { $$ = new Call(ROW(@$), COL(@$), new This(ROW(@$), COL(@$)), *$1, new ExpList()); }
+|	ID '(' exp-list ')' { $$ = new Call(ROW(@$), COL(@$), new This(ROW(@$), COL(@$)), *$1, $3); }
+|	_super '.' ID '(' ')' { $$ = new Call(ROW(@$), COL(@$), new Super(ROW(@$), COL(@$)), *$3, new ExpList()); }
+|	_super '.' ID '(' exp-list ')' { $$ = new Call(ROW(@$), COL(@$), new Super(ROW(@$), COL(@$)), *$3, $5); }
+|	exp1 '.' ID '(' ')' { $$ = new Call(ROW(@$), COL(@$), $1, *$3, new ExpList()); }
+|	exp1 '.' ID '(' exp-list ')' { $$ = new Call(ROW(@$), COL(@$), $1, *$3, $5); }
 ; 
 
 exp-list: 
@@ -387,7 +390,7 @@ int main(int argc, char **argv){
 
 void reportTok(char* out){
 	/* printf("Line %d.%d: %s\n", 
-		yylloc.first_line,yylloc.first_column, out); */
+		yylloc.first_line,yylloc.first_COL(@$)umn, out); */
 }
 
 void yyerror(const char* s) {

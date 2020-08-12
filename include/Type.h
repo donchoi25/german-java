@@ -6,7 +6,7 @@
 
 class Type : public AstNode{
 public:
-    Type();
+    Type(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

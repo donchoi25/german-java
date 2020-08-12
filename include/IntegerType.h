@@ -6,7 +6,7 @@
 
 class IntegerType : public Type{
 public:
-    IntegerType();
+    IntegerType(int arow, int acol);
 
     bool equals(Type* obj);
 

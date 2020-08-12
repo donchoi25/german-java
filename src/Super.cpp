@@ -1,7 +1,7 @@
 #include "../include/Super.h"
 
-Super::Super() :
-Exp()
+Super::Super(int arow, int acol) :
+Exp(arow, acol)
 {}
 
 Visitor* Super::accept(Visitor* v){

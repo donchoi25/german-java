@@ -11,7 +11,7 @@ public:
     Type* type;
     int offset;
 
-    VarDecl(Type* atype, const std::string aname);
+    VarDecl(int arow, int acol, Type* atype, const std::string aname);
 
     virtual Visitor* accept(Visitor* v);
 };

@@ -6,7 +6,7 @@
 
 class False : public Exp{
 public:
-    False();
+    False(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

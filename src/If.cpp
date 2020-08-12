@@ -1,7 +1,7 @@
 #include "../include/If.h"
 
-If::If(Exp* aexp, Statement* atrueStmt, Statement* afalseStmt) : 
-Statement(),
+If::If(int arow, int acol, Exp* aexp, Statement* atrueStmt, Statement* afalseStmt) : 
+Statement(arow, acol),
 exp(aexp),
 trueStmt(atrueStmt),
 falseStmt(afalseStmt)

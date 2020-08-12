@@ -6,7 +6,7 @@
 
 class VoidType : public Type{
 public:
-    VoidType();
+    VoidType(int arow, int acol);
 
     bool equals(Type* obj);
 

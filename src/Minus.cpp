@@ -1,7 +1,7 @@
 #include "../include/Minus.h"
 
-Minus::Minus(::Exp* ae1, ::Exp* ae2) : 
-BinExp(ae1, ae2)
+Minus::Minus(int arow, int acol, ::Exp* ae1, ::Exp* ae2) : 
+BinExp(arow, acol, ae1, ae2)
 {}
 
 Visitor* Minus::accept(Visitor* v){

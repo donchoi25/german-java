@@ -1,8 +1,8 @@
 #include "../include/ArrayLookup.h"
 
-ArrayLookup::ArrayLookup(Exp* aarrExp, Exp* aidxExp) : Exp(),
-                             arrExp(aarrExp),
-                             idxExp(aidxExp)
+ArrayLookup::ArrayLookup(int arow, int acol, Exp* aarrExp, Exp* aidxExp) : Exp(arow, acol),
+arrExp(aarrExp),
+idxExp(aidxExp)
 {}
 
 Visitor* ArrayLookup::accept(Visitor* v){

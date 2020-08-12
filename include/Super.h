@@ -6,7 +6,7 @@
 
 class Super : public Exp{
 public:
-    Super();
+    Super(int arow, int acol);
 
     Visitor* accept(Visitor* v);
 };

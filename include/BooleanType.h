@@ -6,7 +6,7 @@
 
 class BooleanType : public Type{
 public:
-    BooleanType();
+    BooleanType(int arow, int acol);
     
     bool equals(Type* obj);
 

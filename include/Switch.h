@@ -11,7 +11,7 @@ public:
     Exp* exp;
     StatementList* stmts;
 
-    Switch(Exp* aexp, StatementList* astmts);
+    Switch(int arow, int acol, Exp* aexp, StatementList* astmts);
 
     virtual Visitor* accept(Visitor* v);
 };

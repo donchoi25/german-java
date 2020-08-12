@@ -11,7 +11,7 @@ public:
     Exp* exp;
     Statement* body;
 
-    While(Exp* aexp, Statement* abody);
+    While(int arow, int acol, Exp* aexp, Statement* abody);
 
     Visitor* accept(Visitor* v);
 };

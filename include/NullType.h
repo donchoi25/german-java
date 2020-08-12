@@ -6,7 +6,7 @@
 
 class NullType : public Type {
 public:
-    NullType();
+    NullType(int arow, int acol);
 
     bool equals(Type* obj);
 

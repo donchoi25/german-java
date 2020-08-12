@@ -5,10 +5,14 @@
 class Visitor;
 class AstNode {
 private:
+    int row;
+    int col;
 public: 
-    AstNode();
+    AstNode(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
+
+    void printLoc();
 };
 
 #endif

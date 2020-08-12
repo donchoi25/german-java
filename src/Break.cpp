@@ -1,7 +1,8 @@
 #include "../include/Break.h"
 
-Break::Break() : Statement(),
-                 breakLink(nullptr)
+Break::Break(int arow, int acol) : 
+Statement(arow, acol),
+breakLink(nullptr)
 {}
 
 Visitor* Break::accept(Visitor* v){

@@ -9,7 +9,7 @@ class LocalDeclStatement : public Statement{
 public:
     LocalVarDecl* localVarDecl;
 
-    LocalDeclStatement(LocalVarDecl* decl);
+    LocalDeclStatement(int arow, int acol, LocalVarDecl* decl);
 
     Visitor* accept(Visitor* v);
 };

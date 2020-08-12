@@ -1,7 +1,8 @@
 #include "../include/Block.h"
 
-Block::Block(StatementList* astmts):  Statement(),    
-                                               stmts(astmts)
+Block::Block(int arow, int acol, StatementList* astmts):  
+Statement(arow, acol),    
+stmts(astmts)
 {}
 
 Visitor* Block::accept(Visitor* v){

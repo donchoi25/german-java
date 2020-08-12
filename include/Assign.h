@@ -10,7 +10,7 @@ public:
     Exp* lhs;
     Exp* rhs;
 
-    Assign(Exp* alhs, Exp* arhs);
+    Assign(int arow, int acol, Exp* alhs, Exp* arhs);
     
     virtual Visitor* accept(Visitor* v);
 };

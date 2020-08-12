@@ -11,7 +11,7 @@ class Decl : public AstNode{
 public: 
     std::string name;
 
-    Decl(const std::string aname);
+    Decl(int arow, int acol, const std::string aname);
 
     virtual Visitor* accept(Visitor* v);
 };

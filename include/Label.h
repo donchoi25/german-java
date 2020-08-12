@@ -10,7 +10,7 @@ class Label : public Statement{
 public:
     Switch* enclosingSwitch;
 
-    Label();
+    Label(int arow, int acol);
 
     virtual Exp* labelValue() = 0;
 

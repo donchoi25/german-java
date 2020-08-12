@@ -1,8 +1,9 @@
 #include "../include/Cast.h"
 
-Cast::Cast(Type* atype, Exp* aexp) : Exp(),
-                                     castType(atype),
-                                     exp(aexp)          
+Cast::Cast(int arow, int acol, Type* atype, Exp* aexp) : 
+Exp(arow, acol),
+castType(atype),
+exp(aexp)          
 {}
 
 Visitor* Cast::accept(Visitor* v){

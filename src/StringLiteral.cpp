@@ -1,7 +1,7 @@
 #include "../include/StringLiteral.h"
 
-StringLiteral::StringLiteral(const std::string astr) :
-Exp(),
+StringLiteral::StringLiteral(int arow, int acol, const std::string astr) :
+Exp(arow, acol),
 str(astr),
 uniqueCgRep(nullptr)
 {}

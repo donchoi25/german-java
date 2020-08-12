@@ -1,7 +1,7 @@
 #include "../include/IntegerLiteral.h"
 
-IntegerLiteral::IntegerLiteral(int aval) :
-Exp(),
+IntegerLiteral::IntegerLiteral(int arow, int acol, int aval) :
+Exp(arow, acol),
 val(aval)
 {}
 

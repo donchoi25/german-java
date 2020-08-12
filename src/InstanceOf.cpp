@@ -1,7 +1,7 @@
 #include "../include/InstanceOf.h"
 
-InstanceOf::InstanceOf(Exp* aexp, Type* atype) : 
-Exp(),
+InstanceOf::InstanceOf(int arow, int acol, Exp* aexp, Type* atype) : 
+Exp(arow, acol),
 exp(aexp),
 checkType(atype)
 {}

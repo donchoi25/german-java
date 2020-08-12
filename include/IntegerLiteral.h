@@ -8,7 +8,7 @@ class IntegerLiteral : public Exp{
 public:
     int val;
 
-    IntegerLiteral(int aval);
+    IntegerLiteral(int arow, int acol, int aval);
 
     virtual Visitor* accept(Visitor* v);
 };

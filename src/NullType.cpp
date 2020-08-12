@@ -1,8 +1,8 @@
 #include "../include/NullType.h"
 #include "../include/Helpers.h"
 
-NullType::NullType() :
-Type()
+NullType::NullType(int arow, int acol) :
+Type(arow, acol)
 {}
 
 bool NullType::equals(Type* obj){

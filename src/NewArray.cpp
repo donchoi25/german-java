@@ -1,7 +1,7 @@
 #include "../include/NewArray.h"
 
-NewArray::NewArray(Type* atype, Exp* asizeExp) :
-Exp(),
+NewArray::NewArray(int arow, int acol, Type* atype, Exp* asizeExp) :
+Exp(arow, acol),
 objType(atype),
 sizeExp(asizeExp)
 {}

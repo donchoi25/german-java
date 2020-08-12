@@ -9,7 +9,7 @@ class UnExp : public Exp {
 public:
     Exp* exp;
 
-    UnExp(Exp* aexp);
+    UnExp(int arow, int acol, Exp* aexp);
 
     virtual Visitor* accept(Visitor* v);
 

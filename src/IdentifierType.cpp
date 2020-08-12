@@ -1,9 +1,10 @@
 #include "../include/IdentifierType.h"
 #include "../include/Helpers.h"
 
-IdentifierType::IdentifierType(const std::string aname) : Type(),
-                                                    name(aname),
-                                                    link(nullptr)
+IdentifierType::IdentifierType(int arow, int acol, const std::string aname) : 
+Type(arow, acol),
+name(aname),
+link(nullptr)
 {}
 
 bool IdentifierType::equals(Type* obj){

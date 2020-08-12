@@ -9,7 +9,7 @@ class NewObject : public Exp {
 public:
     IdentifierType* objType;
 
-    NewObject(IdentifierType* atype);
+    NewObject(int arow, int acol, IdentifierType* atype);
 
     virtual Visitor* accept(Visitor* v);
 };

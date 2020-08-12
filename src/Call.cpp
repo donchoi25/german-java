@@ -1,10 +1,11 @@
 #include "../include/Call.h"
 
-Call::Call(Exp *aobj, const std::string amethName, ExpList* aparms) : Exp(),
-                                                                obj(aobj),
-                                                                methName(amethName),
-                                                                parms(aparms),
-                                                                methodLink(nullptr)
+Call::Call(int arow, int acol, Exp *aobj, const std::string amethName, ExpList* aparms) : 
+Exp(arow, acol),
+obj(aobj),
+methName(amethName),
+parms(aparms),
+ methodLink(nullptr)
 {}
 
 Visitor* Call::accept(Visitor* v){

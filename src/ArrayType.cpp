@@ -1,8 +1,9 @@
 #include "../include/ArrayType.h"
 #include "../include/Helpers.h"
 
-ArrayType::ArrayType(Type* base) : Type(),
-                                   baseType(base)
+ArrayType::ArrayType(int arow, int acol, Type* base) : 
+Type(arow, acol),
+baseType(base)
 {}
 
 bool ArrayType::equals(Type* obj){

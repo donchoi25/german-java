@@ -1,7 +1,8 @@
 #include "../include/Label.h"
 
-Label::Label() : Statement(),
-                 enclosingSwitch(nullptr)
+Label::Label(int arow, int acol) : 
+Statement(arow, acol),
+enclosingSwitch(nullptr)
 {}
 
 Visitor* Label::accept(Visitor* v){

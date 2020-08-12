@@ -2,9 +2,9 @@
 #include "../include/AstNode.h"
 
 
-Type::Type():AstNode(){
-
-}
+Type::Type(int arow, int acol) :
+AstNode(arow, acol)
+{}
 
 Visitor* Type::accept(Visitor* v){
     return v->visitType(this);

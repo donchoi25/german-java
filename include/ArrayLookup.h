@@ -9,7 +9,7 @@ public:
     Exp* arrExp;
     Exp* idxExp;
 
-    ArrayLookup(Exp* aarrExp, Exp* aidxExp);
+    ArrayLookup(int arow, int acol, Exp* aarrExp, Exp* aidxExp);
 
     virtual Visitor* accept(Visitor* v);
 };

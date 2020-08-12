@@ -1,8 +1,9 @@
 #include "../include/BreakTarget.h"
 #include <bits/stdc++.h>
 
-BreakTarget::BreakTarget() : Statement(),
-                             stackHeight(INT_MIN)
+BreakTarget::BreakTarget(int arow, int acol) : 
+Statement(arow, acol),
+stackHeight(INT_MIN)
 {}
 
 Visitor* BreakTarget::accept(Visitor* v){

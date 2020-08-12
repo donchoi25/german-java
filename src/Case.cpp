@@ -1,7 +1,8 @@
 #include "../include/Case.h"
 
-Case::Case(Exp* aexp) : Label(),
-                        exp(aexp)
+Case::Case(int arow, int acol, Exp* aexp) : 
+Label(arow, acol),
+exp(aexp)
 {}
 
 Exp* Case::labelValue() {

@@ -6,7 +6,7 @@
 
 class Default : public Label{
 public:
-    Default();
+    Default(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };

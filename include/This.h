@@ -6,7 +6,7 @@
 
 class This : public Exp{
 public:
-    This();
+    This(int arow, int acol);
 
     Visitor* accept(Visitor* v);
 };

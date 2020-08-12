@@ -1,7 +1,7 @@
 #include "../include/InstVarAccess.h"
 
-InstVarAccess::InstVarAccess(Exp* aexp, const std::string avarName) :
-Exp(),
+InstVarAccess::InstVarAccess(int arow, int acol, Exp* aexp, const std::string avarName) :
+Exp(arow, acol),
 exp(aexp),
 varName(avarName)
 {}

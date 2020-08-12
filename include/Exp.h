@@ -10,7 +10,7 @@ class Exp : public AstNode{
 public: 
     Type* t;
 
-    Exp();
+    Exp(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);
 };
