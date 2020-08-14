@@ -190,7 +190,7 @@
 %type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp termination 
 %type <NExpList> exp-list
 %type <NType> type
-%type <NVarDeclList> formal-list
+%type <NVarDeclList> formal-list formal-list-extended
 %type <Int> empty-bracket-list
 
 %start program
@@ -240,8 +240,15 @@ method-decl:
 ;
 
 formal-list:
-	type ID ',' { $$ = new VarDeclList(); $$->push_back(new FormalDecl(ROW(@$), COL(@$), $1, *$2)); }
-|	formal-list type ID { $$->push_back(new FormalDecl(ROW(@$), COL(@$), $2, *$3)); }
+	type ID formal-list-extended{ 
+		$3->push_front(new FormalDecl(ROW(@$), COL(@$), $1, *$2));
+		$$ = $3;
+	}
+;
+
+formal-list-extended:
+	',' type ID { $$ = new VarDeclList(); $$->push_back(new FormalDecl(ROW(@$), COL(@$), $2, *$3)); }
+|	formal-list-extended ',' type ID { $$->push_back(new FormalDecl(ROW(@$), COL(@$), $3, *$4)); }
 ;
 
 stmt-decl-0plus:

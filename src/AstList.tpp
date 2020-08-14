@@ -15,5 +15,5 @@ void AstList<T>::push_back(T n){
 
 template <typename T>
 void AstList<T>::push_front(T n){
-    lst.insert(lst.begin, n);
+    lst.insert(lst.begin(), n);
 }
