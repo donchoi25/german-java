@@ -7,5 +7,5 @@ body(abody)
 {}
 
 Visitor* While::accept(Visitor* v){
-    
+    return v->visitWhile(this);
 }

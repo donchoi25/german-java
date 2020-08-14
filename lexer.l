@@ -10,16 +10,16 @@
     //yylloc.first_line = yylloc.last_line = yylineno;
 
     void updateLoc(){
-        yylloc.first_line = yylloc.last_line; \
-        yylloc.first_column = yylloc.last_column; \
-        for(int i = 0; yytext[i] != '\0'; i++) { \
-            if(yytext[i] == '\n') { \
-                yylloc.last_line++; \
-                yylloc.last_column = 0; \
-            } \
-            else { \
-                yylloc.last_column++; \
-            } \
+        yylloc.first_line = yylloc.last_line; 
+        yylloc.first_column = yylloc.last_column; 
+        for(int i = 0; yytext[i] != '\0'; i++) { 
+            if(yytext[i] == '\n') { 
+                yylloc.last_line++; 
+                yylloc.last_column = 0; 
+            } 
+            else { 
+                yylloc.last_column++; 
+            } 
         } 
     }
 
@@ -30,15 +30,15 @@
 %option yylineno
 
 ws	[ \t\n]
-printable [ -~]    
-charprintable   "\\\\"|"\\\""|"\\\'"|"\\n"|"\\t"|"\\f"|"\\r"|{printable}
+stringprintable [ !#-~]
+charprintable   "\\\\"|"\\\""|"\\\'"|"\\n"|"\\t"|"\\f"|"\\r"|[ -&(-~]
 
 letter [a-zA-Z]
 digit [0-9]
-intLit [1-9]{digit}*
+intLit [1-9]{digit}*|0
 idChar  ({letter}|{digit}|"_") 
 ID  {letter}{idChar}*
-STRINGLIT   "\""{printable}*"\"" 
+STRINGLIT   "\""{stringprintable}*"\""
 CHARLIT "\'"{charprintable}"\'"
 %% 
     /* 

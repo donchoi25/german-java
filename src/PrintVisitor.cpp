@@ -17,7 +17,7 @@ level(0)
 
 void PrintVisitor::printLevel(){
     for(int i = 0; i < level; ++i){
-        printf(" ");
+        printf("  ");
     }
 }
         
@@ -228,7 +228,5 @@ Visitor* PrintVisitor::visitVoidType(VoidType* node){
 }
 
 Visitor* PrintVisitor::visitWhile(While* node){
-   
-    
     PRINT(ASTvisitor::visitWhile(node))
 }

@@ -1,0 +1,3 @@
+class Main {
+    boolean b;
+}

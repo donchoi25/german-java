@@ -12,7 +12,7 @@ public:
 
     Label(int arow, int acol);
 
-    virtual Exp* labelValue() = 0;
+    virtual Exp* labelValue();
 
     virtual Visitor* accept(Visitor* v);
 };

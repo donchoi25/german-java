@@ -184,15 +184,14 @@
 %type <NClassDeclList> class-decl-1plus
 %type <NDeclList> decl-in-class-0plus
 %type <Str> ID STRINGLIT INTLIT CHARLIT
-%type <NDecl> decl-in-class method-decl
-%type <NStatementList> stmt-decl-0plus
-%type <NStatement> stmt-decl stmt
-%type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp
+%type <NDecl> decl-in-class method-decl inst-var-decl
+%type <NStatementList> stmt-decl-0plus case-0plus
+%type <NStatement> stmt-decl stmt assign local-var-decl case for initialization increment
+%type <NExp> exp exp8 exp7 exp6 exp5 exp4 exp3 exp2 exp1 cast-exp unary-exp callExp termination 
 %type <NExpList> exp-list
 %type <NType> type
+%type <NVarDeclList> formal-list
 %type <Int> empty-bracket-list
-
-%printer { fprintf(std::cout, "Test"); } <NClassDecl>
 
 %start program
 
@@ -226,10 +225,23 @@ decl-in-class-0plus:
 
 decl-in-class:
 	method-decl { $$ = $1; }
+|	inst-var-decl
+;
+
+inst-var-decl:
+	type ID ';' { $$ = new InstVarDecl(ROW(@$), COL(@$), $1, *$2); }
 ;
 
 method-decl:
 	_public _void ID '(' ')' '{' stmt-decl-0plus '}' { $$ = new MethodDeclVoid(ROW(@$), COL(@$), *$3, new VarDeclList(), $7); }
+|	_public _void ID '(' formal-list ')' '{' stmt-decl-0plus '}' { $$ = new MethodDeclVoid(ROW(@$), COL(@$), *$3, $5, $8); }
+|	_public type ID '(' ')' '{' stmt-decl-0plus _return exp ';' '}' { $$ = new MethodDeclNonVoid(ROW(@$), COL(@$), $2, *$3, new VarDeclList(), $7, $9); }
+|	_public type ID '(' formal-list ')' '{' stmt-decl-0plus _return exp ';' '}' { $$ = new MethodDeclNonVoid(ROW(@$), COL(@$), $2, *$3, $5, $8, $10); }
+;
+
+formal-list:
+	type ID ',' { $$ = new VarDeclList(); $$->push_back(new FormalDecl(ROW(@$), COL(@$), $1, *$2)); }
+|	formal-list type ID { $$->push_back(new FormalDecl(ROW(@$), COL(@$), $2, *$3)); }
 ;
 
 stmt-decl-0plus:
@@ -240,12 +252,94 @@ stmt-decl-0plus:
 
 stmt-decl:
 	stmt { $$ = $1; }
+|	local-var-decl { $$ = $1; }
+;
+
+local-var-decl:
+	type ID '=' exp ';' { $$ = new LocalDeclStatement(ROW(@$), COL(@$), new LocalVarDecl(ROW(@$), COL(@$), $1, *$2, $4)); }
 ;
 
 stmt:
-	'{' stmt-decl-0plus '}' { $$ = new Block(ROW(@$), COL(@$), $2); }
-|	_if '(' exp ')' stmt { $$ = new If(ROW(@$), COL(@$), $3, $5, new Block(ROW(@$), COL(@$), new StatementList()));}	
+	assign ';' { $$ = $1; }
+|	callExp ';' { $$ = new CallStatement(ROW(@$), COL(@$), (Call*)$1); }
+|	';' { $$ = new Block(ROW(@$), COL(@$), new StatementList()); }
+|	_break ';' { $$ = new Break(ROW(@$), COL(@$)); }
+|	'{' stmt-decl-0plus '}' { $$ = new Block(ROW(@$), COL(@$), $2); }
+|	_while '(' exp ')' stmt { $$ = new While(ROW(@$), COL(@$), $3, $5); }
+|	_do stmt _while '(' exp ')' {
+		StatementList* body = new StatementList();
+		body->push_back($2);
+		body->push_back(new If(ROW(@$), COL(@$), new Not(ROW(@$), COL(@$), $5), new Break(ROW(@$), COL(@$)), new Block(ROW(@$), COL(@$), new StatementList())));
 
+		$$ = new While(ROW(@$), COL(@$), new True(ROW(@$), COL(@$)), new Block(ROW(@$), COL(@$), body));
+	}
+|	_switch '(' exp ')' '{' case-0plus '}' { $$ = new Switch(ROW(@$), COL(@$), $3, $6); }
+|	_if '(' exp ')' stmt { $$ = new If(ROW(@$), COL(@$), $3, $5, new Block(ROW(@$), COL(@$), new StatementList())); }
+|	_if '(' exp ')' stmt _else stmt { $$ = new If(ROW(@$), COL(@$), $3, $5, $7); }
+|	for { $$ = $1; }
+;
+
+for:
+	_for '(' initialization ';' termination ';' increment ')' stmt {
+		StatementList* stLst = new StatementList();
+		stLst->push_back($3);
+
+		StatementList* bodyList = new StatementList();
+		bodyList->push_back($9);
+		bodyList->push_back($7);
+		stLst->push_back(new While(ROW(@$), COL(@$), $5, new Block(ROW(@$), COL(@$), bodyList)));
+		$$ = new Block(ROW(@$), COL(@$), stLst);
+	}
+;
+
+initialization:
+	%empty { $$ = new Block(ROW(@$), COL(@$), new StatementList()); }
+|	type ID '=' exp { $$ = new LocalDeclStatement(ROW(@$), COL(@$), new LocalVarDecl(ROW(@$), COL(@$), $1, *$2, $4)); }
+|	assign { $$ = $1; }
+|	callExp { $$ = new CallStatement(ROW(@$), COL(@$), (Call*)$1); }
+;
+
+termination:
+	%empty { $$ = new True(ROW(@$), COL(@$)); }
+|	exp { $$ = $1; }
+;
+
+increment:
+	%empty { $$ = new Block(ROW(@$), COL(@$), new StatementList()); }
+|	assign { $$ = $1; }
+|	callExp { $$ = new CallStatement(ROW(@$), COL(@$), (Call*)$1); }
+;
+
+case-0plus:
+	%empty { $$ = new StatementList(); }
+|	case { $$ = new StatementList(); $$->push_back($1); }
+|	case-0plus case { $1->push_back($2); }
+;
+
+case:
+	stmt { $$ = $1; }
+|	_case exp ':' { $$ = new Case(ROW(@$), COL(@$), $2); }
+|	_default ':' { $$ = new Default(ROW(@$), COL(@$)); }
+;
+
+assign:
+	exp1 '=' exp { $$ = new Assign(ROW(@$), COL(@$), $1, $3); }
+|	ID '+' '+' { 
+		Exp* e = new IdentifierExp(ROW(@$), COL(@$), *$1);
+		$$ = new Assign(ROW(@$), COL(@$), e, new Plus(ROW(@$), COL(@$), e, new IntegerLiteral(ROW(@$), COL(@$), 1)));
+	}
+|	'+' '+' ID {
+		Exp* e = new IdentifierExp(ROW(@$), COL(@$), *$3);
+		$$ = new Assign(ROW(@$), COL(@$), e, new Plus(ROW(@$), COL(@$), e, new IntegerLiteral(ROW(@$), COL(@$), 1)));
+	}
+|	ID '-' '-' {
+		Exp* e = new IdentifierExp(ROW(@$), COL(@$), *$1);
+		$$ = new Assign(ROW(@$), COL(@$), e, new Minus(ROW(@$), COL(@$), e, new IntegerLiteral(ROW(@$), COL(@$), 1))); 
+	}
+|	'-' '-' ID {
+		Exp* e = new IdentifierExp(ROW(@$), COL(@$), *$3);
+		$$ = new Assign(ROW(@$), COL(@$), e, new Minus(ROW(@$), COL(@$), e, new IntegerLiteral(ROW(@$), COL(@$), 1))); 
+	}
 ;
 
 exp:
@@ -258,7 +352,7 @@ exp8:
 ;
 
 exp7:
-	exp7 '&' '&' exp6 { $$ = new And(@$.first_line, COL(@$), $1, $4); }
+	exp7 '&' '&' exp6 { $$ = new And(ROW(@$), COL(@$), $1, $4); }
 |	exp6 { $$ = $1; }
 ;
 
@@ -356,7 +450,7 @@ exp-list:
 
 empty-bracket-list:
 	%empty { $$ = 0;}
-|	'[' ']' { $$ = 1; }
+|	'[' ']' { $$ = 0; }
 |	empty-bracket-list '[' ']' { ++$$; }
 ;
 

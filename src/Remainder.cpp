@@ -5,5 +5,5 @@ BinExp(arow, acol, ae1, ae2)
 {}
 
 Visitor* Remainder::accept(Visitor* v){
-    
+    return v->visitRemainder(this);
 }
