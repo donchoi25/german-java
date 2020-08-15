@@ -1,7 +1,5 @@
 class Def {
   public  void exec() {
-  { 
-  }
-  
+    int name = 'c';
   }
 }

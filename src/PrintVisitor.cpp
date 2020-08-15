@@ -122,7 +122,14 @@ Visitor* PrintVisitor::visitInstVarDecl(InstVarDecl* node){
 }
 
 Visitor* PrintVisitor::visitIntegerLiteral(IntegerLiteral* node){
-    PRINT(ASTvisitor::visitIntegerLiteral(node))
+    printLevel();  
+    printf("%s: %d", typeid(node).name(), node->val);   
+    node->printLoc();   
+    printf("\n");    
+    int rtnVal = level++;   
+    ASTvisitor::visitIntegerLiteral(node); 
+    level = rtnVal; 
+    return nullptr;
 }
 
 Visitor* PrintVisitor::visitIntegerType(IntegerType* node){
@@ -197,8 +204,14 @@ Visitor* PrintVisitor::visitRemainder(Remainder* node){
 }
 
 Visitor* PrintVisitor::visitStringLiteral(StringLiteral* node){
-
-    PRINT(ASTvisitor::visitStringLiteral(node))
+    printLevel();  
+    printf("%s: %s", typeid(node).name(), node->str.c_str());   
+    node->printLoc();   
+    printf("\n");    
+    int rtnVal = level++;   
+    ASTvisitor::visitStringLiteral(node); 
+    level = rtnVal; 
+    return nullptr;
 }
 
 Visitor* PrintVisitor::visitSuper(Super* node){

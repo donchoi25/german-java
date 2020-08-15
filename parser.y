@@ -175,15 +175,12 @@
 %token '/'
 %token ':'
 
-%token ID
-%token INTLIT
-%token STRINGLIT
-%token CHARLIT
+%token <Str> ID INTLIT STRINGLIT CHARLIT
+
 
 %type <NClassDecl> class-decl
 %type <NClassDeclList> class-decl-1plus
 %type <NDeclList> decl-in-class-0plus
-%type <Str> ID STRINGLIT INTLIT CHARLIT
 %type <NDecl> decl-in-class method-decl inst-var-decl
 %type <NStatementList> stmt-decl-0plus case-0plus
 %type <NStatement> stmt-decl stmt assign local-var-decl case for initialization increment
