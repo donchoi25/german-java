@@ -2768,8 +2768,10 @@ int main(int argc, char **argv){
 	fprintf(stderr, "Compiled Successfully\n");
 
 	PrintVisitor* printVisitor = new PrintVisitor();
+	Sem1Visitor* sem1Visitor = new Sem1Visitor();
 
-	RootProgram->accept(printVisitor);
+	printVisitor->visitProgram(RootProgram);
+	sem1Visitor->visitProgram(RootProgram);
 
 	return 0;
 }

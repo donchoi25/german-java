@@ -481,8 +481,14 @@ int main(int argc, char **argv){
 	fprintf(stderr, "Compiled Successfully\n");
 
 	PrintVisitor* printVisitor = new PrintVisitor();
+	Sem1Visitor* sem1Visitor = new Sem1Visitor();
+	Sem2Visitor* sem2Visitor = new Sem2Visitor();
+	Sem3Visitor* sem3Visitor = new Sem3Visitor();
 
-	RootProgram->accept(printVisitor);
+	printVisitor->visitProgram(RootProgram);
+	sem1Visitor->visitProgram(RootProgram);
+	sem2Visitor->visitProgram(RootProgram);
+	sem3Visitor->visitProgram(RootProgram);
 
 	return 0;
 }
