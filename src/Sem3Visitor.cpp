@@ -1,6 +1,7 @@
 #include "../include/Sem3Visitor.h"
 
-Sem3Visitor::Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb){
+Sem3Visitor::Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb, ErrorMsg* aerrorMsg)
+{
 
 }
 

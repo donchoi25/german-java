@@ -4,10 +4,10 @@
 
 class Visitor;
 class AstNode {
-private:
+public: 
     int row;
     int col;
-public: 
+
     AstNode(int arow, int acol);
 
     virtual Visitor* accept(Visitor* v);

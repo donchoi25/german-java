@@ -3,7 +3,9 @@
 
 #include "ASTvisitor.h"
 #include <map>
+#include <vector>
 #include <string>
+#include "ErrorMsg.h"
 
 class Sem1Visitor : public ASTvisitor{
 private:
@@ -13,8 +15,9 @@ private:
 public:
     std::map<std::string,ClassDecl*> globalSymTab;
     ClassDecl* currentClass;
+    ErrorMsg* errorMsg;
     
-    Sem1Visitor();
+    Sem1Visitor(ErrorMsg* aerrorMsg);
 
     std::map<std::string,ClassDecl*> getGlobalSymTab();
 
@@ -22,7 +25,7 @@ public:
 
     static ClassDecl* createClass(std::string name, std::string superName);
 
-    static void addDummyMethod(ClassDecl* dec, std::string methName, std::string rtnTypeName, std::string parmTypeNames[]);
+    static void addDummyMethod(ClassDecl* dec, std::string methName, std::string rtnTypeName, std::vector<std::string> parmTypeNames);
 
     virtual Visitor* visitClassDecl(ClassDecl* n);
 

@@ -24,6 +24,7 @@
 #include "Default.h"
 #include "Divide.h"
 #include "Equals.h"
+#include "ErrorMsg.h"
 #include "Exp.h"
 #include "ExpList.h"
 #include "False.h"

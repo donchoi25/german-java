@@ -5,6 +5,7 @@
 #include <map>
 #include <stack>
 #include <string>
+#include "ErrorMsg.h"
 
 class Sem3Visitor : public ASTvisitor{
 private:
@@ -16,8 +17,9 @@ public:
     ClassDecl* currentClass;
     std::map<std::string, VarDecl*> localSymTab;
     std::stack<BreakTarget*> breakTargetStack;
+    ErrorMsg* errorMsg;
 
-    Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb);
+    Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb, ErrorMsg* aerrorMsg);
 
     virtual Visitor* visitClassDecl(ClassDecl* n);
 

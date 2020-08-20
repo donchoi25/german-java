@@ -49,6 +49,7 @@ extern int yydebug;
 	#include <string>
 	#include "assert.h"
 	#include "include/nodes.h"
+	#include <map>
 
 	extern int yylex();
 	extern int yyparse();
@@ -59,7 +60,7 @@ extern int yydebug;
 
 	void yyerror(const char* s);
 
-#line 63 "parser.tab.h" /* yacc.c:1909  */
+#line 64 "parser.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -130,7 +131,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 29 "parser.y" /* yacc.c:1909  */
+#line 30 "parser.y" /* yacc.c:1909  */
 
 	int Int;
 	std::string* Str;
@@ -202,7 +203,7 @@ union YYSTYPE
 	VoidType* NVoidType;
 	While* NWhile;
 
-#line 206 "parser.tab.h" /* yacc.c:1909  */
+#line 207 "parser.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -229,10 +230,10 @@ extern YYSTYPE yylval;
 extern YYLTYPE yylloc;
 int yyparse (void);
 /* "%code provides" blocks.  */
-#line 21 "parser.y" /* yacc.c:1909  */
+#line 22 "parser.y" /* yacc.c:1909  */
 
 	extern Program* RootProgram;
 
-#line 237 "parser.tab.h" /* yacc.c:1909  */
+#line 238 "parser.tab.h" /* yacc.c:1909  */
 
 #endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */

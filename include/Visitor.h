@@ -71,6 +71,8 @@ class Visitor{
 public:
     Visitor();
 
+    Visitor* visit(AstNode* n);
+
     virtual Visitor* visitAnd(And* node) = 0;
     
     virtual Visitor* visitArrayLength(ArrayLength* node) = 0;

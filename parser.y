@@ -6,6 +6,7 @@
 	#include <string>
 	#include "assert.h"
 	#include "include/nodes.h"
+	#include <map>
 
 	extern int yylex();
 	extern int yyparse();
@@ -478,17 +479,17 @@ int main(int argc, char **argv){
 		yyparse();
 	} while(!feof(yyin));
 
-	fprintf(stderr, "Compiled Successfully\n");
-
 	PrintVisitor* printVisitor = new PrintVisitor();
-	Sem1Visitor* sem1Visitor = new Sem1Visitor();
-	Sem2Visitor* sem2Visitor = new Sem2Visitor();
-	Sem3Visitor* sem3Visitor = new Sem3Visitor();
+	ErrorMsg* errorMsg = new ErrorMsg(argv[1]);
+	Sem1Visitor* sem1Visitor = new Sem1Visitor(errorMsg);
 
-	printVisitor->visitProgram(RootProgram);
-	sem1Visitor->visitProgram(RootProgram);
-	sem2Visitor->visitProgram(RootProgram);
-	sem3Visitor->visitProgram(RootProgram);
+	printVisitor->visit(RootProgram);
+	sem1Visitor->visit(RootProgram);
+	(new Sem2Visitor(sem1Visitor->getGlobalSymTab(), errorMsg))->visit(RootProgram);
+	(new Sem3Visitor(sem1Visitor->getGlobalSymTab(), errorMsg))->visit(RootProgram);
+
+	if(!(errorMsg->anyErrors))
+		printf("Compiled Successfully\n");
 
 	return 0;
 }

@@ -1,4 +1,5 @@
 #include "../include/AstList.h"
+#include <vector>
 
 template <typename T>
 AstList<T>::AstList()

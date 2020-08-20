@@ -1,6 +1,8 @@
 #include "../include/Sem2Visitor.h"
 
-Sem2Visitor::Sem2Visitor(std::map<std::string, ClassDecl*> globalSymTab){
+Sem2Visitor::Sem2Visitor(std::map<std::string, ClassDecl*> globalSymTab, ErrorMsg* aerrorMsg) :
+errorMsg(aerrorMsg)
+{
 
 }
 
