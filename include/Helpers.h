@@ -2,6 +2,7 @@
 #define HELPERS_H
 
 #include <typeinfo>
+#include "Type.h"
 
 template <typename Cast, typename Base>
 inline bool instanceof(Base* obj){
@@ -13,7 +14,6 @@ inline bool instanceof(Base* obj){
     }
 }
 
-class Type;
 inline bool sameType(Type* a1, Type* a2){
     return typeid(*a1) == typeid(*a2);
 }

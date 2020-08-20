@@ -1,50 +1,153 @@
 #include "../include/Sem3Visitor.h"
+#include "../include/Helpers.h"
 
-Sem3Visitor::Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb, ErrorMsg* aerrorMsg)
-{
+#include "../include/Block.h"
+#include "../include/Break.h"
+#include "../include/ClassDecl.h"
+#include "../include/IdentifierExp.h"
+#include "../include/IdentifierType.h"
+#include "../include/InstVarDecl.h"
+#include "../include/FormalDecl.h"
+#include "../include/LocalVarDecl.h"
+#include "../include/StatementList.h"
+#include "../include/While.h"
 
-}
+VarDecl* Sem3Visitor::uninitVarDecl = new InstVarDecl(-1, -1, nullptr, "$$$$");
 
-void Sem3Visitor::initInstanceVars(std::map<std::string, ClassDecl*> globalTab){
-
-}
+Sem3Visitor::Sem3Visitor(std::map<std::string, ClassDecl*> aglobalSymTab, ErrorMsg* aerrorMsg) :
+errorMsg(aerrorMsg),
+globalSymTab(aglobalSymTab),
+currentClass(nullptr)
+{}
 
 Visitor* Sem3Visitor::visitClassDecl(ClassDecl* n){
-    return nullptr;
+    currentClass = n;
+
+    ASTvisitor::visitClassDecl(n);
+
+    return visitDecl(n);
 }
 
 Visitor* Sem3Visitor::visitMethodDecl(MethodDecl* n){
+    localSymTab.clear();
+
+    ASTvisitor::visitMethodDecl(n);
+
     return nullptr;
 }
 
 Visitor* Sem3Visitor::visitFormalDecl(FormalDecl* n){
+    if(localSymTab.find(n->name) != localSymTab.end()){
+        errorMsg->error(n->row, n->col, "Duplicate variable name: " + n->name);
+    }
+
+    localSymTab.emplace(n->name, uninitVarDecl);
+    ASTvisitor::visitFormalDecl(n);
+    localSymTab[n->name] = n;
+
     return nullptr;
 }
 
 Visitor* Sem3Visitor::visitLocalVarDecl(LocalVarDecl* n){
+    if(localSymTab.find(n->name) != localSymTab.end()){
+        errorMsg->error(n->row, n->col, "Duplicate variable name: " + n->name);
+    }
+
+    localSymTab.emplace(n->name, uninitVarDecl);
+    ASTvisitor::visitLocalVarDecl(n);
+    localSymTab[n->name] = n;
+
     return nullptr;
 }
 
 Visitor* Sem3Visitor::visitInstVarDecl(InstVarDecl* n){
-    return nullptr;
+    if(n->name == "length"){
+        errorMsg->error(n->row, n->col, "invalid variable name \"length\"");
+    }
+
+    return ASTvisitor::visitInstVarDecl(n);
 }
 
 Visitor* Sem3Visitor::visitBlock(Block* n){
+    ASTvisitor::visitBlock(n);
+
+    for(AstNode* stmt : n->stmts->lst){
+        if(instanceof<VarDecl, AstNode>(stmt)){
+            localSymTab.erase(((VarDecl*)stmt)->name);
+        }
+    }
+
     return nullptr;
 }
 
 Visitor* Sem3Visitor::visitIdentifierExp(IdentifierExp* n){
-    return nullptr;
+    bool undefined = true;
+
+    if(localSymTab.find(n->name) != localSymTab.end()){
+        undefined = false;
+
+        if(localSymTab[n->name] == uninitVarDecl){
+            errorMsg->error(n->row, n->col, "uninitialized variable: " + n->name);
+        }
+        else{
+            n->link = localSymTab[n->name];
+        }
+    }
+    else{
+        if(currentClass->instVarTable.find(n->name) != currentClass->instVarTable.end()){
+            undefined = false;
+            n->link = currentClass->instVarTable[n->name];
+        }
+        else{
+            ClassDecl* currClass = currentClass->superlink;
+            while(currClass != nullptr){
+                if(currClass->instVarTable.find(n->name) != currClass->instVarTable.end()){
+                    n->link = currentClass->instVarTable[n->name];
+                    undefined = false;
+                    break;
+                }
+
+                currClass = currClass->superlink;
+            }
+        }
+    }
+
+    if(undefined){
+        errorMsg->error(n->row, n->col, "undefined variable name: " + n->name);
+    }
+
+    return ASTvisitor::visitIdentifierExp(n);
 }
 
+#include <iostream>
 Visitor* Sem3Visitor::visitIdentifierType(IdentifierType* n){
-    return nullptr;
+    if(globalSymTab.find(n->name) != globalSymTab.end()){
+        n->link = globalSymTab[n->name];
+    }
+    else{
+        errorMsg->error(n->row, n->col, "undefined class name: " + n->name);
+    }
+
+    return visitType(n);
 }
 
 Visitor* Sem3Visitor::visitWhile(While* n){
+    breakTargetStack.push(n);
+
+    ASTvisitor::visitWhile(n);
+
+    breakTargetStack.pop();
+
     return nullptr;
 }
 
 Visitor* Sem3Visitor::visitBreak(Break* n){
-    return nullptr;
+    if(breakTargetStack.empty()){
+        errorMsg->error(n->row, n->col, "break statement outside of loop/switch");
+    }
+    else{
+        n->breakLink = breakTargetStack.top();
+    }
+
+    return visitStatement(n);
 }

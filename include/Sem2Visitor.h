@@ -13,7 +13,7 @@ public:
 
     std::map<std::string, ClassDecl*> globalSymTab;
 
-    Sem2Visitor(std::map<std::string, ClassDecl*> globalSymTab, ErrorMsg* aerrorMsg);
+    Sem2Visitor(std::map<std::string, ClassDecl*> aglobalSymTab, ErrorMsg* aerrorMsg);
 
     virtual Visitor* visitProgram(Program* n);
 

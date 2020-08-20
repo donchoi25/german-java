@@ -152,7 +152,7 @@ Visitor* Sem1Visitor::visitClassDecl(ClassDecl* n){
         }
     }
     else{
-        errorMsg->error(n->row, n->col, "Duplicate Class Declaration");
+        errorMsg->error(n->row, n->col, "Duplicate class declaration: " + n->name);
     }
 
     return visitDecl(n);

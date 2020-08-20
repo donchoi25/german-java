@@ -10,8 +10,6 @@
 class Sem3Visitor : public ASTvisitor{
 private:
     static VarDecl* uninitVarDecl;
-
-    void initInstanceVars(std::map<std::string, ClassDecl*> globalTab);
 public:
     std::map<std::string, ClassDecl*> globalSymTab;
     ClassDecl* currentClass;
@@ -19,7 +17,7 @@ public:
     std::stack<BreakTarget*> breakTargetStack;
     ErrorMsg* errorMsg;
 
-    Sem3Visitor(std::map<std::string, ClassDecl*> globalSymTb, ErrorMsg* aerrorMsg);
+    Sem3Visitor(std::map<std::string, ClassDecl*> aglobalSymTab, ErrorMsg* aerrorMsg);
 
     virtual Visitor* visitClassDecl(ClassDecl* n);
 

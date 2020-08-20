@@ -245,7 +245,8 @@ formal-list:
 ;
 
 formal-list-extended:
-	',' type ID { $$ = new VarDeclList(); $$->push_back(new FormalDecl(ROW(@$), COL(@$), $2, *$3)); }
+	%empty {$$ = new VarDeclList();}
+|	',' type ID { $$ = new VarDeclList(); $$->push_back(new FormalDecl(ROW(@$), COL(@$), $2, *$3)); }
 |	formal-list-extended ',' type ID { $$->push_back(new FormalDecl(ROW(@$), COL(@$), $3, *$4)); }
 ;
 
@@ -467,7 +468,7 @@ int main(int argc, char **argv){
 
 	//make sure file is valid
 	if(!myfile){
-		printf("%s", "Can't open file");
+		printf("%s", "Can't open file\n");
 		return -1;
 	}
 
@@ -488,8 +489,12 @@ int main(int argc, char **argv){
 	(new Sem2Visitor(sem1Visitor->getGlobalSymTab(), errorMsg))->visit(RootProgram);
 	(new Sem3Visitor(sem1Visitor->getGlobalSymTab(), errorMsg))->visit(RootProgram);
 
-	if(!(errorMsg->anyErrors))
-		printf("Compiled Successfully\n");
+	if(!(errorMsg->anyErrors)){
+		std::cout<<"Compilation succeeded for " + errorMsg->filename + "\n";
+	}
+	else{
+		std::cout<<"Compilation failed for " + errorMsg->filename + "\n";
+	}
 
 	return 0;
 }
