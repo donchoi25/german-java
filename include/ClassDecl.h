@@ -8,7 +8,7 @@
 #include <map>
 
 class InstVarDecl;
-class methodDecl;
+class MethodDecl;
 class DeclList;
 class ClassDeclList;
 class ClassDecl : public Decl {
@@ -19,7 +19,7 @@ public:
     ClassDecl* superlink;
     ClassDeclList* subclasses;
     std::map<std::string,InstVarDecl*> instVarTable;
-    std::map<std::string,methodDecl*> methodTable;
+    std::map<std::string,MethodDecl*> methodTable;
 
     ClassDecl(int arow, int acol, const std::string aname, const std::string asuperName, DeclList* aDeclList);
 

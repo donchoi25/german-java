@@ -4,6 +4,7 @@
 #include "../include/ClassDecl.h"
 #include "../include/DeclList.h"
 #include "../include/FormalDecl.h"
+#include "../include/InstVarDecl.h"
 #include "../include/IntegerType.h"
 #include "../include/IdentifierType.h"
 #include "../include/MethodDeclVoid.h"
@@ -151,16 +152,28 @@ Visitor* Sem1Visitor::visitClassDecl(ClassDecl* n){
         }
     }
     else{
-        errorMsg->error(n->row, n->col, "Duplicate Class Declaration \n");
+        errorMsg->error(n->row, n->col, "Duplicate Class Declaration");
     }
 
     return visitDecl(n);
 }
 
 Visitor* Sem1Visitor::visitInstVarDecl(InstVarDecl* n){
-    return nullptr;
+    if(currentClass->instVarTable.find(n->name) == currentClass->instVarTable.end()){
+        currentClass->instVarTable.emplace(n->name, n);
+    }
+    else{
+        errorMsg->error(n->row, n->col, "duplicate instance variable declaration: " + n->name);
+    }
+    return visitVarDecl(n);
 }
 
 Visitor* Sem1Visitor::visitMethodDecl(MethodDecl* n){
-    return nullptr;
+    if(currentClass->methodTable.find(n->name) == currentClass->methodTable.end()){
+        currentClass->methodTable.emplace(n->name, n);
+    }
+    else{
+        errorMsg->error(n->row, n->col, "duplicate method declaration: " + n->name);
+    }
+    return visitDecl(n);
 }

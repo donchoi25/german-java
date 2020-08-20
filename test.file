@@ -1,5 +1,12 @@
 class Def {
+  int bob;
+  int bob;
   public  void exec() {
+    int name = 'c';
+    int name = 'c';
+  }
+  public  void exec() {
+    int name = 'c';
     int name = 'c';
   }
 }
