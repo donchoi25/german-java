@@ -1,4 +1,4 @@
-#include "../include/ArrayLookup.h"
+#include "ArrayLookup.h"
 
 ArrayLookup::ArrayLookup(int arow, int acol, Exp* aarrExp, Exp* aidxExp) : Exp(arow, acol),
 arrExp(aarrExp),

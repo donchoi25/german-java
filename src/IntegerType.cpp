@@ -1,5 +1,5 @@
-#include "../include/IntegerType.h"
-#include "../include/Helpers.h"
+#include "IntegerType.h"
+#include "Helpers.h"
 
 IntegerType::IntegerType(int arow, int acol) :
 Type(arow, acol)

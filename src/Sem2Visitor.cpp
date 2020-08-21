@@ -1,8 +1,8 @@
-#include "../include/Sem2Visitor.h"
+#include "Sem2Visitor.h"
 
-#include "../include/ClassDecl.h"
-#include "../include/ClassDeclList.h"
-#include "../include/Program.h"
+#include "ClassDecl.h"
+#include "ClassDeclList.h"
+#include "Program.h"
 
 Sem2Visitor::Sem2Visitor(std::map<std::string, ClassDecl*> aglobalSymTab, ErrorMsg* aerrorMsg) :
 errorMsg(aerrorMsg),

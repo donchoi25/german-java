@@ -1,5 +1,5 @@
-#include "../include/NullType.h"
-#include "../include/Helpers.h"
+#include "NullType.h"
+#include "Helpers.h"
 
 NullType::NullType(int arow, int acol) :
 Type(arow, acol)

@@ -1,4 +1,4 @@
-#include "../include/Label.h"
+#include "Label.h"
 
 Label::Label(int arow, int acol) : 
 Statement(arow, acol),

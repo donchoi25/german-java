@@ -1,4 +1,4 @@
-#include "../include/Decl.h"
+#include "Decl.h"
 
 Decl::Decl(int arow, int acol, const std::string aname) :
 AstNode(arow, acol), 

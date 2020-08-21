@@ -1,4 +1,4 @@
-#include "../include/Cast.h"
+#include "Cast.h"
 
 Cast::Cast(int arow, int acol, Type* atype, Exp* aexp) : 
 Exp(arow, acol),

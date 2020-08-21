@@ -1,4 +1,4 @@
-#include "../include/LocalDeclStatement.h"
+#include "LocalDeclStatement.h"
 
 LocalDeclStatement::LocalDeclStatement(int arow, int acol, LocalVarDecl* decl) :
 Statement(arow, acol),

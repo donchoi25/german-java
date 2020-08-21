@@ -1,4 +1,4 @@
-#include "../include/MethodDeclNonVoid.h"
+#include "MethodDeclNonVoid.h"
 
 MethodDeclNonVoid::MethodDeclNonVoid(int arow, int acol, Type* at, const std::string as, VarDeclList* afl, StatementList* asl, Exp* ae) :
 MethodDecl(arow, acol, as, afl, asl),

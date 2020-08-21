@@ -1,4 +1,4 @@
-#include "../include/Super.h"
+#include "Super.h"
 
 Super::Super(int arow, int acol) :
 Exp(arow, acol)

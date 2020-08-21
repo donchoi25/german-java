@@ -1,4 +1,4 @@
-#include "../include/Statement.h"
+#include "Statement.h"
 
 Statement::Statement(int arow, int acol) :
 AstNode(arow, acol)

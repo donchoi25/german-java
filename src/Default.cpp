@@ -1,4 +1,4 @@
-#include "../include/Default.h"
+#include "Default.h"
 
 Default::Default(int arow, int acol) : 
 Label(arow, acol)

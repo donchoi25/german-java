@@ -1,5 +1,5 @@
-#include "../include/IdentifierType.h"
-#include "../include/Helpers.h"
+#include "IdentifierType.h"
+#include "Helpers.h"
 
 IdentifierType::IdentifierType(int arow, int acol, const std::string aname) : 
 Type(arow, acol),

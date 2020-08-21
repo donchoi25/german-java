@@ -1,0 +1,3 @@
+/home/don/Desktop/german-java-cmake/build/CMakeFiles/rebuild_cache.dir
+/home/don/Desktop/german-java-cmake/build/CMakeFiles/german-java.dir
+/home/don/Desktop/german-java-cmake/build/CMakeFiles/edit_cache.dir

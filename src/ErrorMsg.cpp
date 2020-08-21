@@ -1,4 +1,4 @@
-#include "../include/ErrorMsg.h"
+#include "ErrorMsg.h"
 #include <iostream>
 
 ErrorMsg::ErrorMsg(std::string aafilename) : 

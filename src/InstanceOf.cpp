@@ -1,4 +1,4 @@
-#include "../include/InstanceOf.h"
+#include "InstanceOf.h"
 
 InstanceOf::InstanceOf(int arow, int acol, Exp* aexp, Type* atype) : 
 Exp(arow, acol),

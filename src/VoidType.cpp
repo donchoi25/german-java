@@ -1,5 +1,5 @@
-#include "../include/VoidType.h"
-#include "../include/Helpers.h"
+#include "VoidType.h"
+#include "Helpers.h"
 
 VoidType::VoidType(int arow, int acol) :
 Type(arow, acol)

@@ -1,5 +1,5 @@
-#include "../include/AstNode.h"
-#include "../include/Visitor.h"
+#include "AstNode.h"
+#include "Visitor.h"
 #include <stdio.h>
 
 AstNode::AstNode(int arow, int acol) :

@@ -1,4 +1,4 @@
-#include "../include/If.h"
+#include "If.h"
 
 If::If(int arow, int acol, Exp* aexp, Statement* atrueStmt, Statement* afalseStmt) : 
 Statement(arow, acol),

@@ -1,4 +1,4 @@
-#include "../include/Switch.h"
+#include "Switch.h"
 
 Switch::Switch(int arow, int acol, Exp* aexp, StatementList* astmts) :
 BreakTarget(arow, acol),

@@ -1,4 +1,4 @@
-#include "../include/True.h"
+#include "True.h"
 
 True::True(int arow, int acol) :
 Exp(arow, acol)

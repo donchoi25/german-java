@@ -1,7 +1,7 @@
-HEADER=include/nodes.h
+HEADER=$(pwd)/../include/nodes.h
 echo "#ifndef __NODES__" > $HEADER
 echo "#define __NODES__" >> $HEADER
-for file in include/*.h
+for file in $(pwd)/../include/*.h
 do
     if [ "$file" != "$HEADER" ]; then
         echo "#include \"$(basename $file)\"" >> $HEADER

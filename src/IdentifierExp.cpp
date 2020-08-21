@@ -1,4 +1,4 @@
-#include "../include/IdentifierExp.h"
+#include "IdentifierExp.h"
 
 IdentifierExp::IdentifierExp(int arow, int acol, const std::string aname) : 
 Exp(arow, acol),

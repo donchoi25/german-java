@@ -1,4 +1,4 @@
-#include "../include/Null.h"
+#include "Null.h"
 
 Null::Null(int arow, int acol) :
 Exp(arow, acol)

@@ -1,4 +1,4 @@
-#include "../include/IntegerLiteral.h"
+#include "IntegerLiteral.h"
 
 IntegerLiteral::IntegerLiteral(int arow, int acol, int aval) :
 Exp(arow, acol),

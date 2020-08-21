@@ -1,4 +1,4 @@
-#include "../include/Block.h"
+#include "Block.h"
 
 Block::Block(int arow, int acol, StatementList* astmts):  
 Statement(arow, acol),    

@@ -1,5 +1,5 @@
-#include "../include/BooleanType.h"
-#include "../include/Helpers.h"
+#include "BooleanType.h"
+#include "Helpers.h"
 
 BooleanType::BooleanType(int arow, int acol) : 
 Type(arow, acol)

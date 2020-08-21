@@ -1,4 +1,4 @@
-#include "../include/MethodDecl.h"
+#include "MethodDecl.h"
 
 MethodDecl::MethodDecl(int arow, int acol, const std::string aname, VarDeclList* aformals, StatementList* astmts) :
 Decl(arow, acol, aname),

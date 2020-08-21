@@ -1,4 +1,4 @@
-#include "../include/NewObject.h"
+#include "NewObject.h"
 
 NewObject::NewObject(int arow, int acol, IdentifierType* atype) :
 Exp(arow, acol),

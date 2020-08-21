@@ -1,4 +1,4 @@
-#include "../include/Assign.h"
+#include "Assign.h"
 
 Assign::Assign(int arow, int acol, Exp* alhs, Exp* arhs) : 
 Statement(arow, acol),

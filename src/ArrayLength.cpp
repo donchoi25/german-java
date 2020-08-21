@@ -1,4 +1,4 @@
-#include "../include/ArrayLength.h"
+#include "ArrayLength.h"
 
 ArrayLength::ArrayLength(int arow, int acol, ::Exp* arrExp) : UnExp(arow, acol, arrExp)
 {}

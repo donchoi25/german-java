@@ -1,4 +1,4 @@
-#include "../include/StringLiteral.h"
+#include "StringLiteral.h"
 
 StringLiteral::StringLiteral(int arow, int acol, const std::string astr) :
 Exp(arow, acol),

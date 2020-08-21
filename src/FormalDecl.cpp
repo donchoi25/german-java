@@ -1,4 +1,4 @@
-#include "../include/FormalDecl.h"
+#include "FormalDecl.h"
 
 FormalDecl::FormalDecl(int arow, int acol, Type* atype, const std::string aname) : 
 VarDecl(arow, acol, atype, aname)

@@ -1,4 +1,4 @@
-#include "../include/VarDecl.h"
+#include "VarDecl.h"
 
 VarDecl::VarDecl(int arow, int acol, Type* atype, const std::string aname) : 
 Decl(arow, acol, aname),

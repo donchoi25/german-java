@@ -1,4 +1,4 @@
-#include "../include/Exp.h"
+#include "Exp.h"
 
 Exp::Exp(int arow, int acol) : 
 AstNode(arow, acol)

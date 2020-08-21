@@ -1,4 +1,4 @@
-#include "../include/ExpList.h"
+#include "ExpList.h"
 
 ExpList::ExpList() : AstList<Exp*>()
 {}

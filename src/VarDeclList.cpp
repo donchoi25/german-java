@@ -1,4 +1,4 @@
-#include "../include/VarDeclList.h"
+#include "VarDeclList.h"
 
 VarDeclList::VarDeclList() :
 AstList<VarDecl*>()

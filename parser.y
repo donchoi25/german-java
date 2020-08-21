@@ -5,7 +5,7 @@
 	#include <vector>
 	#include <string>
 	#include "assert.h"
-	#include "include/nodes.h"
+	#include "nodes.h"
 	#include <map>
 
 	extern int yylex();

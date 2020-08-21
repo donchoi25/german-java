@@ -1,4 +1,4 @@
-#include "../include/Not.h"
+#include "Not.h"
 
 Not::Not(int arow, int acol, ::Exp* ae) :
 UnExp(arow, acol, ae)

@@ -1,4 +1,4 @@
-#include "../include/DeclList.h"
+#include "DeclList.h"
 
 DeclList::DeclList() : AstList<Decl*>()
 {}

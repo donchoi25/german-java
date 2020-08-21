@@ -1,4 +1,4 @@
-#include "../include/LocalVarDecl.h"
+#include "LocalVarDecl.h"
 
 LocalVarDecl::LocalVarDecl(int arow, int acol, Type* at, const std::string as, Exp* initX) :
 VarDecl(arow, acol, at, as),

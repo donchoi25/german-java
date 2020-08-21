@@ -1,5 +1,5 @@
-#include "../include/Visitor.h"
-#include "../include/AstNode.h"
+#include "Visitor.h"
+#include "AstNode.h"
 
 Visitor::Visitor()
 {}

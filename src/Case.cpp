@@ -1,4 +1,4 @@
-#include "../include/Case.h"
+#include "Case.h"
 
 Case::Case(int arow, int acol, Exp* aexp) : 
 Label(arow, acol),

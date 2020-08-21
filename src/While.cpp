@@ -1,4 +1,4 @@
-#include "../include/While.h"
+#include "While.h"
 
 While::While(int arow, int acol, Exp* aexp, Statement* abody) :
 BreakTarget(arow, acol),

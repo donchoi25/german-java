@@ -1,5 +1,5 @@
-#include "../include/ArrayType.h"
-#include "../include/Helpers.h"
+#include "ArrayType.h"
+#include "Helpers.h"
 
 ArrayType::ArrayType(int arow, int acol, Type* base) : 
 Type(arow, acol),

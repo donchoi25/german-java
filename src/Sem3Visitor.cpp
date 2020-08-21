@@ -1,16 +1,16 @@
-#include "../include/Sem3Visitor.h"
-#include "../include/Helpers.h"
+#include "Sem3Visitor.h"
+#include "Helpers.h"
 
-#include "../include/Block.h"
-#include "../include/Break.h"
-#include "../include/ClassDecl.h"
-#include "../include/IdentifierExp.h"
-#include "../include/IdentifierType.h"
-#include "../include/InstVarDecl.h"
-#include "../include/FormalDecl.h"
-#include "../include/LocalVarDecl.h"
-#include "../include/StatementList.h"
-#include "../include/While.h"
+#include "Block.h"
+#include "Break.h"
+#include "ClassDecl.h"
+#include "IdentifierExp.h"
+#include "IdentifierType.h"
+#include "InstVarDecl.h"
+#include "FormalDecl.h"
+#include "LocalVarDecl.h"
+#include "StatementList.h"
+#include "While.h"
 
 VarDecl* Sem3Visitor::uninitVarDecl = new InstVarDecl(-1, -1, nullptr, "$$$$");
 

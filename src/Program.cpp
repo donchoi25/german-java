@@ -1,4 +1,4 @@
-#include "../include/Program.h"
+#include "Program.h"
 
 Program::Program(int arow, int acol, ClassDeclList* acl) : 
 AstNode(arow, acol)

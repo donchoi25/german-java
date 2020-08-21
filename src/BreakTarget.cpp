@@ -1,4 +1,4 @@
-#include "../include/BreakTarget.h"
+#include "BreakTarget.h"
 #include <bits/stdc++.h>
 
 BreakTarget::BreakTarget(int arow, int acol) : 

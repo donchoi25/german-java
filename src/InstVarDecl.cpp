@@ -1,4 +1,4 @@
-#include "../include/InstVarDecl.h"
+#include "InstVarDecl.h"
 
 InstVarDecl::InstVarDecl(int arow, int acol, Type* atype, const std::string aname) :
 VarDecl(arow, acol, atype, aname)
